@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Container = styled.div`
+export const Container = motion.custom(styled.div`
   display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
   height: 100vh;
-  overflow-y: hidden;
-  padding-top: 130px;
-`;
+  width: 100vw;
+  padding-top: 50px;
+`);

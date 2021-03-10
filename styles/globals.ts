@@ -23,7 +23,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: Gilroy, sans-serif;
     padding: 0;
     margin: 0;
-    overflow-x: auto;
   }
 
   a {
