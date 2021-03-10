@@ -1,5 +1,8 @@
-import styles from "./index.module.css";
-const Button: React.FC = (props) => {
-  return <button className={styles.container}>{props.children}</button>;
-};
-export default Button;
+import styled from "styled-components";
+
+export const Button = styled.button`
+  background: var(--primary-color);
+  color: white;
+  font-weight: 900;
+  padding: 10px 30px;
+`;

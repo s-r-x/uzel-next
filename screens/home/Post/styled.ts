@@ -1,22 +1,24 @@
-.container {
+import styled from "styled-components";
+
+export const Container = styled.div`
   width: 512px;
   min-width: 512px;
   margin: 0 35px;
-}
-.thumb {
+`;
+export const Thumb = styled.img`
   display: block;
   height: 340px;
   object-fit: cover;
   width: 100%;
-}
-.header {
+`;
+export const Header = styled.h2`
   margin: 0;
   margin-top: 12px;
   font-weight: 900;
   font-size: 26px;
-}
-.excerpt {
+`;
+export const Excerpt = styled.p`
   margin: 0;
   margin-top: 18px;
   line-height: 150%;
-}
+`;

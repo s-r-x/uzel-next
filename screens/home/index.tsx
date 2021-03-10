@@ -5,7 +5,7 @@ import { GET_POSTS_QUERY } from "../../network/queries/get-posts";
 import Link from "next/link";
 import { Fragment } from "react";
 import Post from "./Post";
-import styles from "./index.module.css";
+import * as S from "./styled";
 
 export default function HomeScreen(props) {
   const { data, isLoading } = useInfiniteQuery(
@@ -29,7 +29,7 @@ export default function HomeScreen(props) {
           <div>loading</div>
         ) : (
           <>
-            <div className={styles.container}>
+            <S.Container>
               {data.pages.map((page, idx) => (
                 <Fragment key={idx}>
                   {page.posts.nodes.map((post) => (
@@ -37,7 +37,7 @@ export default function HomeScreen(props) {
                   ))}
                 </Fragment>
               ))}
-            </div>
+            </S.Container>
           </>
         )}
       </>
