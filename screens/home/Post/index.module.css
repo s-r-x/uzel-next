@@ -1,0 +1,22 @@
+.container {
+  width: 512px;
+  min-width: 512px;
+  margin: 0 35px;
+}
+.thumb {
+  display: block;
+  height: 340px;
+  object-fit: cover;
+  width: 100%;
+}
+.header {
+  margin: 0;
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 26px;
+}
+.excerpt {
+  margin: 0;
+  margin-top: 18px;
+  line-height: 150%;
+}
