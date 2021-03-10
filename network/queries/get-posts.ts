@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "graphql-request";
 
 export const GET_POSTS_QUERY = gql`
   query MyQuery($first: Int, $after: String) {
