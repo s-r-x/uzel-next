@@ -7,6 +7,7 @@ import Post from "./Post";
 import * as S from "./styled";
 import { useDragConstraint, useInitialDrag } from "./hooks";
 import PostsLoader from "./Loader";
+import PostsList from "./PostsList";
 
 const loader = ({ pageParam }: any) => {
   return gqlClient.request(GET_POSTS_QUERY, {
@@ -49,13 +50,7 @@ export default function HomeScreen(props) {
                 drag="x"
                 ref={containerRef}
               >
-                {data.pages.map((page, idx) => (
-                  <Fragment key={idx}>
-                    {page.posts.nodes.map((post) => (
-                      <Post key={post.id} data={post} />
-                    ))}
-                  </Fragment>
-                ))}
+                <PostsList pages={data.pages} />
                 <PostsLoader
                   fetchMore={fetchNextPage}
                   isFetching={isFetching}

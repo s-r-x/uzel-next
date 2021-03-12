@@ -7,6 +7,7 @@ import { GlobalStyles } from "../styles/globals";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import NextNprogress from "nextjs-progressbar";
+import Cursor from "../components/Cursor";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             <Component key={router.route} {...pageProps} />
           </AnimatePresence>
         </AppShell>
+        {/*<Cursor />*/}
         <ReactQueryDevtools initialIsOpen={false} />
       </Hydrate>
     </QueryClientProvider>
