@@ -7,16 +7,19 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Gilroy";
     src: url("/fonts/Gilroy-Regular.woff") format("woff");
     font-weight: 400;
+    font-display: fallback;
   }
   @font-face {
     font-family: "Gilroy";
     src: url("/fonts/Gilroy-Black.woff") format("woff");
     font-weight: 900;
+    font-display: fallback;
   }
   @font-face {
     font-family: "Gilroy";
     src: url("/fonts/Gilroy-Medium.woff") format("woff");
     font-weight: 500;
+    font-display: fallback;
   }
   html,
   body {

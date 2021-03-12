@@ -26,7 +26,7 @@ export default function PostsLoader(props: TPostsLoaderProps) {
       `}
     >
       {props.isFetching && (
-        <Placeholder foregroundColor="var(--primary-color" />
+        <Placeholder uniqueKey="123" foregroundColor="var(--primary-color" />
       )}
     </div>
   );

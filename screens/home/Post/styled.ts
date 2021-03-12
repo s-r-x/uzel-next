@@ -5,16 +5,6 @@ export const Container = styled.div`
   min-width: 512px;
   margin: 0 35px;
 `;
-export const ThumbContainer = styled.div`
-  height: 340px;
-`;
-export const Thumb = styled.img`
-  display: block;
-  height: 340px;
-  object-fit: cover;
-  border-radius: 3px;
-  width: 100%;
-`;
 export const Header = styled.h2`
   margin: 0;
   margin-top: 12px;
