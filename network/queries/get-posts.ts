@@ -1,12 +1,13 @@
 import { gql } from "graphql-request";
 
 export const GET_POSTS_QUERY = gql`
-  query MyQuery($first: Int, $after: String) {
+  query PostsQuery($first: Int, $after: String) {
     posts(first: $first, after: $after) {
       nodes {
         id
         date
         title
+        slug
         excerpt
         commentCount
         tags {

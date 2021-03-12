@@ -35,7 +35,7 @@ export default function Post({ data }: TProps) {
           <S.Tag key={id}>#{name}</S.Tag>
         ))}
       </S.TagsContainer>
-      <Link href="/test" passHref>
+      <Link href={`/post/${data.slug}`} passHref>
         <Button
           as="a"
           css={`
