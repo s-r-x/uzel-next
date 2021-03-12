@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
+import { Instagram as Placeholder } from "react-content-loader";
 
 type TPostsLoaderProps = {
   isFetching: boolean;
@@ -9,7 +10,6 @@ export default function PostsLoader(props: TPostsLoaderProps) {
   const { ref, inView } = useInView({
     rootMargin: "1000px",
   });
-  console.log(inView);
   const fetchMoreRef = useRef(props.fetchMore);
   fetchMoreRef.current = props.fetchMore;
   useEffect(() => {
@@ -23,10 +23,11 @@ export default function PostsLoader(props: TPostsLoaderProps) {
       css={`
         width: 512px;
         min-width: 512px;
-        background: yellow;
       `}
     >
-      {props.isFetching && "fetching"}
+      {props.isFetching && (
+        <Placeholder foregroundColor="var(--primary-color" />
+      )}
     </div>
   );
 }

@@ -20,16 +20,18 @@ export default function HomeScreen(props) {
   const containerRef = useRef<HTMLDivElement>();
   const initialDrag = useInitialDrag({ containerRef });
   const dragConstraint = useDragConstraint({ containerRef });
-  const { data, isLoading, isFetching, fetchNextPage } = useInfiniteQuery(
-    "posts",
-    loader,
-    {
-      getNextPageParam: (lastPage) => lastPage?.posts?.pageInfo?.endCursor,
-      enabled: true,
-      initialData: props.data,
-      refetchOnWindowFocus: false,
-    }
-  );
+  const {
+    data,
+    isLoading,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery("posts", loader, {
+    getNextPageParam: (lastPage) => lastPage?.posts?.pageInfo?.endCursor,
+    enabled: true,
+    initialData: props.data,
+    refetchOnWindowFocus: false,
+  });
   return (
     <>
       <Head>
@@ -51,10 +53,12 @@ export default function HomeScreen(props) {
                 ref={containerRef}
               >
                 <PostsList pages={data.pages} />
-                <PostsLoader
-                  fetchMore={fetchNextPage}
-                  isFetching={isFetching}
-                />
+                {hasNextPage && (
+                  <PostsLoader
+                    fetchMore={fetchNextPage}
+                    isFetching={isFetching}
+                  />
+                )}
               </S.Container>
             </S.ScrollMask>
           </>

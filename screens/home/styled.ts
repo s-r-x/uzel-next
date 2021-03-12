@@ -5,7 +5,7 @@ export const Container = motion.custom(styled.div`
   display: flex;
   position: fixed;
   height: 100vh;
-  padding-top: 50px;
+  padding-top: 70px;
 `);
 export const ScrollMask = styled.div`
   width: 100vw;

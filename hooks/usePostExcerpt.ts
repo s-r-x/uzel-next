@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useStripHtml } from "../../hooks/useStripHtml";
+import { useStripHtml } from "./useStripHtml";
 
 const MAX_LEN = 150;
 export const usePostExcerpt = (raw: string) => {

@@ -3,12 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 512px;
   min-width: 512px;
-  padding: 0 35px;
+  margin: 0 35px;
+`;
+export const ThumbContainer = styled.div`
+  height: 340px;
 `;
 export const Thumb = styled.img`
   display: block;
   height: 340px;
   object-fit: cover;
+  border-radius: 3px;
   width: 100%;
 `;
 export const Header = styled.h2`

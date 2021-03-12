@@ -10,6 +10,7 @@ export const GET_POSTS_QUERY = gql`
         slug
         excerpt
         commentCount
+        likesCount
         tags {
           nodes {
             name
