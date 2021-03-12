@@ -6,7 +6,10 @@ type TPostsLoaderProps = {
   fetchMore: Function;
 };
 export default function PostsLoader(props: TPostsLoaderProps) {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({
+    rootMargin: "1000px",
+  });
+  console.log(inView);
   const fetchMoreRef = useRef(props.fetchMore);
   fetchMoreRef.current = props.fetchMore;
   useEffect(() => {
