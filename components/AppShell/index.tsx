@@ -1,33 +1,9 @@
-import * as S from "./styled";
-import Logo from "../Logo";
-import Link from "next/link";
-import Hamburger from "./Hamburger";
+import Header from "./Header";
 
 const AppShell: React.FC = (props) => {
   return (
     <div>
-      <S.Header>
-        <Link href="/">
-          <a
-            css={`
-              display: flex;
-              align-items: center;
-            `}
-          >
-            <Logo
-              css={`
-                width: 32px;
-              `}
-            />
-            <S.SiteTitle>Узелковое письмо</S.SiteTitle>
-          </a>
-        </Link>
-        <Hamburger
-          css={`
-            margin-left: auto;
-          `}
-        />
-      </S.Header>
+      <Header />
       {props.children}
     </div>
   );
