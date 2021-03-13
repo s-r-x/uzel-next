@@ -8082,6 +8082,11 @@ export type PostObjectUnion = Post | Page | MediaItem;
 
 export type TermObjectUnion = Category | Tag | PostFormat;
 
+export type PageInfoFieldsFragment = (
+  { __typename?: 'WPPageInfo' }
+  & Pick<WpPageInfo, 'endCursor' | 'hasNextPage' | 'hasPreviousPage' | 'startCursor'>
+);
+
 export type PostsListFieldsFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'date' | 'title' | 'slug' | 'excerpt' | 'commentCount' | 'likesCount'>
@@ -8141,7 +8146,7 @@ export type GetPostsQuery = (
       & PostsListFieldsFragment
     )>>>, pageInfo?: Maybe<(
       { __typename?: 'WPPageInfo' }
-      & Pick<WpPageInfo, 'endCursor' | 'hasNextPage' | 'hasPreviousPage' | 'startCursor'>
+      & PageInfoFieldsFragment
     )> }
   )> }
 );
