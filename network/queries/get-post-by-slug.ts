@@ -6,6 +6,13 @@ export const GET_POST_BY_SLUG = gql`
       title
       date
       content
+      tags {
+        nodes {
+          name
+          id
+          slug
+        }
+      }
       featuredImage {
         node {
           altText

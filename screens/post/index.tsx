@@ -1,3 +1,4 @@
+import TagsList from "@/components/TagsList";
 import { useFormattedDate } from "../../hooks/useFormattedDate";
 import * as S from "./styled";
 
@@ -21,6 +22,7 @@ export default function PostScreen({ post }: TProps) {
           __html: post.content,
         }}
       />
+      <TagsList tags={post.tags.nodes} />
     </S.Container>
   );
 }

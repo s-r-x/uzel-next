@@ -11,16 +11,11 @@ export const GET_POSTS_QUERY = gql`
         excerpt
         commentCount
         likesCount
-        categories {
-          nodes {
-            slug
-            name
-          }
-        }
         tags {
           nodes {
             name
             id
+            slug
           }
         }
         featuredImage {
