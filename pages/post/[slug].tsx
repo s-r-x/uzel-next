@@ -8,7 +8,7 @@ export default function PostPage({ post }) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <div>loading...</div>;
-}
+  }
   return <PostScreen post={post} />;
 }
 
