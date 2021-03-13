@@ -2,6 +2,7 @@ import HomeScreen from "../screens/home";
 import { gqlClient } from "../network/gqlClient";
 import { GET_POSTS_QUERY } from "../network/queries/get-posts";
 import { motion, Variants } from "framer-motion";
+import { GetStaticProps } from "next";
 
 const variants: Variants = {
   initial: {
@@ -26,7 +27,8 @@ export default function Home(props) {
     </motion.div>
   );
 }
-export async function getStaticProps() {
+
+export const getStaticProps: GetStaticProps = async (props) => {
   const data = await gqlClient.request(GET_POSTS_QUERY, {
     first: 20,
   });
@@ -37,4 +39,4 @@ export async function getStaticProps() {
     },
     revalidate: 30,
   };
-}
+};

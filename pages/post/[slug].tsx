@@ -2,13 +2,13 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
 import { gqlClient } from "../../network/gqlClient";
 import { GET_POST_BY_SLUG } from "../../network/queries/get-post-by-slug";
-import PostScreen from "../../screens/post";
+import PostScreen from "_s/post";
 
 export default function PostPage({ post }) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <div>loading...</div>;
-  }
+}
   return <PostScreen post={post} />;
 }
 
