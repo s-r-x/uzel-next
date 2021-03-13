@@ -1,17 +1,18 @@
 import Head from "next/head";
 import { useInfiniteQuery } from "react-query";
-import { gqlClient } from "../../network/gqlClient";
-import { GET_POSTS_QUERY } from "../../network/queries/get-posts";
 import GenericPosts from "@/components/GenericPosts";
+import { GetPostsQuery } from "@/typings/wp";
+import { Requests } from "@/network/requests";
 
-const loader = ({ pageParam }: any) => {
-  return gqlClient.request(GET_POSTS_QUERY, {
-    first: 10,
+const loader = ({ pageParam }: any) =>
+  Requests.getPosts({
     after: pageParam,
   });
-};
 
-export default function HomeScreen(props) {
+type TProps = {
+  data: GetPostsQuery;
+};
+export default function HomeScreen(props: TProps) {
   const {
     data,
     isLoading,
@@ -21,7 +22,7 @@ export default function HomeScreen(props) {
   } = useInfiniteQuery("posts", loader, {
     getNextPageParam: (lastPage) => lastPage?.posts?.pageInfo?.endCursor,
     enabled: true,
-    initialData: props.data,
+    initialData: { pages: [props.data], pageParams: undefined },
     refetchOnWindowFocus: false,
   });
   return (

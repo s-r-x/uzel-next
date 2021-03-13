@@ -1,23 +1,28 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
-import { gqlClient } from "../../network/gqlClient";
-import { GET_POST_BY_SLUG } from "../../network/queries/get-post-by-slug";
 import PostScreen from "_s/post";
+import { Requests } from "@/network/requests";
+import { GetPostBySlugQuery } from "@/typings/wp";
 
-export default function PostPage({ post }) {
+type TProps = {
+  data: GetPostBySlugQuery;
+};
+export default function PostPage({ data }: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <div>loading...</div>;
   }
-  return <PostScreen post={post} />;
+  return <PostScreen data={data} />;
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  const data = await gqlClient.request(GET_POST_BY_SLUG, {
-    slug: props.params.slug,
+export const getStaticProps: GetStaticProps<TProps> = async (props) => {
+  const data = await Requests.getPostBySlug({
+    slug: props.params.slug as string,
   });
   return {
-    props: data,
+    props: {
+      data,
+    },
     revalidate: 30,
   };
 };

@@ -8,3 +8,9 @@ declare module "react" {
     css?: CSSProp;
   }
 }
+export type TStringDict = {
+  [key: string]: string;
+};
+export type TAnyDict = {
+  [key: string]: any;
+};

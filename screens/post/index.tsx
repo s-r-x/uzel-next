@@ -1,11 +1,12 @@
 import TagsList from "@/components/TagsList";
+import { GetPostBySlugQuery } from "@/typings/wp";
 import { useFormattedDate } from "../../hooks/useFormattedDate";
 import * as S from "./styled";
 
 type TProps = {
-  post: any;
+  data: GetPostBySlugQuery;
 };
-export default function PostScreen({ post }: TProps) {
+export default function PostScreen({ data: { post } }: TProps) {
   const date = useFormattedDate(post.date);
   return (
     <S.Container>

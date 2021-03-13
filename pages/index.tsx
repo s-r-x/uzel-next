@@ -1,8 +1,8 @@
 import HomeScreen from "../screens/home";
-import { gqlClient } from "../network/gqlClient";
-import { GET_POSTS_QUERY } from "../network/queries/get-posts";
 import { motion, Variants } from "framer-motion";
 import { GetStaticProps } from "next";
+import { Requests } from "@/network/requests";
+import { GetPostsQuery } from "@/typings/wp";
 
 const variants: Variants = {
   initial: {
@@ -15,7 +15,10 @@ const variants: Variants = {
     opacity: 0,
   },
 };
-export default function Home(props) {
+type TProps = {
+  data: GetPostsQuery;
+};
+export default function Home(props: TProps) {
   return (
     <motion.div
       initial="initial"
@@ -23,19 +26,16 @@ export default function Home(props) {
       exit="exit"
       variants={variants}
     >
-      <HomeScreen data={props} />
+      <HomeScreen data={props.data} />
     </motion.div>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  const data = await gqlClient.request(GET_POSTS_QUERY, {
-    first: 10,
-  });
-
+export const getStaticProps: GetStaticProps<TProps> = async () => {
+  const data = await Requests.getPosts();
   return {
     props: {
-      pages: [{ posts: data.posts }],
+      data,
     },
     revalidate: 30,
   };
