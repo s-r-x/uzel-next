@@ -31,11 +31,12 @@ export default function Post({ data }: TProps) {
         </S.MetaItem>
       </S.Meta>
       <S.Excerpt>{excerpt}</S.Excerpt>
-      <S.TagsContainer>
+      {/*<S.TagsContainer>
         {data.tags.nodes.map(({ name, id }) => (
           <S.Tag key={id}>#{name}</S.Tag>
         ))}
       </S.TagsContainer>
+        */}
       <Link href={`/post/${data.slug}`} passHref>
         <Button
           as="a"

@@ -6,6 +6,9 @@ export const Container = styled.div`
   img {
     max-width: 100%;
   }
+  p {
+    line-height: 1.45;
+  }
 `;
 export const Header = styled.header`
   margin-top: 75px;

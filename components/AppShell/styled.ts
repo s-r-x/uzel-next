@@ -7,7 +7,8 @@ export const Header = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px;
+  background-color: white;
+  padding: 10px 30px;
   z-index: 2;
   border-bottom: 1px solid rgba(0,0,0,.1);
 `;

@@ -30,7 +30,7 @@ export default function Home(props) {
 
 export const getStaticProps: GetStaticProps = async (props) => {
   const data = await gqlClient.request(GET_POSTS_QUERY, {
-    first: 20,
+    first: 10,
   });
 
   return {

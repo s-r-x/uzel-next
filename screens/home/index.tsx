@@ -11,7 +11,7 @@ import PostsList from "./PostsList";
 
 const loader = ({ pageParam }: any) => {
   return gqlClient.request(GET_POSTS_QUERY, {
-    first: 20,
+    first: 10,
     after: pageParam,
   });
 };

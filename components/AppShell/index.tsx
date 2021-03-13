@@ -1,6 +1,7 @@
 import * as S from "./styled";
 import Logo from "../Logo";
 import Link from "next/link";
+import Hamburger from "./Hamburger";
 
 const AppShell: React.FC = (props) => {
   return (
@@ -21,6 +22,11 @@ const AppShell: React.FC = (props) => {
             <S.SiteTitle>Узелковое письмо</S.SiteTitle>
           </a>
         </Link>
+        <Hamburger
+          css={`
+            margin-left: auto;
+          `}
+        />
       </S.Header>
       {props.children}
     </div>
