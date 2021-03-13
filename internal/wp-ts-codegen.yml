@@ -1,8 +1,10 @@
 overwrite: true
 schema: "./wpgraphql-schema.gql"
-#documents: "./*.gql"
+documents: 
+  - "../network/queries/*.ts"
+  - "../network/fragments/*.ts"
 generates:
-  wp.ts:
+  ../typings/wp.ts:
     plugins:
       - "typescript"
       - "typescript-operations"

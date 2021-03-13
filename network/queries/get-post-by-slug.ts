@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 
 export const GET_POST_BY_SLUG = gql`
-  query PostBySlugQuery($slug: ID!) {
+  query GetPostBySlug($slug: ID!) {
     post(id: $slug, idType: SLUG) {
       title
       date

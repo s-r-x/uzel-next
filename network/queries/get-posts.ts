@@ -1,28 +1,12 @@
 import { gql } from "graphql-request";
+import { POSTS_LIST_FIELDS_FRAGMENT } from "../fragments/posts-list-fields";
 
 export const GET_POSTS_QUERY = gql`
-  query PostsQuery($first: Int, $after: String) {
+  ${POSTS_LIST_FIELDS_FRAGMENT}
+  query GetPosts($first: Int, $after: String) {
     posts(first: $first, after: $after) {
       nodes {
-        id
-        date
-        title
-        slug
-        excerpt
-        commentCount
-        likesCount
-        tags {
-          nodes {
-            name
-            id
-            slug
-          }
-        }
-        featuredImage {
-          node {
-            mediaItemUrl
-          }
-        }
+        ...PostsListFields
       }
       pageInfo {
         endCursor

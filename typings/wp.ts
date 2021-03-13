@@ -8081,3 +8081,67 @@ export type MenuItemsWhereArgs = {
 export type PostObjectUnion = Post | Page | MediaItem;
 
 export type TermObjectUnion = Category | Tag | PostFormat;
+
+export type PostsListFieldsFragment = (
+  { __typename?: 'Post' }
+  & Pick<Post, 'id' | 'date' | 'title' | 'slug' | 'excerpt' | 'commentCount' | 'likesCount'>
+  & { tags?: Maybe<(
+    { __typename?: 'PostToTagConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Tag' }
+      & Pick<Tag, 'name' | 'id' | 'slug'>
+    )>>> }
+  )>, featuredImage?: Maybe<(
+    { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
+    & { node?: Maybe<(
+      { __typename?: 'MediaItem' }
+      & Pick<MediaItem, 'mediaItemUrl'>
+    )> }
+  )> }
+);
+
+export type GetPostBySlugQueryVariables = Exact<{
+  slug: Scalars['ID'];
+}>;
+
+
+export type GetPostBySlugQuery = (
+  { __typename?: 'RootQuery' }
+  & { post?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'title' | 'date' | 'content'>
+    & { tags?: Maybe<(
+      { __typename?: 'PostToTagConnection' }
+      & { nodes?: Maybe<Array<Maybe<(
+        { __typename?: 'Tag' }
+        & Pick<Tag, 'name' | 'id' | 'slug'>
+      )>>> }
+    )>, featuredImage?: Maybe<(
+      { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
+      & { node?: Maybe<(
+        { __typename?: 'MediaItem' }
+        & Pick<MediaItem, 'altText' | 'mediaItemUrl'>
+      )> }
+    )> }
+  )> }
+);
+
+export type GetPostsQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+}>;
+
+
+export type GetPostsQuery = (
+  { __typename?: 'RootQuery' }
+  & { posts?: Maybe<(
+    { __typename?: 'RootQueryToPostConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Post' }
+      & PostsListFieldsFragment
+    )>>>, pageInfo?: Maybe<(
+      { __typename?: 'WPPageInfo' }
+      & Pick<WpPageInfo, 'endCursor' | 'hasNextPage' | 'hasPreviousPage' | 'startCursor'>
+    )> }
+  )> }
+);

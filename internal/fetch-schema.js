@@ -1,13 +1,11 @@
-import fs from "fs";
-import fetch from "node-fetch";
-import path from 'path';
-import { getIntrospectionQuery, printSchema, buildClientSchema } from "graphql";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const fs = require("fs");
+const fetch = require("node-fetch");
+const path = require("path");
+const {
+  getIntrospectionQuery,
+  printSchema,
+  buildClientSchema,
+} = require("graphql");
 /**
  * runs an introspection query on an endpoint and retrieves its result
  * thanks to this gist:
