@@ -1,13 +1,10 @@
 import { Transition, Variants } from "framer-motion";
 
 export const variants: Variants = {
-  initial: {
+  hidden: {
     y: "-100%",
   },
-  exit: {
-    y: "-100%",
-  },
-  animate: {
+  visible: {
     y: "0%",
   },
 };
