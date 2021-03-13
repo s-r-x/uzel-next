@@ -1,9 +1,9 @@
-import { usePostExcerpt } from "../../../hooks/usePostExcerpt";
-import { useFormattedDate } from "../../../hooks/useFormattedDate";
-import { Button } from "../../../components/Button";
+import { usePostExcerpt } from "@/hooks/usePostExcerpt";
+import { useFormattedDate } from "@/hooks/useFormattedDate";
+import { Button } from "_c/Button";
 import * as S from "./styled";
 import Link from "next/link";
-import { CommentIcon, HeartIcon, CalendarIcon } from "../../../components/Icon";
+import { CommentIcon, HeartIcon, CalendarIcon } from "_c/Icon";
 import Thumb from "../Thumb";
 
 type TProps = {

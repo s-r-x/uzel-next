@@ -1,6 +1,7 @@
 import { useMotionValue, usePresence } from "framer-motion";
 import { useState, useEffect, MutableRefObject } from "react";
 import ResizeObserver from "resize-observer-polyfill";
+import { TGenericPostsUniqueKey } from "./typings";
 
 type TUseDragConstraintProps = {
   containerRef: MutableRefObject<HTMLDivElement>;
@@ -26,11 +27,16 @@ export const useDragConstraint = ({
 };
 type TUseInitialDragProps = {
   containerRef: MutableRefObject<HTMLDivElement>;
+  uniqueKey: TGenericPostsUniqueKey;
 };
 
-let latestDrag = 0;
+const latestDrag: { [key in TGenericPostsUniqueKey]: number } = {
+  home: 0,
+  tags: 0,
+  categories: 0,
+};
 export const useInitialDrag = (props: TUseInitialDragProps) => {
-  const drag = useMotionValue(latestDrag);
+  const drag = useMotionValue(latestDrag[props.uniqueKey]);
   const [isPresent, safeToRemove] = usePresence();
   useEffect(() => {
     if (!isPresent) {
@@ -39,7 +45,7 @@ export const useInitialDrag = (props: TUseInitialDragProps) => {
         const matrix = new DOMMatrixReadOnly(
           window.getComputedStyle($el).transform
         );
-        latestDrag = matrix.m41;
+        latestDrag[props.uniqueKey] = matrix.m41;
       }
       safeToRemove();
     }
