@@ -1,14 +1,19 @@
 import * as S from "./styled";
-import { useCursorCoords } from "./hooks";
+import { useCursorState } from "./hooks";
+import { useRouteLoadingState } from "@/hooks/useRouteLoadingState";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function Cursor() {
-  const { x, y } = useCursorCoords();
+  const { x, y } = useCursorState();
+  const loadingState = useRouteLoadingState();
   return (
     <S.Container
       style={{
         x,
         y,
       }}
-    />
+    >
+      {loadingState === "loading" && <LoadingIndicator />}
+    </S.Container>
   );
 }
