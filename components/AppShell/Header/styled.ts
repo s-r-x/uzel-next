@@ -1,3 +1,4 @@
+import { AppShellConfig } from "@/config/app-shell";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -11,6 +12,7 @@ export const Container = motion.custom(styled.div`
   background-color: white;
   padding: 10px 30px;
   z-index: 2;
+  height: ${AppShellConfig.headerHeight}px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `);
 export const SiteTitle = styled.span`
