@@ -8131,6 +8131,27 @@ export type GetPostBySlugQuery = (
   )> }
 );
 
+export type GetPostsByTagQueryVariables = Exact<{
+  tag: Scalars['String'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+}>;
+
+
+export type GetPostsByTagQuery = (
+  { __typename?: 'RootQuery' }
+  & { posts?: Maybe<(
+    { __typename?: 'RootQueryToPostConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Post' }
+      & PostsListFieldsFragment
+    )>>>, pageInfo?: Maybe<(
+      { __typename?: 'WPPageInfo' }
+      & PageInfoFieldsFragment
+    )> }
+  )> }
+);
+
 export type GetPostsQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;

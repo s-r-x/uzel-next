@@ -34,9 +34,7 @@ export default function Home(props: TProps) {
 export const getStaticProps: GetStaticProps<TProps> = async () => {
   const data = await Requests.getPosts();
   return {
-    props: {
-      data,
-    },
+    props: { data },
     revalidate: 30,
   };
 };

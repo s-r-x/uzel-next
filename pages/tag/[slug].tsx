@@ -1,19 +1,28 @@
+import { Requests } from "@/network/requests";
+import Screen from "@/screens/posts-by-tag";
+import { GetPostsByTagQuery } from "@/typings/wp";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
 
-export default function TagPage() {
+type TProps = {
+  data: GetPostsByTagQuery;
+  tag: string;
+};
+export default function TagPage(props: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <div>loading...</div>;
   }
-  return <div>tag page</div>;
+  return <Screen tag={props.tag} data={props.data} />;
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  console.log(props.params.slug);
-  const data = {};
+export const getStaticProps: GetStaticProps<TProps> = async (props) => {
+  const tag = props.params.slug as string;
+  const data = await Requests.getPostsByTag({
+    tag,
+  });
   return Promise.resolve({
-    props: data,
+    props: { data, tag },
     revalidate: 120,
   });
 };
