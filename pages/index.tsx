@@ -25,6 +25,9 @@ export default function Home(props: TProps) {
       animate="animate"
       exit="exit"
       variants={variants}
+      transition={{
+        duration: 0.2,
+      }}
     >
       <HomeScreen data={props.data} />
     </motion.div>
