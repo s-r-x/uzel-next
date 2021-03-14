@@ -11,7 +11,7 @@ export default function GenericPosts(props: TGenericPostsProps) {
     containerRef,
     uniqueKey: props.uniqueKey,
   });
-  const dragConstraint = useDragConstraint({ containerRef });
+  const dragConstraint = useDragConstraint({ containerRef, data: props.data });
   return (
     <>
       {props.isLoading ? (
@@ -24,17 +24,17 @@ export default function GenericPosts(props: TGenericPostsProps) {
               dragConstraints={{ right: 0, left: dragConstraint }}
               style={{
                 x: initialDrag,
+                scale: 1,
               }}
               drag="x"
               ref={containerRef}
             >
               <PostsList pages={props.data.pages} />
-              {props.hasMore && (
-                <PostsLoader
-                  fetchMore={props.fetchMore}
-                  isFetching={props.isFetching}
-                />
-              )}
+              <PostsLoader
+                hasMore={props.hasMore}
+                fetchMore={props.fetchMore}
+                isFetching={props.isFetching}
+              />
             </S.Container>
           </S.ScrollMask>
         </>

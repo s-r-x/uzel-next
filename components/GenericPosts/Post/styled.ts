@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 512px;
-  min-width: 512px;
-  margin: 0 35px;
+  width: 582px;
+  min-width: 582px;
+  padding: 0 35px;
 `;
 export const Header = styled.h2`
   margin: 0;

@@ -1,3 +1,4 @@
+import { PaginateConfig } from "@/config/paginate";
 import {
   GetPostBySlugQuery,
   GetPostBySlugQueryVariables,
@@ -14,7 +15,7 @@ import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
 export const Requests = {
   getPosts(vars?: GetPostsQueryVariables): Promise<GetPostsQuery> {
     return gqlClient.request(GET_POSTS_Q, {
-      first: 10,
+      first: PaginateConfig.defaultPerPage,
       ...vars,
     });
   },
@@ -28,7 +29,7 @@ export const Requests = {
   ): Promise<GetPostsByTagQuery> {
     return gqlClient.request(GET_POSTS_BY_TAG_Q, {
       ...vars,
-      first: 10,
+      first: PaginateConfig.defaultPerPage,
     });
   },
 };

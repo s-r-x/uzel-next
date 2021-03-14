@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 export const Container = motion.custom(styled.div`
   display: flex;
-  position: fixed;
   height: 100vh;
   padding-top: 70px;
 `);

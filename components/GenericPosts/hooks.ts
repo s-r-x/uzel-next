@@ -1,13 +1,13 @@
-import { TStringDict } from "@/next-env";
 import { useMotionValue, usePresence } from "framer-motion";
 import { useState, useEffect, MutableRefObject } from "react";
-import ResizeObserver from "resize-observer-polyfill";
 
 type TUseDragConstraintProps = {
   containerRef: MutableRefObject<HTMLDivElement>;
+  data: any;
 };
 export const useDragConstraint = ({
   containerRef,
+  data,
 }: TUseDragConstraintProps) => {
   const [dragConstraint, setDragConstraint] = useState(0);
   useEffect(() => {
@@ -19,10 +19,7 @@ export const useDragConstraint = ({
       }
     };
     set();
-    const resizeObserver = new ResizeObserver(set);
-    resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
-  }, []);
+  }, [data]);
   return dragConstraint;
 };
 type TUseInitialDragProps = {

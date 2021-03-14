@@ -5,6 +5,7 @@ import { Instagram as Placeholder } from "react-content-loader";
 type TPostsLoaderProps = {
   isFetching: boolean;
   fetchMore: Function;
+  hasMore: boolean;
 };
 export default function PostsLoader(props: TPostsLoaderProps) {
   const { ref, inView } = useInView({
@@ -13,10 +14,10 @@ export default function PostsLoader(props: TPostsLoaderProps) {
   const fetchMoreRef = useRef(props.fetchMore);
   fetchMoreRef.current = props.fetchMore;
   useEffect(() => {
-    if (inView) {
-      props.fetchMore();
+    if (inView && props.hasMore) {
+      fetchMoreRef.current();
     }
-  }, [inView]);
+  }, [inView, props.hasMore]);
   return (
     <div
       ref={ref}
@@ -26,7 +27,7 @@ export default function PostsLoader(props: TPostsLoaderProps) {
       `}
     >
       {props.isFetching && (
-        <Placeholder uniqueKey="123" foregroundColor="var(--primary-color" />
+        <Placeholder uniqueKey="123" foregroundColor="var(--primary-color)" />
       )}
     </div>
   );

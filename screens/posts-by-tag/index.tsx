@@ -3,7 +3,6 @@ import { useInfiniteQuery } from "react-query";
 import GenericPosts from "@/components/GenericPosts";
 import { GetPostsByTagQuery } from "@/typings/wp";
 import { Requests } from "@/network/requests";
-import { useRouter } from "next/router";
 
 type TProps = {
   data: GetPostsByTagQuery;
