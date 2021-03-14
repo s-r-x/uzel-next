@@ -16,7 +16,7 @@ export const useLazyImage = (props: TProps) => {
       img.src = props.src;
       const timeout = setTimeout(() => {
         setLoadingState("loading");
-      }, 50);
+      }, 150);
       img.onload = () => {
         clearTimeout(timeout);
         setLoadingState("loaded");

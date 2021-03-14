@@ -1,4 +1,4 @@
-import { useLazyImage } from "../../../hooks/useLazyImage";
+import { useLazyImage } from "@/hooks/useLazyImage";
 import ContentLoader from "react-content-loader";
 import * as S from "./styled";
 import { AnimatePresence, motion } from "framer-motion";
@@ -28,16 +28,32 @@ export default function PostThumb({ src }: TProps) {
   });
   return (
     <S.ThumbContainer ref={imageRef}>
-      <AnimatePresence exitBeforeEnter initial={false}>
-        <motion.div
-          key={loadingState}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-        >
-          {loadingState === "loading" && <Placeholder />}
-          {loadingState === "loaded" && <S.Thumb draggable={false} src={src} />}
-        </motion.div>
+      <AnimatePresence initial={false}>
+        {loadingState === "loaded" && (
+          <S.Thumb
+            key="loaded"
+            exit={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            draggable={false}
+            src={src}
+          />
+        )}
+        {loadingState === "loading" && (
+          <motion.div
+            key="loading"
+            exit={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Placeholder />
+          </motion.div>
+        )}
       </AnimatePresence>
     </S.ThumbContainer>
   );
