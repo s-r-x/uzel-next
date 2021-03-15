@@ -1,6 +1,7 @@
 const apiUrl = "https://api.inaturalist.org/v1";
 export const INaturalistConfig = {
   apiUrl,
-  obervationsUrl: apiUrl + "/observations",
+  obervationsApiUrl: apiUrl + "/observations",
+  observationsUrl: "https://www.inaturalist.org/observations",
   userId: "tanyastrus",
 };

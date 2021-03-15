@@ -1,5 +1,8 @@
 import { Requests } from "@/network/requests";
 import { useQuery } from "react-query";
+import { List } from "react-content-loader";
+import * as S from "./styled";
+import Observation from "./Observation";
 
 export default function AppMenuObservationsSection() {
   const { isLoading, isFetching, data } = useQuery(
@@ -12,17 +15,13 @@ export default function AppMenuObservationsSection() {
   );
   console.log(data);
   if (isLoading) {
-    return null;
+    return <List />;
   }
   return (
-    <div>
-      {data.map((obs) => (
-        <div key={obs.id}>
-          {obs.date}
-          {obs.name}
-          {obs.thumb && <img src={obs.thumb} />}
-        </div>
+    <S.ObservationsList>
+      {data.map((observation) => (
+        <Observation observation={observation} key={observation.id} />
       ))}
-    </div>
+    </S.ObservationsList>
   );
 }

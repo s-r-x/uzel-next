@@ -53,7 +53,7 @@ export const Requests = {
       locale: "ru",
     });
     const data = await httpClient(
-      INaturalistConfig.obervationsUrl + "?" + params
+      INaturalistConfig.obervationsApiUrl + "?" + params
     );
     const json = await data.json();
     return json.results.map((r: any) => ({
