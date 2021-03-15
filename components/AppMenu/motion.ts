@@ -1,4 +1,5 @@
-import { Variants } from "framer-motion";
+import { Easings } from "@/config/easings";
+import { Transition, Variants } from "framer-motion";
 
 export const contentContainerVariants: Variants = {
   exit: {
@@ -22,4 +23,9 @@ export const navContainerVariants: Variants = {
   animate: {
     y: "0%",
   },
+};
+
+export const innerContainerTransition: Transition = {
+  duration: 0.6,
+  ease: Easings.easeInOutSine,
 };

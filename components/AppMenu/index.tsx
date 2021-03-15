@@ -2,7 +2,11 @@ import { useAppMenuStore } from "@/stores/app-menu";
 import { AnimatePresence } from "framer-motion";
 import * as S from "./styled";
 import { createPortal } from "react-dom";
-import { contentContainerVariants, navContainerVariants } from "./motion";
+import {
+  contentContainerVariants,
+  innerContainerTransition,
+  navContainerVariants,
+} from "./motion";
 import ScrollLock from "../ScrollLock";
 export default function AppMenu() {
   const isOpen = useAppMenuStore((state) => state.isOpen);
@@ -11,17 +15,23 @@ export default function AppMenu() {
       {isOpen && (
         <S.Container
           transition={{
-            staggerChildren: 0.7,
+            staggerChildren: 0.2,
           }}
           animate="animate"
           exit="exit"
           initial="initial"
         >
           <ScrollLock />
-          <S.ContentContainer variants={contentContainerVariants}>
+          <S.ContentContainer
+            transition={innerContainerTransition}
+            variants={contentContainerVariants}
+          >
             content
           </S.ContentContainer>
-          <S.NavContainer variants={navContainerVariants}></S.NavContainer>
+          <S.NavContainer
+            transition={innerContainerTransition}
+            variants={navContainerVariants}
+          ></S.NavContainer>
         </S.Container>
       )}
     </AnimatePresence>,
