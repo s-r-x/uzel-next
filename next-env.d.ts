@@ -8,6 +8,10 @@ declare module "react" {
     css?: CSSProp;
   }
 }
+declare module "scroll-lock" {
+  export function disablePageScroll(): void;
+  export function enablePageScroll(): void;
+}
 export type TStringDict = {
   [key: string]: string;
 };

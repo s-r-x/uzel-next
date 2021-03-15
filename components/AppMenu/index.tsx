@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import * as S from "./styled";
 import { createPortal } from "react-dom";
 import { contentContainerVariants, navContainerVariants } from "./motion";
+import ScrollLock from "../ScrollLock";
 export default function AppMenu() {
   const isOpen = useAppMenuStore((state) => state.isOpen);
   return createPortal(
@@ -16,6 +17,7 @@ export default function AppMenu() {
           exit="exit"
           initial="initial"
         >
+          <ScrollLock />
           <S.ContentContainer variants={contentContainerVariants}>
             content
           </S.ContentContainer>

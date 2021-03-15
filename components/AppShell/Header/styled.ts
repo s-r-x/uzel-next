@@ -8,12 +8,12 @@ export const Container = motion.custom(styled.div`
   align-items: center;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   background-color: white;
   padding: 10px 30px;
   z-index: 10;
   height: ${AppShellConfig.headerHeight}px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgb(0 0 0 / 10%);
 `);
 export const SiteTitle = styled.span`
   margin-left: 5px;
