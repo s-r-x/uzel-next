@@ -1,4 +1,6 @@
+import { INaturalistConfig } from "@/config/i-naturalist";
 import { PaginateConfig } from "@/config/paginate";
+import { TGetLastObservationsRes } from "@/typings/i-nat";
 import {
   GetPostBySlugQuery,
   GetPostBySlugQueryVariables,
@@ -9,7 +11,8 @@ import {
   GetTagsQuery,
   GetTagsQueryVariables,
 } from "@/typings/wp";
-import { gqlClient } from "../gqlClient";
+import { gqlClient } from "../gql-client";
+import { httpClient } from "../http-client";
 import { GET_POST_BY_SLUG_Q } from "../queries/get-post-by-slug";
 import { GET_POSTS_Q } from "../queries/get-posts";
 import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
@@ -40,5 +43,26 @@ export const Requests = {
       ...vars,
       first: PaginateConfig.defaultPerPage,
     });
+  },
+  async getLatestObservations(): Promise<TGetLastObservationsRes[]> {
+    const params = new URLSearchParams({
+      user_id: INaturalistConfig.userId,
+      per_page: String(PaginateConfig.observationsPerPage),
+      page: "1",
+      order_by: "observed_on",
+      locale: "ru",
+    });
+    const data = await httpClient(
+      INaturalistConfig.obervationsUrl + "?" + params
+    );
+    const json = await data.json();
+    return json.results.map((r: any) => ({
+      name: r.taxon?.preferred_common_name ?? "Неизвестно",
+      date: r.time_observed_at,
+      //thumb: r.taxon.default_photo.square_url,
+      thumb: r.photos?.[0]?.url,
+      id: r.id,
+    }));
+    return data.json();
   },
 };
