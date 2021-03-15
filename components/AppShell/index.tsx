@@ -1,7 +1,7 @@
-import Header from "./Header";
 import * as S from "./styled";
 import AppMenu from "_c/AppMenu/loadable";
 import Cursor from "../Cursor/loadable";
+import Header from "./Header/loadable";
 
 const AppShell: React.FC = (props) => {
   return (

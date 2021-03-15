@@ -4,12 +4,12 @@ import Logo from "_c/Logo";
 import Link from "next/link";
 import { useScrollDir, EScrollDir } from "@/hooks/useScrollDir";
 import { transition, variants } from "./motion";
+import { createPortal } from "react-dom";
 
 export default function AppShellHeader() {
   const dir = useScrollDir();
-  return (
+  return createPortal(
     <S.Container
-      initial={false}
       animate={dir === EScrollDir.UP ? "visible" : "hidden"}
       transition={transition}
       variants={variants}
@@ -34,6 +34,7 @@ export default function AppShellHeader() {
           margin-left: auto;
         `}
       />
-    </S.Container>
+    </S.Container>,
+    document.body
   );
 }

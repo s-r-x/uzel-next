@@ -11,7 +11,7 @@ export const Container = motion.custom(styled.div`
   width: 100%;
   background-color: white;
   padding: 10px 30px;
-  z-index: 2;
+  z-index: 10;
   height: ${AppShellConfig.headerHeight}px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `);
