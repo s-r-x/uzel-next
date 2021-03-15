@@ -1,11 +1,12 @@
 import Header from "./Header";
-import dynamic from "next/dynamic";
 import * as S from "./styled";
-const Cursor = dynamic(() => import("_c/Cursor"), { ssr: false });
+import AppMenu from "_c/AppMenu/loadable";
+import Cursor from "../Cursor/loadable";
 
 const AppShell: React.FC = (props) => {
   return (
     <>
+      <AppMenu />
       <Cursor />
       <Header />
       <S.ChildrenContainer>{props.children}</S.ChildrenContainer>

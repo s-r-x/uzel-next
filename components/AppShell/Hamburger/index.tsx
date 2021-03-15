@@ -10,6 +10,8 @@ import {
   brickTransition,
 } from "./motion";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAppMenuStore } from "@/stores/app-menu";
+import shallow from "zustand/shallow";
 
 type TProps = {
   className?: string;
@@ -26,12 +28,14 @@ const BrickGroupContainer: React.FC = (props) => (
   </motion.div>
 );
 export default function Hamburger(props: TProps) {
-  const [open, setOpen] = useState(false);
-  const toggle = () => setOpen((open) => !open);
+  const [isOpen, toggle] = useAppMenuStore(
+    (state) => [state.isOpen, state.toggle],
+    shallow
+  );
   return (
     <S.Container onClick={toggle} className={props.className}>
       <AnimatePresence initial={false} exitBeforeEnter>
-        {open ? (
+        {isOpen ? (
           <BrickGroupContainer key="ham-open">
             <S.ClosedBrick
               transition={brickTransition}
