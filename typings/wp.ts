@@ -8171,3 +8171,19 @@ export type GetPostsQuery = (
     )> }
   )> }
 );
+
+export type GetTagsQueryVariables = Exact<{
+  last?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type GetTagsQuery = (
+  { __typename?: 'RootQuery' }
+  & { tags?: Maybe<(
+    { __typename?: 'RootQueryToTagConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Tag' }
+      & Pick<Tag, 'name' | 'count' | 'slug'>
+    )>>> }
+  )> }
+);

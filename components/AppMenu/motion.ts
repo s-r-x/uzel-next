@@ -26,6 +26,6 @@ export const navContainerVariants: Variants = {
 };
 
 export const innerContainerTransition: Transition = {
-  duration: 0.6,
-  ease: Easings.easeInOutSine,
+  duration: .75,
+  ease: Easings.easeOutCubic,
 };

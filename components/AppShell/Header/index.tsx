@@ -14,7 +14,7 @@ export default function AppShellHeader() {
       transition={transition}
       variants={variants}
     >
-      <Link href="/">
+      <Link passHref href="/">
         <a
           css={`
             display: flex;
