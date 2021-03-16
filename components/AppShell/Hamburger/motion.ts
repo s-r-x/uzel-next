@@ -65,7 +65,7 @@ export const bottomBrickClosedVariants: Variants = {
   },
 };
 export const brickTransition: Transition = {
-  duration: 0.45,
+  duration: 0.4,
 };
 export const brickGroupTransition: Transition = {
   staggerChildren: 0.15,

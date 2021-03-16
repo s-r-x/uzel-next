@@ -1,6 +1,10 @@
 export const AppMenuNavConfig = {
   sections: [
     {
+      key: "tour",
+      title: "Экскурсии",
+    },
+    {
       key: "tags",
       title: "Метки",
     },

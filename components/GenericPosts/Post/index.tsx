@@ -18,7 +18,7 @@ export default function Post({ data }: TProps) {
       <S.Header>{data.title}</S.Header>
       <S.Meta>
         <S.MetaItem>
-          <HeartIcon color="#FF1493" />
+          <HeartIcon color="var(--heart-color)" />
           <span>{data.likesCount}</span>
         </S.MetaItem>
         <S.MetaItem>

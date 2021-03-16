@@ -11,19 +11,22 @@ export default function AppMenuNav() {
     shallow
   );
   return (
-    <S.Container
-      transition={innerContainerTransition}
-      variants={navContainerVariants}
-    >
-      {AppMenuNavConfig.sections.map(({ title, key }) => (
-        <NavItem
-          onChange={changeSection}
-          isActive={section === key}
-          key={key}
-          itemKey={key}
-          title={title}
+    <>
+      <S.Container>
+        <S.AnimatedSheet
+          transition={innerContainerTransition}
+          variants={navContainerVariants}
         />
-      ))}
-    </S.Container>
+        {AppMenuNavConfig.sections.map(({ title, key }) => (
+          <NavItem
+            onChange={changeSection}
+            isActive={section === key}
+            key={key}
+            itemKey={key}
+            title={title}
+          />
+        ))}
+      </S.Container>
+    </>
   );
 }

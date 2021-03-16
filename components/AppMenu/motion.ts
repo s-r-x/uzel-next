@@ -24,8 +24,26 @@ export const navContainerVariants: Variants = {
     y: "0%",
   },
 };
+export const navItemVariants: Variants = {
+  exit: {
+    y: 45,
+    opacity: 0,
+  },
+  initial: {
+    y: 75,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+  },
+};
+export const navItemTransition: Transition = {
+  duration: 0.7,
+  ease: Easings.easeOutQuad,
+};
 
 export const innerContainerTransition: Transition = {
-  duration: .75,
+  duration: 0.75,
   ease: Easings.easeOutCubic,
 };

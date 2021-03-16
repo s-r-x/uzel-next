@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = motion.custom(styled.div`
   background: white;
-  width: 65vw;
+  width: 70vw;
   display: flex;
   align-items: center;
   justify-content: center;
