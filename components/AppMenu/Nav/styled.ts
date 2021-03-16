@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Container = styled.ul`
+export const Container = styled.div`
   width: 30vw;
   position: relative;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-left: 20px;
 `;
 export const AnimatedSheet = motion.custom(styled.div`
   position: absolute;
@@ -16,6 +13,12 @@ export const AnimatedSheet = motion.custom(styled.div`
   left: 0;
   top: 0;
   background: var(--primary-color);
+`);
+export const NavItemsList = motion.custom(styled.ul`
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `);
 
 export const NavItem = motion.custom(styled.li<{

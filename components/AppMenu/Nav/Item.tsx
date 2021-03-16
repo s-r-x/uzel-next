@@ -1,5 +1,5 @@
 import { HeartIcon } from "@/components/Icon";
-import { navItemTransition, navItemVariants } from "../motion";
+import { navItemTransition, navItemVariants } from "./motion";
 import * as S from "./styled";
 type TProps = {
   itemKey: string;

@@ -1,9 +1,10 @@
 import * as S from "./styled";
-import { innerContainerTransition, navContainerVariants } from "../motion";
+import { innerContainerTransition } from "../motion";
 import { useAppMenuStore } from "@/stores/app-menu";
 import shallow from "zustand/shallow";
 import { AppMenuNavConfig } from "./config";
 import NavItem from "./Item";
+import { navContainerVariants, navListVariants } from "./motion";
 
 export default function AppMenuNav() {
   const [section, changeSection] = useAppMenuStore(
@@ -17,15 +18,22 @@ export default function AppMenuNav() {
           transition={innerContainerTransition}
           variants={navContainerVariants}
         />
-        {AppMenuNavConfig.sections.map(({ title, key }) => (
-          <NavItem
-            onChange={changeSection}
-            isActive={section === key}
-            key={key}
-            itemKey={key}
-            title={title}
-          />
-        ))}
+        <S.NavItemsList
+          variants={navListVariants}
+          animate="animate"
+          exit="exit"
+          initial="initial"
+        >
+          {AppMenuNavConfig.sections.map(({ title, key }) => (
+            <NavItem
+              onChange={changeSection}
+              isActive={section === key}
+              key={key}
+              itemKey={key}
+              title={title}
+            />
+          ))}
+        </S.NavItemsList>
       </S.Container>
     </>
   );

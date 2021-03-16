@@ -10,14 +10,7 @@ export default function AppMenu() {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <S.Container
-          transition={{
-            staggerChildren: 0.1,
-          }}
-          animate="animate"
-          exit="exit"
-          initial="initial"
-        >
+        <S.Container animate="animate" exit="exit" initial="initial">
           <ScrollLock />
           <Content />
           <Nav />
