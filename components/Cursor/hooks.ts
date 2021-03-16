@@ -1,10 +1,10 @@
 import { useMotionValue, animate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useCursorState = () => {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const opacity = useMotionValue(0.3);
+  const [isActive, setIsActive] = useState(false);
   useEffect(() => {
     const onMove = ({ clientX, clientY }: MouseEvent) => {
       animate(x, clientX - 20);
@@ -13,11 +13,7 @@ export const useCursorState = () => {
     const onOver = (e: MouseEvent) => {
       const tar = e.target as HTMLElement;
       const link = tar.closest("a");
-      if (!link) {
-        animate(opacity, 0.3);
-      } else {
-        animate(opacity, 1);
-      }
+      setIsActive(Boolean(link));
     };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseover", onOver);
@@ -26,5 +22,5 @@ export const useCursorState = () => {
       window.removeEventListener("mouseover", onOver);
     };
   }, []);
-  return { x, y, opacity };
+  return { x, y, isActive };
 };
