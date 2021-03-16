@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useScrollDir, EScrollDir } from "@/hooks/useScrollDir";
 import { transition, variants } from "./motion";
 import { createPortal } from "react-dom";
+import SoundPlayer from "../SoundPlayer";
 
 export default function AppShellHeader() {
   const dir = useScrollDir();
@@ -29,11 +30,20 @@ export default function AppShellHeader() {
           <S.SiteTitle>Узелковое письмо</S.SiteTitle>
         </a>
       </Link>
-      <Hamburger
+      <div
         css={`
+          display: flex;
+          align-items: center;
           margin-left: auto;
         `}
-      />
+      >
+        <SoundPlayer
+          css={`
+            margin-right: 25px;
+          `}
+        />
+        <Hamburger />
+      </div>
     </S.Container>,
     document.body
   );
