@@ -2,12 +2,11 @@ import { Requests } from "@/network/requests";
 import { useQuery } from "react-query";
 import { List } from "react-content-loader";
 import * as S from "./styled";
-import Observation from "./Observation";
-
-export default function AppMenuObservationsSection() {
+import Comment from "./Comment";
+export default function AppMenuCommentsSection() {
   const { isLoading, data } = useQuery(
-    "observations",
-    () => Requests.getLatestObservations(),
+    "latest-comments",
+    () => Requests.getLatestComments(),
     {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
@@ -17,10 +16,10 @@ export default function AppMenuObservationsSection() {
     return <List />;
   }
   return (
-    <S.ObservationsList>
-      {data.map((observation) => (
-        <Observation observation={observation} key={observation.id} />
+    <S.CommentsList>
+      {data.comments.nodes.map((comment) => (
+        <Comment comment={comment} key={comment.id} />
       ))}
-    </S.ObservationsList>
+    </S.CommentsList>
   );
 }

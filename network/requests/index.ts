@@ -10,9 +10,11 @@ import {
   GetPostsQueryVariables,
   GetTagsQuery,
   GetTagsQueryVariables,
+  GetLatestCommentsQuery,
 } from "@/typings/wp";
 import { gqlClient } from "../gql-client";
 import { httpClient } from "../http-client";
+import { GET_LATEST_COMMENTS_Q } from "../queries/get-latest-comments";
 import { GET_POST_BY_SLUG_Q } from "../queries/get-post-by-slug";
 import { GET_POSTS_Q } from "../queries/get-posts";
 import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
@@ -40,8 +42,8 @@ export const Requests = {
     vars: GetPostsByTagQueryVariables
   ): Promise<GetPostsByTagQuery> {
     return gqlClient.request(GET_POSTS_BY_TAG_Q, {
-      ...vars,
       first: PaginateConfig.defaultPerPage,
+      ...vars,
     });
   },
   async getLatestObservations(): Promise<TGetLastObservationsRes[]> {
@@ -63,6 +65,8 @@ export const Requests = {
       thumb: r.photos?.[0]?.url,
       id: r.id,
     }));
-    return data.json();
+  },
+  async getLatestComments(): Promise<GetLatestCommentsQuery> {
+    return gqlClient.request(GET_LATEST_COMMENTS_Q);
   },
 };

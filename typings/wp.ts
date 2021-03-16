@@ -8105,6 +8105,36 @@ export type PostsListFieldsFragment = (
   )> }
 );
 
+export type GetLatestCommentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLatestCommentsQuery = (
+  { __typename?: 'RootQuery' }
+  & { comments?: Maybe<(
+    { __typename?: 'RootQueryToCommentConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Comment' }
+      & Pick<Comment, 'id' | 'date'>
+      & { author?: Maybe<(
+        { __typename?: 'CommentToCommenterConnectionEdge' }
+        & { node?: Maybe<(
+          { __typename?: 'User' }
+          & Pick<User, 'name'>
+        ) | (
+          { __typename?: 'CommentAuthor' }
+          & Pick<CommentAuthor, 'name'>
+        )> }
+      )>, commentedOn?: Maybe<(
+        { __typename?: 'CommentToContentNodeConnectionEdge' }
+        & { node?: Maybe<{ __typename?: 'MediaItem' } | { __typename?: 'Page' } | (
+          { __typename?: 'Post' }
+          & Pick<Post, 'id' | 'title' | 'slug'>
+        )> }
+      )> }
+    )>>> }
+  )> }
+);
+
 export type GetPostBySlugQueryVariables = Exact<{
   slug: Scalars['ID'];
 }>;

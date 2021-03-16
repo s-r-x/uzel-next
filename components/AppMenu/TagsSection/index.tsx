@@ -15,19 +15,19 @@ export default function AppMenuTagsSection() {
   );
   if (isLoading) {
     return <List />;
-  } else {
-    return (
-      <S.TagsList>
-        {data.tags.nodes.map((tag) => (
-          <li key={tag.slug}>
-            <Link href={`/tag/${tag.slug}`} prefetch={false}>
-              <a>
-                <span>{tag.name}</span> (<strong>{tag.count}</strong>)
-              </a>
-            </Link>
-          </li>
-        ))}
-      </S.TagsList>
-    );
   }
+
+  return (
+    <S.TagsList>
+      {data.tags.nodes.map((tag) => (
+        <li key={tag.slug}>
+          <Link href={`/tag/${tag.slug}`} prefetch={false}>
+            <a>
+              <span>{tag.name}</span> (<strong>{tag.count}</strong>)
+            </a>
+          </Link>
+        </li>
+      ))}
+    </S.TagsList>
+  );
 }
