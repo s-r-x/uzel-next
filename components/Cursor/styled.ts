@@ -5,7 +5,7 @@ export const Container = motion.custom(styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 3;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
