@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
-export const Container = motion.custom(styled.div`
+export const Container = styled.div`
   max-width: 960px;
   margin: 0 auto;
   img {
@@ -10,7 +9,7 @@ export const Container = motion.custom(styled.div`
   p {
     line-height: 1.45;
   }
-`);
+`;
 export const Header = styled.header`
   margin-top: 75px;
   margin-bottom: 20px;

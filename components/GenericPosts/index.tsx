@@ -4,6 +4,7 @@ import { useDragConstraint, useInitialDrag } from "./hooks";
 import PostsLoader from "./Loader";
 import PostsList from "./PostsList";
 import { TGenericPostsProps } from "./typings";
+import ScreenSlideTransition from "../ScreenSlideTransition";
 
 export default function GenericPosts(props: TGenericPostsProps) {
   const containerRef = useRef<HTMLDivElement>();
@@ -18,6 +19,7 @@ export default function GenericPosts(props: TGenericPostsProps) {
         <div>loading</div>
       ) : (
         <>
+          <ScreenSlideTransition />
           <S.ScrollMask>
             <S.Container
               dragDirectionLock

@@ -5,4 +5,5 @@ export const Easings = {
   easeOutQuad: [0.5, 1, 0.89, 1],
   easeOutQuint: [0.22, 1, 0.36, 1],
   easeOutCubic: [0.33, 1, 0.68, 1],
+  one: [0.6, -0.05, 0.01, 0.9],
 };
