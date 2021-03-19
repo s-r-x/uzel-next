@@ -5,15 +5,14 @@ import LoadingIndicator from "./LoadingIndicator";
 import { createPortal } from "react-dom";
 
 export default function Cursor() {
-  const { x, y, isActive } = useCursorState();
+  const { x, y, isActive, isVisible } = useCursorState();
   const loadingState = useRouteLoadingState();
   return createPortal(
     <S.Container
+      initial={false}
       animate={{
-        background: isActive ? "var(--primary-color)" : "rgba(255,255,255,0)",
         scale: isActive ? 1.5 : 1,
-      }}
-      style={{
+        opacity: isVisible ? 1 : 0,
         x,
         y,
       }}
