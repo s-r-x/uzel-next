@@ -3,10 +3,16 @@ import { useCursorState } from "./hooks";
 import { useRouteLoadingState } from "@/hooks/useRouteLoadingState";
 import LoadingIndicator from "./LoadingIndicator";
 import { createPortal } from "react-dom";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import DesktopOnly from "_c/DesktopOnly";
 
-export default function Cursor() {
+const Cursor = () => {
   const { x, y, isActive, isVisible } = useCursorState();
   const loadingState = useRouteLoadingState();
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return null;
+  }
   return createPortal(
     <S.Container
       initial={false}
@@ -20,5 +26,13 @@ export default function Cursor() {
       {loadingState === "loading" && <LoadingIndicator />}
     </S.Container>,
     document.body
+  );
+};
+
+export default function DesktopOnlyCursor() {
+  return (
+    <DesktopOnly>
+      <Cursor />
+    </DesktopOnly>
   );
 }
