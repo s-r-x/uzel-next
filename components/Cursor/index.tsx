@@ -11,6 +11,7 @@ export default function Cursor() {
     <S.Container
       animate={{
         background: isActive ? "var(--primary-color)" : "rgba(255,255,255,0)",
+        scale: isActive ? 1.5 : 1,
       }}
       style={{
         x,
