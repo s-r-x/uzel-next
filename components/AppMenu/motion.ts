@@ -15,5 +15,5 @@ export const contentContainerVariants: Variants = {
 
 export const innerContainerTransition: Transition = {
   duration: 0.75,
-  ease: Easings.easeOutCubic,
+  ease: Easings.one,
 };

@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
-          <AnimatePresence exitBeforeEnter initial={true}>
+          <AnimatePresence exitBeforeEnter initial={false}>
             <Component key={router.route} {...pageProps} />
           </AnimatePresence>
         </AppShell>

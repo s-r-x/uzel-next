@@ -39,11 +39,13 @@ export const navItemVariants: Variants = {
 export const navListVariants: Variants = {
   animate: {
     transition: {
+      delayChildren: 0.25,
       staggerChildren: 0.1,
     },
   },
   exit: {
     transition: {
+      delayChildren: 0.05,
       staggerChildren: 0,
     },
   },
