@@ -9,5 +9,4 @@ export const Container = motion.custom(styled.div`
   height: 100vh;
   background: #f0f0f0;
   z-index: 2;
-  pointer-events: none;
 `);

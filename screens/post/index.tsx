@@ -1,8 +1,8 @@
 import TagsList from "@/components/TagsList";
 import { GetPostBySlugQuery } from "@/typings/wp";
-import { useFormattedDate } from "../../hooks/useFormattedDate";
+import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
-import ScreenSlideTransition from "_c/ScreenSlideTransition";
+import ScreenSlideTransition from "_c/ScreenSlideTransition/loadable";
 
 type TProps = {
   data: GetPostBySlugQuery;

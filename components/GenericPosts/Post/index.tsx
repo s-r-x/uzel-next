@@ -1,6 +1,5 @@
 import { usePostExcerpt } from "@/hooks/usePostExcerpt";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
-import { Button } from "_c/Button";
 import * as S from "./styled";
 import Link from "next/link";
 import { CommentIcon, HeartIcon, CalendarIcon } from "_c/Icon";
@@ -38,14 +37,7 @@ export default function Post({ data }: TProps) {
       </S.TagsContainer>
         */}
       <Link href={`/post/${data.slug}`} passHref>
-        <Button
-          as="a"
-          css={`
-            margin-top: 20px;
-          `}
-        >
-          Читать
-        </Button>
+        <S.PostLink>Читать</S.PostLink>
       </Link>
     </S.Container>
   );

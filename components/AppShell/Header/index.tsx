@@ -6,6 +6,7 @@ import { useScrollDir, EScrollDir } from "@/hooks/useScrollDir";
 import { transition, variants } from "./motion";
 import { createPortal } from "react-dom";
 import SoundPlayer from "../SoundPlayer";
+import { DevicesConfig } from "@/config/devices";
 
 export default function AppShellHeader() {
   const dir = useScrollDir();
@@ -40,6 +41,9 @@ export default function AppShellHeader() {
         <SoundPlayer
           css={`
             margin-right: 25px;
+            @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+              margin-right: 15px;
+            }
           `}
         />
         <Hamburger />

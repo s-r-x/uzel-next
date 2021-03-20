@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { Instagram as Placeholder } from "react-content-loader";
+import * as S from "./styled";
 
 type TPostsLoaderProps = {
   isFetching: boolean;
@@ -19,16 +20,10 @@ export default function PostsLoader(props: TPostsLoaderProps) {
     }
   }, [inView, props.hasMore]);
   return (
-    <div
-      ref={ref}
-      css={`
-        width: 512px;
-        min-width: 512px;
-      `}
-    >
+    <S.Container ref={ref}>
       {props.isFetching && (
         <Placeholder uniqueKey="123" foregroundColor="var(--primary-color)" />
       )}
-    </div>
+    </S.Container>
   );
 }

@@ -4,7 +4,8 @@ import { useDragConstraint, useInitialDrag } from "./hooks";
 import PostsLoader from "./Loader";
 import PostsList from "./PostsList";
 import { TGenericPostsProps } from "./typings";
-import ScreenSlideTransition from "../ScreenSlideTransition";
+import ScreenSlideTransition from "_c/ScreenSlideTransition/loadable";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function GenericPosts(props: TGenericPostsProps) {
   const containerRef = useRef<HTMLDivElement>();
@@ -13,6 +14,7 @@ export default function GenericPosts(props: TGenericPostsProps) {
     uniqueKey: props.uniqueKey,
   });
   const dragConstraint = useDragConstraint({ containerRef, data: props.data });
+  const isMobile = useIsMobile();
   return (
     <>
       {props.isLoading ? (
@@ -25,10 +27,11 @@ export default function GenericPosts(props: TGenericPostsProps) {
               dragDirectionLock
               dragConstraints={{ right: 0, left: dragConstraint }}
               style={{
-                x: initialDrag,
+                x: isMobile ? undefined : initialDrag,
                 scale: 1,
               }}
-              drag="x"
+              //drag="x"
+              drag={isMobile ? false : "x"}
               ref={containerRef}
             >
               <PostsList pages={props.data.pages} />

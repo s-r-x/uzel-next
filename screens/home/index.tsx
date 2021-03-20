@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useInfiniteQuery } from "react-query";
 import GenericPosts from "@/components/GenericPosts";
 import { GetPostsQuery } from "@/typings/wp";
@@ -27,9 +26,6 @@ export default function HomeScreen(props: TProps) {
   });
   return (
     <>
-      <Head>
-        <title>home page</title>
-      </Head>
       <GenericPosts
         uniqueKey="home"
         hasMore={hasNextPage}

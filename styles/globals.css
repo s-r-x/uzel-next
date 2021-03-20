@@ -1,3 +1,5 @@
+@import "./vendor.css";
+
 :root {
   --primary-color: #5ccaae;
   --heart-color: #ff1493;
@@ -28,6 +30,7 @@ body {
   font-family: Gilroy, sans-serif;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 a {
