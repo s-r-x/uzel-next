@@ -3,7 +3,7 @@ import { contentContainerVariants, innerContainerTransition } from "../motion";
 import { useAppMenuStore } from "@/stores/app-menu";
 import Logo from "@/components/Logo";
 import Tags from "../TagsSection";
-import Observations from "../ObservationsSection";
+import Observations from "../ObservationsSection/loadable";
 import Comments from "../CommentsSection";
 export default function AppMenuContent() {
   const section = useAppMenuStore((state) => state.section);

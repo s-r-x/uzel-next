@@ -3,6 +3,8 @@ import { useQuery } from "react-query";
 import { List } from "react-content-loader";
 import * as S from "./styled";
 import Observation from "./Observation";
+import { VerticalTimeline } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 export default function AppMenuObservationsSection() {
   const { isLoading, data } = useQuery(
@@ -17,10 +19,13 @@ export default function AppMenuObservationsSection() {
     return <List />;
   }
   return (
-    <S.ObservationsList>
-      {data.map((observation) => (
-        <Observation observation={observation} key={observation.id} />
-      ))}
-    </S.ObservationsList>
+    <S.Container>
+      <S.GlobalStyle />
+      <VerticalTimeline>
+        {data.map((observation) => (
+          <Observation observation={observation} key={observation.id} />
+        ))}
+      </VerticalTimeline>
+    </S.Container>
   );
 }
