@@ -1,30 +1,37 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-export const ObservationsList = styled.ul`
-  display: flex;
-  flex-direction: column;
+export const GlobalStyle = createGlobalStyle`
+  .vertical-timeline {
+    ::before {
+      background: var(--primary-color);
+    }
+    .vertical-timeline-element {
+      &-content {
+        color: white;
+        font-weight: 500;
+        box-shadow: none;
+        background-color: var(--primary-color);
+      }
+      &-date {
+        color: black;
+      }
+      &-icon {
+        box-shadow: none;
+      }
+    }
+  }
 `;
-export const Observation = styled.li`
-  margin-bottom: 5px;
-  a {
-    display: flex;
-  }
-  img {
-    width: 75px;
-    height: 75px;
-    margin-right: 10px;
-    border-radius: 3px;
-    background-color: var(--primary-color);
-  }
+export const Container = styled.div`
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
 `;
-export const ObservationMeta = styled.div`
-  display: flex;
-  flex-direction: column;
-  span {
-    color: var(--primary-color);
-    font-weight: 900;
-  }
-  time {
-    font-size: 14px;
-  }
+export const ObservationThumb = styled.img`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  border-radius: 50%;
 `;
