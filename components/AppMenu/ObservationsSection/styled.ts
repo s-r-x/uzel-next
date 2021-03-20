@@ -33,5 +33,12 @@ export const ObservationThumb = styled.img`
   left: 0;
   top: 0;
   object-fit: cover;
+  background-color: var(--primary-color);
   border-radius: 50%;
+`;
+export const LoaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
 `;

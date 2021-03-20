@@ -46,11 +46,15 @@ export const Requests = {
       ...vars,
     });
   },
-  async getLatestObservations(): Promise<TGetLastObservationsRes[]> {
+  async getLatestObservations({
+    page = 1,
+  }: {
+    page?: number;
+  } = {}): Promise<TGetLastObservationsRes[]> {
     const params = new URLSearchParams({
       user_id: INaturalistConfig.userId,
       per_page: String(PaginateConfig.observationsPerPage),
-      page: "1",
+      page: String(page),
       order_by: "observed_on",
       locale: "ru",
     });

@@ -3,11 +3,12 @@ import { useFormattedDate } from "@/hooks/useFormattedDate";
 import { TGetLastObservationsRes } from "@/typings/i-nat";
 import * as S from "./styled";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
+import { memo } from "react";
 
 type TProps = {
   observation: TGetLastObservationsRes;
 };
-export default function Observation({ observation: obs }: TProps) {
+const Observation = ({ observation: obs }: TProps) => {
   const date = useFormattedDate(obs.date, "lll");
   return (
     <VerticalTimelineElement
@@ -26,4 +27,6 @@ export default function Observation({ observation: obs }: TProps) {
       </div>
     </VerticalTimelineElement>
   );
-}
+};
+
+export default memo(Observation);
