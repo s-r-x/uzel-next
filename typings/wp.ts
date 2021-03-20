@@ -8114,7 +8114,7 @@ export type GetLatestCommentsQuery = (
     { __typename?: 'RootQueryToCommentConnection' }
     & { nodes?: Maybe<Array<Maybe<(
       { __typename?: 'Comment' }
-      & Pick<Comment, 'id' | 'date'>
+      & Pick<Comment, 'id' | 'date' | 'content'>
       & { author?: Maybe<(
         { __typename?: 'CommentToCommenterConnectionEdge' }
         & { node?: Maybe<(

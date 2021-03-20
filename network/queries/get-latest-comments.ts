@@ -6,6 +6,7 @@ export const GET_LATEST_COMMENTS_Q = gql`
       nodes {
         id
         date
+        content
         author {
           node {
             name

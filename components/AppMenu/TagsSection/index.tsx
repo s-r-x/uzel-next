@@ -6,14 +6,10 @@ import { tagsListTransition, tagTransition, tagVariants } from "./motion";
 import Spin from "@/components/Spin";
 
 export default function AppMenuTagsSection() {
-  const { isLoading, isFetching, data } = useQuery(
-    "tags",
-    () => Requests.getTags(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
+  const { isLoading, data } = useQuery("tags", () => Requests.getTags(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
   if (isLoading) {
     return (
       <Spin

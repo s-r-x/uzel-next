@@ -1,8 +1,10 @@
 import { Requests } from "@/network/requests";
 import { useQuery } from "react-query";
-import { List } from "react-content-loader";
 import * as S from "./styled";
 import Comment from "./Comment";
+import Spin from "@/components/Spin";
+import { commentsListTransition } from "./motion";
+
 export default function AppMenuCommentsSection() {
   const { isLoading, data } = useQuery(
     "latest-comments",
@@ -13,13 +15,27 @@ export default function AppMenuCommentsSection() {
     }
   );
   if (isLoading) {
-    return <List />;
+    return (
+      <Spin
+        css={`
+          margin: auto;
+          --sk-size: 80px;
+        `}
+      />
+    );
   }
   return (
-    <S.CommentsList>
-      {data.comments.nodes.map((comment) => (
-        <Comment comment={comment} key={comment.id} />
-      ))}
-    </S.CommentsList>
+    <S.Container data-scroll-lock-scrollable>
+      <S.CommentsList
+        transition={commentsListTransition}
+        animate="animate"
+        exit="exit"
+        initial="initial"
+      >
+        {data.comments.nodes.map((comment) => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
+      </S.CommentsList>
+    </S.Container>
   );
 }

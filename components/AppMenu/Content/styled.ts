@@ -8,5 +8,5 @@ export const Container = motion.custom(styled.div`
   display: flex;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-top: ${AppShellConfig.headerHeight}px;
+  padding-top: ${AppShellConfig.headerHeight + 10}px;
 `);
