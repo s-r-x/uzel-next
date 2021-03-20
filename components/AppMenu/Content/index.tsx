@@ -11,6 +11,9 @@ export default function AppMenuContent() {
     <S.Container
       transition={innerContainerTransition}
       variants={contentContainerVariants}
+      animate="animate"
+      exit="exit"
+      initial="initial"
     >
       {section ? (
         <>

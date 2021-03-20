@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { List } from "react-content-loader";
 import * as S from "./styled";
 import Link from "next/link";
+import { tagsListTransition, tagTransition, tagVariants } from "./motion";
 
 export default function AppMenuTagsSection() {
   const { isLoading, isFetching, data } = useQuery(
@@ -18,15 +19,21 @@ export default function AppMenuTagsSection() {
   }
 
   return (
-    <S.TagsList>
+    <S.TagsList
+      transition={tagsListTransition}
+      animate="animate"
+      exit="exit"
+      initial="initial"
+    >
       {data.tags.nodes.map((tag) => (
-        <li key={tag.slug}>
+        <S.Tag transition={tagTransition} variants={tagVariants} key={tag.slug}>
           <Link href={`/tag/${tag.slug}`} prefetch={false}>
             <a>
-              <span>{tag.name}</span> (<strong>{tag.count}</strong>)
+              <span>{tag.name}</span>
+              <strong>{tag.count}</strong>
             </a>
           </Link>
-        </li>
+        </S.Tag>
       ))}
     </S.TagsList>
   );
