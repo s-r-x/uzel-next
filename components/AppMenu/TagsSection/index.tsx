@@ -1,9 +1,9 @@
 import { Requests } from "@/network/requests";
 import { useQuery } from "react-query";
-import { List } from "react-content-loader";
 import * as S from "./styled";
 import Link from "next/link";
 import { tagsListTransition, tagTransition, tagVariants } from "./motion";
+import Spin from "@/components/Spin";
 
 export default function AppMenuTagsSection() {
   const { isLoading, isFetching, data } = useQuery(
@@ -15,7 +15,14 @@ export default function AppMenuTagsSection() {
     }
   );
   if (isLoading) {
-    return <List />;
+    return (
+      <Spin
+        css={`
+          margin: auto;
+          --sk-size: 80px;
+        `}
+      />
+    );
   }
 
   return (

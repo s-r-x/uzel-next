@@ -1,10 +1,10 @@
 import { Requests } from "@/network/requests";
 import { useQuery } from "react-query";
-import { List } from "react-content-loader";
 import * as S from "./styled";
 import Observation from "./Observation";
 import { VerticalTimeline } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import Spin from "@/components/Spin";
 
 export default function AppMenuObservationsSection() {
   const { isLoading, data } = useQuery(
@@ -16,7 +16,14 @@ export default function AppMenuObservationsSection() {
     }
   );
   if (isLoading) {
-    return <List />;
+    return (
+      <Spin
+        css={`
+          margin: auto;
+          --sk-size: 80px;
+        `}
+      />
+    );
   }
   return (
     <S.Container>
