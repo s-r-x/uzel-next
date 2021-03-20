@@ -1,6 +1,6 @@
+import Spin from "@/components/Spin";
 import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import { Instagram as Placeholder } from "react-content-loader";
 import * as S from "./styled";
 
 type TPostsLoaderProps = {
@@ -21,9 +21,11 @@ export default function PostsLoader(props: TPostsLoaderProps) {
   }, [inView, props.hasMore]);
   return (
     <S.Container ref={ref}>
-      {props.isFetching && (
-        <Placeholder uniqueKey="123" foregroundColor="var(--primary-color)" />
-      )}
+      <Spin
+        css={`
+          --sk-size: 60px;
+        `}
+      />
     </S.Container>
   );
 }
