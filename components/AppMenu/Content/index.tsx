@@ -25,6 +25,7 @@ export default function AppMenuContent() {
         <Logo
           css={`
             width: 256px;
+            margin: auto;
           `}
         />
       )}
