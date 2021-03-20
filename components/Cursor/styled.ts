@@ -15,4 +15,5 @@ export const Container = motion.custom(styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  mix-blend-mode: multiply;
 `);
