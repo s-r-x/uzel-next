@@ -15,13 +15,15 @@ export default function Observation({ observation: obs }: TProps) {
       icon={<S.ObservationThumb src={obs.thumb} />}
       contentArrowStyle={{ borderRight: "7px solid  var(--primary-color)" }}
     >
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={`${INaturalistConfig.observationsUrl}/${obs.id}`}
-      >
-        {obs.name}
-      </a>
+      <div>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`${INaturalistConfig.observationsUrl}/${obs.id}`}
+        >
+          {obs.name}
+        </a>
+      </div>
     </VerticalTimelineElement>
   );
 }
