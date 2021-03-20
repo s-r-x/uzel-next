@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   .vertical-timeline {
     ::before {
-      background: var(--primary-color);
+      background: var(--primary-color) !important;
     }
     .vertical-timeline-element {
       &-content {
