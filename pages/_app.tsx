@@ -7,6 +7,7 @@ import { AppProps } from "next/app";
 import NextNprogress from "nextjs-progressbar";
 import "@/styles/globals.css";
 import Head from "next/head";
+import ScreenTransition from "@/components/ScreenTransition";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
@@ -26,7 +27,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
           <AnimatePresence exitBeforeEnter initial={false}>
-            <Component key={router.route} {...pageProps} />
+            <ScreenTransition key={router.route}>
+              <Component {...pageProps} />
+            </ScreenTransition>
           </AnimatePresence>
         </AppShell>
       </Hydrate>

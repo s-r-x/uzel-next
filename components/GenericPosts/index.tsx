@@ -4,7 +4,6 @@ import { useDragConstraint, useInitialDrag } from "./hooks";
 import PostsLoader from "./Loader";
 import PostsList from "./PostsList";
 import { TGenericPostsProps } from "./typings";
-import ScreenSlideTransition from "_c/ScreenSlideTransition/loadable";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useInfiniteQuery } from "react-query";
 
@@ -33,28 +32,25 @@ export default function GenericPosts(props: TGenericPostsProps) {
       {isLoading ? (
         <div>loading</div>
       ) : (
-        <>
-          <ScreenSlideTransition />
-          <S.ScrollMask>
-            <S.Container
-              dragDirectionLock
-              dragConstraints={{ right: 0, left: dragConstraint }}
-              style={{
-                x: isMobile ? undefined : initialDrag,
-                scale: 1,
-              }}
-              drag={isMobile ? false : "x"}
-              ref={containerRef}
-            >
-              <PostsList pages={data.pages} />
-              <PostsLoader
-                hasMore={hasNextPage}
-                fetchMore={fetchNextPage}
-                isFetching={isFetching}
-              />
-            </S.Container>
-          </S.ScrollMask>
-        </>
+        <S.ScrollMask>
+          <S.Container
+            dragDirectionLock
+            dragConstraints={{ right: 0, left: dragConstraint }}
+            style={{
+              x: isMobile ? undefined : initialDrag,
+              scale: 1,
+            }}
+            drag={isMobile ? false : "x"}
+            ref={containerRef}
+          >
+            <PostsList pages={data.pages} />
+            <PostsLoader
+              hasMore={hasNextPage}
+              fetchMore={fetchNextPage}
+              isFetching={isFetching}
+            />
+          </S.Container>
+        </S.ScrollMask>
       )}
     </>
   );

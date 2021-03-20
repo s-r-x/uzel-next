@@ -2,7 +2,6 @@ import TagsList from "@/components/TagsList";
 import { GetPostBySlugQuery } from "@/typings/wp";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
-import ScreenSlideTransition from "_c/ScreenSlideTransition/loadable";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -11,7 +10,6 @@ export default function PostScreen({ data: { post } }: TProps) {
   const date = useFormattedDate(post.date);
   return (
     <>
-      <ScreenSlideTransition />
       <S.Container>
         <S.Header>
           <S.Title>{post.title}</S.Title>
