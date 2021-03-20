@@ -31,6 +31,7 @@ export default function AppMenuTagsSection() {
       animate="animate"
       exit="exit"
       initial="initial"
+      data-scroll-lock-scrollable
     >
       {data.tags.nodes.map((tag) => (
         <S.Tag transition={tagTransition} variants={tagVariants} key={tag.slug}>

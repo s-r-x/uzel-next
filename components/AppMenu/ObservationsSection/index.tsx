@@ -26,7 +26,7 @@ export default function AppMenuObservationsSection() {
     );
   }
   return (
-    <S.Container>
+    <S.Container data-scroll-lock-scrollable>
       <S.GlobalStyle />
       <VerticalTimeline>
         {data.map((observation) => (
