@@ -5,6 +5,7 @@ export const TagsList = motion.custom(styled.ul`
   display: flex;
   flex-wrap: wrap;
   max-width: 30vw;
+  margin: auto;
   justify-content: center;
 `);
 export const Tag = motion.custom(styled.li`
