@@ -8,6 +8,7 @@ import NextNprogress from "nextjs-progressbar";
 import "@/styles/globals.css";
 import Head from "next/head";
 import ScreenTransition from "@/components/ScreenTransition";
+import { RouterScrollProvider } from "@moxy/next-router-scroll";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
@@ -26,11 +27,13 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
-          <AnimatePresence exitBeforeEnter initial={false}>
-            <ScreenTransition key={router.route}>
-              <Component {...pageProps} />
-            </ScreenTransition>
-          </AnimatePresence>
+          <RouterScrollProvider>
+            <AnimatePresence exitBeforeEnter initial={false}>
+              <ScreenTransition key={router.route}>
+                <Component {...pageProps} />
+              </ScreenTransition>
+            </AnimatePresence>
+          </RouterScrollProvider>
         </AppShell>
       </Hydrate>
     </QueryClientProvider>
