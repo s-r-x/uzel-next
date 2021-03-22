@@ -16,8 +16,9 @@ export const Container = styled.div`
 export const Header = styled.h2`
   margin: 0;
   margin-top: 12px;
+  font-family: var(--font-secondary);
   font-weight: 900;
-  font-size: 26px;
+  font-size: 24px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     font-size: 18px;
   }
@@ -39,7 +40,7 @@ export const MetaItem = styled.div`
   display: flex;
   align-items: center;
   margin-right: 14px;
-  font-weight: 500;
+  font-weight: 400;
   > span {
     margin-left: 5px;
   }
@@ -51,7 +52,6 @@ export const TagsContainer = styled.div`
 `;
 export const Tag = styled.a`
   color: var(--primary-color);
-  font-weight: 500;
   margin-right: 10px;
   margin-bottom: 3px;
 `;

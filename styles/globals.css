@@ -1,34 +1,6 @@
-@import "./vendor.css";
-
-:root {
-  --primary-color: #5ccaae;
-  --heart-color: #ff1493;
-  --sk-color: var(--primary-color);
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Regular.woff2") format("woff2"),
-    url("/fonts/Gilroy-Regular.woff") format("woff");
-  font-weight: 400;
-  font-display: fallback;
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Black.woff2") format("woff2"),
-    url("/fonts/Gilroy-Black.woff") format("woff");
-  font-weight: 900;
-  font-display: fallback;
-}
-@font-face {
-  font-family: "Gilroy";
-  src: url("/fonts/Gilroy-Medium.woff2") format("woff2"),
-    url("/fonts/Gilroy-Medium.woff") format("woff");
-  font-weight: 500;
-  font-display: fallback;
-}
 html,
 body {
-  font-family: Gilroy, sans-serif;
+  font-family: var(--font-primary);
   padding: 0;
   margin: 0;
 }

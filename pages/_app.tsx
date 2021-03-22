@@ -5,7 +5,7 @@ import { Hydrate } from "react-query/hydration";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import NextNprogress from "nextjs-progressbar";
-import "@/styles/globals.css";
+import "@/styles/index.css";
 import Head from "next/head";
 import ScreenTransition from "@/components/ScreenTransition";
 import { RouterScrollProvider } from "@moxy/next-router-scroll";
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
           <RouterScrollProvider>
-            <AnimatePresence exitBeforeEnter initial={false}>
+            <AnimatePresence exitBeforeEnter initial={true}>
               <ScreenTransition key={router.route}>
                 <Component {...pageProps} />
               </ScreenTransition>

@@ -1,0 +1,7 @@
+:root {
+  --primary-color: #5ccaae;
+  --heart-color: #ff1493;
+  --sk-color: var(--primary-color);
+  --font-primary: Gilroy, sans-serif;
+  --font-secondary: "Playfair Display";
+}

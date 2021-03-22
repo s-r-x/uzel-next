@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     .vertical-timeline-element {
       &-content {
         color: white;
-        font-weight: 500;
+        font-weight: 400;
         box-shadow: none;
         background-color: var(--primary-color);
       }
