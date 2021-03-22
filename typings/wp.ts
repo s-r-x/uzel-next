@@ -8154,6 +8154,10 @@ export type GetPostBySlugQuery = (
       & { node?: Maybe<(
         { __typename?: 'MediaItem' }
         & Pick<MediaItem, 'altText' | 'mediaItemUrl'>
+        & { mediaDetails?: Maybe<(
+          { __typename?: 'MediaDetails' }
+          & Pick<MediaDetails, 'width' | 'height'>
+        )> }
       )> }
     )> }
   )> }

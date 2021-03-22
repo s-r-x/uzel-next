@@ -17,6 +17,10 @@ export const GET_POST_BY_SLUG_Q = gql`
         node {
           altText
           mediaItemUrl
+          mediaDetails {
+            width
+            height
+          }
         }
       }
     }
