@@ -11,6 +11,7 @@ export const POSTS_LIST_FIELDS_FRAG = gql`
     likesCount
     featuredImage {
       node {
+        altText
         mediaItemUrl
         mediaDetails {
           width

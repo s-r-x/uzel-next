@@ -8094,7 +8094,7 @@ export type PostsListFieldsFragment = (
     { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
     & { node?: Maybe<(
       { __typename?: 'MediaItem' }
-      & Pick<MediaItem, 'mediaItemUrl'>
+      & Pick<MediaItem, 'altText' | 'mediaItemUrl'>
       & { mediaDetails?: Maybe<(
         { __typename?: 'MediaDetails' }
         & Pick<MediaDetails, 'width' | 'height'>

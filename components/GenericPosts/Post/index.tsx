@@ -18,6 +18,7 @@ export default function Post({ data }: TProps) {
         width={image.mediaDetails.width}
         height={image.mediaDetails.height}
         src={image.mediaItemUrl}
+        altText={image.altText}
       />
       <S.Header>{data.title}</S.Header>
       <S.Meta>

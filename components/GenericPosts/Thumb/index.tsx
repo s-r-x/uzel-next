@@ -6,9 +6,10 @@ type TProps = {
   src: string;
   width: number;
   height: number;
+  altText?: string;
 };
 
-export default function PostThumb({ src, width, height }: TProps) {
+export default function PostThumb({ src, width, height, altText }: TProps) {
   const [loaded, setLoaded] = useState(false);
   const onLoad = ({ target }: SyntheticEvent<HTMLImageElement>) => {
     const tar = target as HTMLImageElement;
@@ -19,6 +20,7 @@ export default function PostThumb({ src, width, height }: TProps) {
   return (
     <S.ThumbContainer isVisible={loaded}>
       <Image
+        alt={altText}
         onLoad={onLoad}
         width={width}
         height={height}
