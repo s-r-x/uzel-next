@@ -8090,17 +8090,15 @@ export type PageInfoFieldsFragment = (
 export type PostsListFieldsFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'date' | 'title' | 'slug' | 'excerpt' | 'commentCount' | 'likesCount'>
-  & { tags?: Maybe<(
-    { __typename?: 'PostToTagConnection' }
-    & { nodes?: Maybe<Array<Maybe<(
-      { __typename?: 'Tag' }
-      & Pick<Tag, 'name' | 'id' | 'slug'>
-    )>>> }
-  )>, featuredImage?: Maybe<(
+  & { featuredImage?: Maybe<(
     { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
     & { node?: Maybe<(
       { __typename?: 'MediaItem' }
       & Pick<MediaItem, 'mediaItemUrl'>
+      & { mediaDetails?: Maybe<(
+        { __typename?: 'MediaDetails' }
+        & Pick<MediaDetails, 'width' | 'height'>
+      )> }
     )> }
   )> }
 );

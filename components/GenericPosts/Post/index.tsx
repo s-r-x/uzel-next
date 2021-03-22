@@ -11,9 +11,14 @@ type TProps = {
 export default function Post({ data }: TProps) {
   const excerpt = usePostExcerpt(data.excerpt);
   const date = useFormattedDate(data.date);
+  const image = data.featuredImage.node;
   return (
     <S.Container>
-      <Thumb src={data.featuredImage.node.mediaItemUrl} />
+      <Thumb
+        width={image.mediaDetails.width}
+        height={image.mediaDetails.height}
+        src={image.mediaItemUrl}
+      />
       <S.Header>{data.title}</S.Header>
       <S.Meta>
         <S.MetaItem>
