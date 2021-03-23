@@ -3,7 +3,7 @@ import { GetPostBySlugQuery } from "@/typings/wp";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
 import { titleTransition, letterVariants, letterTransition } from "./motion";
-import Image from "next/image";
+import Image from "_c/Image";
 import { useSplitText } from "@/hooks/useSplitText";
 import { Fragment } from "react";
 import { useConvertContentToJsx } from "./hooks";
@@ -52,7 +52,7 @@ export default function PostScreen({ data: { post } }: TProps) {
             width={post.featuredImage.node.mediaDetails.width}
             height={post.featuredImage.node.mediaDetails.height}
             src={post.featuredImage.node.mediaItemUrl}
-            alt={post.featuredImage.node.altText}
+            altText={post.featuredImage.node.altText}
           />
         </div>
         {Content}
