@@ -2,45 +2,25 @@ import TagsList from "@/components/TagsList";
 import { GetPostBySlugQuery } from "@/typings/wp";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
-import { titleTransition, letterVariants, letterTransition } from "./motion";
 import Image from "_c/Image";
-import { useSplitText } from "@/hooks/useSplitText";
-import { Fragment } from "react";
 import { useConvertContentToJsx } from "./hooks";
+import Head from "next/head";
+import Title from "./Title";
 
 type TProps = {
   data: GetPostBySlugQuery;
 };
 export default function PostScreen({ data: { post } }: TProps) {
   const date = useFormattedDate(post.date);
-  const title = useSplitText(post.title);
   const Content = useConvertContentToJsx(post.content);
   return (
     <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
       <S.Container>
         <S.Header>
-          <S.Title
-            transition={titleTransition}
-            animate="animate"
-            exit="exit"
-            initial="initial"
-          >
-            {title.map((word, idx) => (
-              <Fragment key={idx}>
-                <S.TitleWord>
-                  {word.map((letter, idx) => (
-                    <S.TitleLetter
-                      transition={letterTransition}
-                      variants={letterVariants}
-                      key={idx}
-                    >
-                      {letter}
-                    </S.TitleLetter>
-                  ))}
-                </S.TitleWord>{" "}
-              </Fragment>
-            ))}
-          </S.Title>
+          <Title title={post.title} />
           <S.Date dateTime={post.date}>{date}</S.Date>
         </S.Header>
         <div
