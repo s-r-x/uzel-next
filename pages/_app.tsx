@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
           <RouterScrollProvider>
-            <AnimatePresence exitBeforeEnter initial={true}>
+            <AnimatePresence exitBeforeEnter initial={false}>
               <ScreenTransition key={router.route}>
                 <Component {...pageProps} />
               </ScreenTransition>

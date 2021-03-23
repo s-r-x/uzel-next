@@ -14,12 +14,11 @@ const variants: Variants = {
     x,
     y,
     scale: 1,
-    //opacity: 1,
   }),
   hidden: {
     x: 0,
     y: 0,
-    //opacity: 0,
+    scale: 0.75,
   },
 };
 const ShareProviderButton: React.FC<TProps> = (props) => {
