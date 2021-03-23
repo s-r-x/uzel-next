@@ -5,6 +5,10 @@ export const AppMenuNavConfig = {
       title: "Экскурсии",
     },
     {
+      key: "search",
+      title: "Поиск",
+    },
+    {
       key: "tags",
       title: "Метки",
     },

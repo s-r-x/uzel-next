@@ -21,11 +21,13 @@ export default function PostsLoader(props: TPostsLoaderProps) {
   }, [inView, props.hasMore]);
   return (
     <S.Container ref={ref}>
-      <Spin
-        css={`
-          --sk-size: 60px;
-        `}
-      />
+      {props.isFetching && (
+        <Spin
+          css={`
+            --sk-size: 60px;
+          `}
+        />
+      )}
     </S.Container>
   );
 }

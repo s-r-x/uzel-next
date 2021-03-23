@@ -5,6 +5,7 @@ import Logo from "@/components/Logo";
 import Tags from "../TagsSection";
 import Observations from "../ObservationsSection/loadable";
 import Comments from "../CommentsSection";
+import Search from "../SearchSection";
 export default function AppMenuContent() {
   const section = useAppMenuStore((state) => state.section);
   return (
@@ -17,6 +18,7 @@ export default function AppMenuContent() {
     >
       {section ? (
         <>
+          {section === "search" && <Search />}
           {section === "tags" && <Tags />}
           {section === "observations" && <Observations />}
           {section === "comments" && <Comments />}

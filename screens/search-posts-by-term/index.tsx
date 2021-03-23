@@ -22,7 +22,7 @@ export default function SearchPostsByTermScreen(props: TProps) {
   return (
     <>
       <Head>
-        <title>Поиск по строке {props.term}</title>
+        <title>Поиск по запросу "{props.term}"</title>
       </Head>
       <GenericPosts initialData={props.data} uniqueKey={key} loader={loader} />
     </>
