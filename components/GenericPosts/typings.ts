@@ -1,8 +1,12 @@
-import { GetPostsByTagQuery, GetPostsQuery } from "@/typings/wp";
+import {
+  GetPostsByTagQuery,
+  GetPostsQuery,
+  SearchPostsByTermQuery,
+} from "@/typings/wp";
 
 type PostsLoader = ({
   pageParam,
-}: any) => Promise<GetPostsQuery | GetPostsByTagQuery>;
+}: any) => Promise<GetPostsQuery | GetPostsByTagQuery | SearchPostsByTermQuery>;
 export type TGenericPostsProps = {
   initialData?: any;
   uniqueKey: string;

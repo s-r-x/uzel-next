@@ -8219,3 +8219,24 @@ export type GetTagsQuery = (
     )>>> }
   )> }
 );
+
+export type SearchPostsByTermQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  term?: Maybe<Scalars['String']>;
+}>;
+
+
+export type SearchPostsByTermQuery = (
+  { __typename?: 'RootQuery' }
+  & { posts?: Maybe<(
+    { __typename?: 'RootQueryToPostConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Post' }
+      & PostsListFieldsFragment
+    )>>>, pageInfo?: Maybe<(
+      { __typename?: 'WPPageInfo' }
+      & PageInfoFieldsFragment
+    )> }
+  )> }
+);

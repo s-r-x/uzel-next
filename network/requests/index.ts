@@ -11,6 +11,8 @@ import {
   GetTagsQuery,
   GetTagsQueryVariables,
   GetLatestCommentsQuery,
+  SearchPostsByTermQueryVariables,
+  SearchPostsByTermQuery,
 } from "@/typings/wp";
 import { gqlClient } from "../gql-client";
 import { httpClient } from "../http-client";
@@ -19,6 +21,7 @@ import { GET_POST_BY_SLUG_Q } from "../queries/get-post-by-slug";
 import { GET_POSTS_Q } from "../queries/get-posts";
 import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
 import { GET_TAGS_Q } from "../queries/get-tags";
+import { SEARCH_POSTS_BY_TERM_Q } from "../queries/search-posts-by-term";
 
 export const Requests = {
   getTags(vars?: GetTagsQueryVariables): Promise<GetTagsQuery> {
@@ -29,6 +32,14 @@ export const Requests = {
   },
   getPosts(vars?: GetPostsQueryVariables): Promise<GetPostsQuery> {
     return gqlClient.request(GET_POSTS_Q, {
+      first: PaginateConfig.defaultPerPage,
+      ...vars,
+    });
+  },
+  SearchPostsByTerm(
+    vars?: SearchPostsByTermQueryVariables
+  ): Promise<SearchPostsByTermQuery> {
+    return gqlClient.request(SEARCH_POSTS_BY_TERM_Q, {
       first: PaginateConfig.defaultPerPage,
       ...vars,
     });
