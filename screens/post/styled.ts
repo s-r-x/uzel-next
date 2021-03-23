@@ -19,7 +19,7 @@ export const Container = styled.div`
   }
 `;
 export const Header = styled.header`
-  margin-top: 75px;
+  margin-top: 65px;
   margin-bottom: 40px;
   text-align: center;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {

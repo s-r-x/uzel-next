@@ -6,6 +6,7 @@ import { titleTransition, letterVariants, letterTransition } from "./motion";
 import Image from "next/image";
 import { useSplitText } from "@/hooks/useSplitText";
 import { Fragment } from "react";
+import { useConvertContentToJsx } from "./hooks";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -13,6 +14,7 @@ type TProps = {
 export default function PostScreen({ data: { post } }: TProps) {
   const date = useFormattedDate(post.date);
   const title = useSplitText(post.title);
+  const Content = useConvertContentToJsx(post.content);
   return (
     <>
       <S.Container>
@@ -53,11 +55,7 @@ export default function PostScreen({ data: { post } }: TProps) {
             alt={post.featuredImage.node.altText}
           />
         </div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: post.content,
-          }}
-        />
+        {Content}
         <TagsList tags={post.tags.nodes} />
       </S.Container>
     </>
