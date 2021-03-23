@@ -1,16 +1,28 @@
 import { FormEventHandler, useRef } from "react";
 import * as S from "./styled";
 import { Button } from "_c/Button";
+import { Requests } from "@/network/requests";
+import { CreateCommentMutationVariables } from "@/typings/wp";
+import { useMutation } from "react-query";
 
-export default function CommentForm() {
+type TProps = {
+  postId: number;
+};
+export default function CommentForm(props: TProps) {
   const nameRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const msgRef = useRef<HTMLTextAreaElement>();
-  const onSubmit: FormEventHandler = (e) => {
+  const mutation = useMutation((data: CreateCommentMutationVariables) =>
+    Requests.createComment(data)
+  );
+  const onSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
-    //console.log(nameRef.current.value);
-    //console.log(emailRef.current.value);
-    //console.log(msgRef.current.value);
+    mutation.mutate({
+      postId: props.postId,
+      email: emailRef.current.value,
+      name: nameRef.current.value,
+      comment: msgRef.current.value,
+    });
   };
   return (
     <S.Container onSubmit={onSubmit}>
@@ -26,7 +38,11 @@ export default function CommentForm() {
         <label htmlFor="comment-form_email">Email</label>
         <input ref={emailRef} id="comment-form_email" type="email" required />
       </S.FieldContainer>
-      <Button type="submit">Отправить</Button>
+      {mutation.isError && <div>Ошибка</div>}
+      {mutation.isSuccess && <div>Спасибо за комментарий</div>}
+      <Button disabled={mutation.isLoading} type="submit">
+        Отправить
+      </Button>
     </S.Container>
   );
 }

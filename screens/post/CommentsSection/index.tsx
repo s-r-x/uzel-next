@@ -1,10 +1,14 @@
 import CommentForm from "./CommentForm";
 import * as S from "./styled";
-export default function PostCommentsSection() {
+
+type TProps = {
+  postId: number;
+}
+export default function PostCommentsSection(props: TProps) {
   return (
     <S.Container>
       <div>comments</div>
-      <CommentForm />
+      <CommentForm postId={props.postId} />
     </S.Container>
   );
 }

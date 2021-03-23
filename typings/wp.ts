@@ -8103,6 +8103,22 @@ export type PostsListFieldsFragment = (
   )> }
 );
 
+export type CreateCommentMutationVariables = Exact<{
+  name: Scalars['String'];
+  email: Scalars['String'];
+  comment: Scalars['String'];
+  postId: Scalars['Int'];
+}>;
+
+
+export type CreateCommentMutation = (
+  { __typename?: 'RootMutation' }
+  & { createComment?: Maybe<(
+    { __typename?: 'CreateCommentPayload' }
+    & Pick<CreateCommentPayload, 'clientMutationId'>
+  )> }
+);
+
 export type GetLatestCommentsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -8142,7 +8158,7 @@ export type GetPostBySlugQuery = (
   { __typename?: 'RootQuery' }
   & { post?: Maybe<(
     { __typename?: 'Post' }
-    & Pick<Post, 'title' | 'date' | 'content' | 'likesCount' | 'commentCount'>
+    & Pick<Post, 'postId' | 'title' | 'date' | 'content' | 'likesCount' | 'commentCount'>
     & { tags?: Maybe<(
       { __typename?: 'PostToTagConnection' }
       & { nodes?: Maybe<Array<Maybe<(

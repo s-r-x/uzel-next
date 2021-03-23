@@ -13,9 +13,12 @@ import {
   GetLatestCommentsQuery,
   SearchPostsByTermQueryVariables,
   SearchPostsByTermQuery,
+  CreateCommentPayload,
+  CreateCommentMutationVariables,
 } from "@/typings/wp";
 import { gqlClient } from "../gql-client";
 import { httpClient } from "../http-client";
+import { CREATE_COMMENT_M } from "../mutations/create-comment";
 import { GET_LATEST_COMMENTS_Q } from "../queries/get-latest-comments";
 import { GET_POST_BY_SLUG_Q } from "../queries/get-post-by-slug";
 import { GET_POSTS_Q } from "../queries/get-posts";
@@ -24,6 +27,7 @@ import { GET_TAGS_Q } from "../queries/get-tags";
 import { SEARCH_POSTS_BY_TERM_Q } from "../queries/search-posts-by-term";
 
 export const Requests = {
+  // queries
   getTags(vars?: GetTagsQueryVariables): Promise<GetTagsQuery> {
     return gqlClient.request(GET_TAGS_Q, {
       last: PaginateConfig.tagsPerPage,
@@ -83,5 +87,12 @@ export const Requests = {
   },
   async getLatestComments(): Promise<GetLatestCommentsQuery> {
     return gqlClient.request(GET_LATEST_COMMENTS_Q);
+  },
+
+  // mutations
+  async createComment(
+    data: CreateCommentMutationVariables
+  ): Promise<CreateCommentPayload> {
+    return gqlClient.request(CREATE_COMMENT_M, data);
   },
 };

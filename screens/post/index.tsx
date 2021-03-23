@@ -40,7 +40,7 @@ export default function PostScreen({ data: { post } }: TProps) {
         {Content}
         <TagsList tags={post.tags.nodes} />
         <Share title={post.title} slug="slug" />
-        <Comments />
+        <Comments postId={post.postId} />
       </S.Container>
     </>
   );

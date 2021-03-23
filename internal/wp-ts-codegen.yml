@@ -3,6 +3,7 @@ schema: "./wpgraphql-schema.gql"
 documents: 
   - "../network/queries/*.ts"
   - "../network/fragments/*.ts"
+  - "../network/mutations/*.ts"
 generates:
   ../typings/wp.ts:
     plugins:
