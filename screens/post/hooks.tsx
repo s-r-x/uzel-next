@@ -1,7 +1,7 @@
 // @ts-nocheck
 import parse from "html-react-parser";
-import Image from "next/image";
 import { useMemo } from "react";
+import PostImage from "./PostImage";
 export const useConvertContentToJsx = (content: string) => {
   return useMemo(() => {
     return parse(content, {
@@ -9,12 +9,10 @@ export const useConvertContentToJsx = (content: string) => {
         if (node.name === "img") {
           const attrs = node.attribs;
           return (
-            <Image
+            <PostImage
               width={attrs.width}
               height={attrs.height}
               src={attrs.src}
-              objectFit="cover"
-              layout="responsive"
               alt={attrs.alt}
             />
           );
