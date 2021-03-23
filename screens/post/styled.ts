@@ -16,6 +16,9 @@ export const Container = styled.div`
     margin-left: 0;
     margin-right: 0;
   }
+  iframe {
+    max-width: 100%;
+  }
 `;
 export const Header = styled.header`
   margin-top: 65px;

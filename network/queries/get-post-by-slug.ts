@@ -6,6 +6,8 @@ export const GET_POST_BY_SLUG_Q = gql`
       title
       date
       content
+      likesCount
+      commentCount
       tags {
         nodes {
           name

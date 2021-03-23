@@ -6,6 +6,7 @@ import Image from "_c/Image";
 import { useConvertContentToJsx } from "./hooks";
 import Head from "next/head";
 import Title from "./Title";
+import Share from "./Share";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -37,6 +38,7 @@ export default function PostScreen({ data: { post } }: TProps) {
         </div>
         {Content}
         <TagsList tags={post.tags.nodes} />
+        <Share title={post.title} slug="slug" />
       </S.Container>
     </>
   );

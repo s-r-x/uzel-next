@@ -8142,7 +8142,7 @@ export type GetPostBySlugQuery = (
   { __typename?: 'RootQuery' }
   & { post?: Maybe<(
     { __typename?: 'Post' }
-    & Pick<Post, 'title' | 'date' | 'content'>
+    & Pick<Post, 'title' | 'date' | 'content' | 'likesCount' | 'commentCount'>
     & { tags?: Maybe<(
       { __typename?: 'PostToTagConnection' }
       & { nodes?: Maybe<Array<Maybe<(
