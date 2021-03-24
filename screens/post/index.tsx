@@ -7,6 +7,7 @@ import { useConvertContentToJsx } from "./hooks";
 import Head from "next/head";
 import Title from "./Title";
 import Share from "./Share";
+import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
 import { motion } from "framer-motion";
 
@@ -42,7 +43,19 @@ export default function PostScreen({ data: { post } }: TProps) {
         </div>
         {Content}
         <TagsList tags={post.tags.nodes} />
-        <Share title={post.title} slug="slug" />
+        <div
+          css={`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            > * {
+              margin: 10px;
+            }
+          `}
+        >
+          <Share title={post.title} slug="slug" />
+          <Like />
+        </div>
         <Comments postId={post.postId} />
       </S.Container>
     </>
