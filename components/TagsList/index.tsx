@@ -1,9 +1,10 @@
 import * as S from "./styled";
 import Link from "next/link";
+import { Tag } from "@/typings/wp";
 
 type TProps = {
   className?: string;
-  tags: any[];
+  tags: Pick<Tag, "name" | "id" | "slug">[];
 };
 export default function TagsList(props: TProps) {
   return (

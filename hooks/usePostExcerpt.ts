@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useStripHtml } from "./useStripHtml";
 
-const MAX_LEN = 150;
+const MAX_LEN = 200;
 export const usePostExcerpt = (raw: string) => {
   const stripped = useStripHtml(raw);
   return useMemo(() => {

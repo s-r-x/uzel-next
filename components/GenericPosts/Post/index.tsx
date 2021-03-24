@@ -5,7 +5,8 @@ import Link from "next/link";
 import { CommentIcon, HeartIcon, CalendarIcon } from "_c/Icon";
 import Thumb from "../Thumb";
 import { memo } from "react";
-import { TGenericPost } from '../typings';
+import { TGenericPost } from "../typings";
+import TagsList from "@/components/TagsList";
 
 type TProps = {
   data: TGenericPost;
@@ -16,13 +17,17 @@ export default memo(function Post({ data }: TProps) {
   const image = data.featuredImage.node;
   return (
     <S.Container>
-      <Thumb
-        postId={data.postId}
-        width={image.mediaDetails.width}
-        height={image.mediaDetails.height}
-        src={image.mediaItemUrl}
-        altText={image.altText}
-      />
+      <Link passHref href={`/post/${data.slug}`}>
+        <a>
+          <Thumb
+            postId={data.postId}
+            width={image.mediaDetails.width}
+            height={image.mediaDetails.height}
+            src={image.mediaItemUrl}
+            altText={image.altText}
+          />
+        </a>
+      </Link>
       <S.Header>{data.title}</S.Header>
       <S.Meta>
         <S.MetaItem>
@@ -39,13 +44,8 @@ export default memo(function Post({ data }: TProps) {
         </S.MetaItem>
       </S.Meta>
       <S.Excerpt>{excerpt}</S.Excerpt>
-      {/*<S.TagsContainer>
-        {data.tags.nodes.map(({ name, id }) => (
-          <S.Tag key={id}>#{name}</S.Tag>
-        ))}
-      </S.TagsContainer>
-        */}
-      <Link scroll={true} href={`/post/${data.slug}`} passHref>
+      <TagsList tags={data.tags.nodes} />
+      <Link href={`/post/${data.slug}`} passHref>
         <S.PostLink>Читать</S.PostLink>
       </Link>
     </S.Container>
