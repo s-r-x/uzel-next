@@ -10,6 +10,8 @@ import Share from "./Share";
 import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
 import { motion } from "framer-motion";
+import { CommentIcon } from "_c/Icon";
+import { CircleButton } from "@/components/Button";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -48,6 +50,7 @@ export default function PostScreen({ data: { post } }: TProps) {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 20px;
             > * {
               margin: 10px;
             }
@@ -55,6 +58,20 @@ export default function PostScreen({ data: { post } }: TProps) {
         >
           <Share title={post.title} slug="slug" />
           <Like />
+          <CircleButton
+            onClick={() => {
+              const $el = document.querySelector(
+                "#comment-form_message"
+              ) as HTMLInputElement;
+              $el.focus();
+            }}
+            title="Оставить комментарий"
+            css={`
+              --btn-size: 64px;
+            `}
+          >
+            <CommentIcon size={32} />
+          </CircleButton>
         </div>
         <Comments postId={post.postId} />
       </S.Container>
