@@ -1,5 +1,9 @@
 import { HeartIcon } from "@/components/Icon";
-import { navItemTransition, navItemVariants } from "./motion";
+import {
+  activeIndicatiorTransition,
+  navItemTransition,
+  navItemVariants,
+} from "./motion";
 import * as S from "./styled";
 
 type TProps = {
@@ -13,7 +17,10 @@ export default function NavItem(props: TProps) {
   return (
     <S.NavItem transition={navItemTransition} variants={navItemVariants}>
       {!props.isMobile && props.isActive && (
-        <S.ActiveIndicator layoutId="underline" />
+        <S.ActiveIndicator
+          transition={activeIndicatiorTransition}
+          layoutId="nav-active-indicator"
+        />
       )}
       <button onClick={() => props.onChange(props.itemKey)}>
         {props.title}

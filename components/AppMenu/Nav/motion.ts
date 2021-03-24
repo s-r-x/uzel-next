@@ -50,3 +50,7 @@ export const navListVariants: Variants = {
     },
   },
 };
+export const activeIndicatiorTransition: Transition = {
+  ease: Easings.one,
+  duration: 0.75,
+};
