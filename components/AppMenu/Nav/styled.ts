@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { DevicesConfig } from "@/config/devices";
+import { AppShellConfig } from "@/config/app-shell";
 
 export const Container = styled.div`
   width: 30vw;
   position: relative;
   display: flex;
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    width: auto;
+    padding-top: ${AppShellConfig.headerHeight + 10}px;
+  }
 `;
 export const AnimatedSheet = motion(styled.div`
   position: absolute;
@@ -18,6 +24,14 @@ export const NavItemsList = motion(styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    padding: 5px;
+  }
 `);
 
 export const NavItem = motion(styled.li`
@@ -35,6 +49,16 @@ export const NavItem = motion(styled.li`
   }
   button {
     margin-right: 5px;
+  }
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    font-size: 16px;
+    color: inherit;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-right: 13px;
+    button {
+      margin-right: 2px;
+    }
   }
 `);
 export const ActiveIndicator = motion(styled.div`

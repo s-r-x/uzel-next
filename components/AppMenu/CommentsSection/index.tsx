@@ -25,7 +25,7 @@ export default function AppMenuCommentsSection() {
     );
   }
   return (
-    <S.Container data-scroll-lock-scrollable>
+    <S.Container>
       <S.CommentsList
         transition={commentsListTransition}
         animate="animate"

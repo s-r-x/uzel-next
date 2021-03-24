@@ -1,3 +1,4 @@
+import { DevicesConfig } from "@/config/devices";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -7,7 +8,13 @@ export const Container = motion(styled.div`
   top: 0;
   width: 100vw;
   display: flex;
+  flex-direction: row-reverse;
   height: 100vh;
   z-index: 9;
   overflow: hidden;
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    background: white;
+  }
 `);

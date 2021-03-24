@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { DevicesConfig } from "@/config/devices";
 
 export const TagsList = motion(styled.ul`
   display: flex;
@@ -7,6 +8,12 @@ export const TagsList = motion(styled.ul`
   max-width: 30vw;
   margin: auto;
   justify-content: center;
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    max-width: none;
+    padding: 5px;
+    justify-content: flex-start;
+    margin: 0;
+  }
 `);
 export const Tag = motion(styled.li`
   margin: 5px;

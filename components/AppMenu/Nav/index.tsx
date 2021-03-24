@@ -7,7 +7,10 @@ import NavItem from "./Item";
 import { navContainerVariants, navListVariants } from "./motion";
 import { AnimateSharedLayout } from "framer-motion";
 
-export default function AppMenuNav() {
+type TProps = {
+  isMobile: boolean;
+};
+export default function AppMenuNav(props: TProps) {
   const [section, changeSection] = useAppMenuStore(
     (state) => [state.section, state.changeSection],
     shallow
@@ -15,11 +18,14 @@ export default function AppMenuNav() {
   return (
     <AnimateSharedLayout>
       <S.Container>
-        <S.AnimatedSheet
-          transition={innerContainerTransition}
-          variants={navContainerVariants}
-        />
+        {!props.isMobile && (
+          <S.AnimatedSheet
+            transition={innerContainerTransition}
+            variants={navContainerVariants}
+          />
+        )}
         <S.NavItemsList
+          data-scroll-lock-scrollable
           variants={navListVariants}
           animate="animate"
           exit="exit"
@@ -27,6 +33,7 @@ export default function AppMenuNav() {
         >
           {AppMenuNavConfig.sections.map(({ title, key }) => (
             <NavItem
+              isMobile={props.isMobile}
               onChange={changeSection}
               isActive={section === key}
               key={key}

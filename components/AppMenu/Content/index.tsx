@@ -6,12 +6,17 @@ import Tags from "../TagsSection";
 import Observations from "../ObservationsSection/loadable";
 import Comments from "../CommentsSection";
 import Search from "../SearchSection";
-export default function AppMenuContent() {
+
+type TProps = {
+  isMobile: boolean;
+};
+export default function AppMenuContent(props: TProps) {
   const section = useAppMenuStore((state) => state.section);
   return (
     <S.Container
+      data-scroll-lock-scrollable
       transition={innerContainerTransition}
-      variants={contentContainerVariants}
+      variants={props.isMobile ? null : contentContainerVariants}
       animate="animate"
       exit="exit"
       initial="initial"

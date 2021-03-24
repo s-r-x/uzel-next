@@ -17,3 +17,14 @@ export const innerContainerTransition: Transition = {
   duration: 0.75,
   ease: Easings.one,
 };
+export const containerMobileVariants = {
+  exit: {
+    x: "100%",
+  },
+  initial: {
+    x: "-100%",
+  },
+  animate: {
+    x: "0%",
+  },
+};
