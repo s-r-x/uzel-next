@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: inline-block;
   margin-bottom: 40px;
 `;
-export const ShareButtonsContainer = motion.custom(styled.div`
+export const ShareButtonsContainer = motion(styled.div`
   position: absolute;
   left: 0;
   top: 0;

@@ -2,15 +2,13 @@ import { useRef } from "react";
 import AppShell from "../components/AppShell";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
-import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import NextNprogress from "nextjs-progressbar";
 import "@/styles/index.css";
 import Head from "next/head";
-import ScreenTransition from "@/components/ScreenTransition";
-import { RouterScrollProvider } from "@moxy/next-router-scroll";
+import { AnimateSharedLayout } from "framer-motion";
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
@@ -27,13 +25,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
-          <RouterScrollProvider>
-            <AnimatePresence exitBeforeEnter initial={false}>
-              <ScreenTransition key={router.route}>
-                <Component {...pageProps} />
-              </ScreenTransition>
-            </AnimatePresence>
-          </RouterScrollProvider>
+          <AnimateSharedLayout>
+            <Component {...pageProps} />
+          </AnimateSharedLayout>
         </AppShell>
       </Hydrate>
     </QueryClientProvider>

@@ -7,7 +7,7 @@ const Page = memo((props: TPageProps) => {
   return (
     <>
       {props.page.posts.nodes.map((post) => (
-        <Post key={post.id} data={post} />
+        <Post key={post.postId} data={post} />
       ))}
     </>
   );

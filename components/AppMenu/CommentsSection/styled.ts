@@ -4,11 +4,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: auto;
 `;
-export const CommentsList = motion.custom(styled.ul`
+export const CommentsList = motion(styled.ul`
   display: flex;
   flex-direction: column;
 `);
-export const Comment = motion.custom(styled.li`
+export const Comment = motion(styled.li`
   margin-bottom: 15px;
   background-color: var(--primary-color);
   display: flex;

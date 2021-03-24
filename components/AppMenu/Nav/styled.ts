@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: relative;
   display: flex;
 `;
-export const AnimatedSheet = motion.custom(styled.div`
+export const AnimatedSheet = motion(styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -14,14 +14,14 @@ export const AnimatedSheet = motion.custom(styled.div`
   top: 0;
   background: var(--primary-color);
 `);
-export const NavItemsList = motion.custom(styled.ul`
+export const NavItemsList = motion(styled.ul`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `);
 
-export const NavItem = motion.custom(styled.li<{
+export const NavItem = motion(styled.li<{
   isActive: boolean;
 }>`
   display: flex;

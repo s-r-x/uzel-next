@@ -3,13 +3,8 @@ import { DevicesConfig } from "@/config/devices";
 import { Button } from "_c/Button";
 
 export const Container = styled.div`
-  width: 582px;
-  min-width: 582px;
-  padding: 0 35px;
+  margin-bottom: 60px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
-    min-width: auto;
-    width: auto;
-    padding: 0;
     margin-bottom: 40px;
   }
 `;

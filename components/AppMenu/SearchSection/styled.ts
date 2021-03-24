@@ -30,6 +30,6 @@ export const BottomLine = styled.div`
   background-color: var(--content-color);
   height: 4px;
 `;
-export const BottomLineFocused = motion.custom(styled(BottomLine)`
+export const BottomLineFocused = motion(styled(BottomLine)`
   background-color: var(--primary-color);
 `);

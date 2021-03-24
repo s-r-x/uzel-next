@@ -8,6 +8,7 @@ import Head from "next/head";
 import Title from "./Title";
 import Share from "./Share";
 import Comments from "./CommentsSection";
+import { motion } from "framer-motion";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -30,12 +31,14 @@ export default function PostScreen({ data: { post } }: TProps) {
             text-align: center;
           `}
         >
-          <Image
-            width={post.featuredImage.node.mediaDetails.width}
-            height={post.featuredImage.node.mediaDetails.height}
-            src={post.featuredImage.node.mediaItemUrl}
-            altText={post.featuredImage.node.altText}
-          />
+          <motion.div layoutId={`post-thumb-${post.postId}`}>
+            <Image
+              width={post.featuredImage.node.mediaDetails.width}
+              height={post.featuredImage.node.mediaDetails.height}
+              src={post.featuredImage.node.mediaItemUrl}
+              altText={post.featuredImage.node.altText}
+            />
+          </motion.div>
         </div>
         {Content}
         <TagsList tags={post.tags.nodes} />

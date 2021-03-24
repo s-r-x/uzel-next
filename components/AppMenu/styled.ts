@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Container = motion.custom(styled.div`
+export const Container = motion(styled.div`
   position: fixed;
   left: 0;
   top: 0;

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { AppShellConfig } from "@/config/app-shell";
 
-export const Container = motion.custom(styled.div`
+export const Container = motion(styled.div`
   background: white;
   width: 70vw;
   display: flex;

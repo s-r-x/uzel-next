@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { DevicesConfig } from "@/config/devices";
 
-export const Container = motion.custom(styled.div`
+export const Container = motion(styled.div`
   position: fixed;
   display: flex;
   align-items: center;

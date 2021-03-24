@@ -1,5 +1,5 @@
 import { useMotionValue, usePresence } from "framer-motion";
-import { useState, useEffect, MutableRefObject } from "react";
+import { useState, useEffect, MutableRefObject, useLayoutEffect } from "react";
 
 type TUseDragConstraintProps = {
   containerRef: MutableRefObject<HTMLDivElement>;
@@ -30,9 +30,8 @@ type TUseInitialDragProps = {
 const latestDrag: { [key: string]: number } = {};
 export const useInitialDrag = (props: TUseInitialDragProps) => {
   const drag = useMotionValue(latestDrag[props.uniqueKey] || 0);
-  const [isPresent, safeToRemove] = usePresence();
-  useEffect(() => {
-    if (!isPresent) {
+  useLayoutEffect(() => {
+    return () => {
       const $el = props.containerRef.current;
       if ($el) {
         const matrix = new DOMMatrixReadOnly(
@@ -40,8 +39,7 @@ export const useInitialDrag = (props: TUseInitialDragProps) => {
         );
         latestDrag[props.uniqueKey] = matrix.m41;
       }
-      safeToRemove();
-    }
-  }, [isPresent, props.uniqueKey]);
+    };
+  }, [props.uniqueKey]);
   return drag;
 };

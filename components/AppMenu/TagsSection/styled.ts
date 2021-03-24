@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const TagsList = motion.custom(styled.ul`
+export const TagsList = motion(styled.ul`
   display: flex;
   flex-wrap: wrap;
   max-width: 30vw;
   margin: auto;
   justify-content: center;
 `);
-export const Tag = motion.custom(styled.li`
+export const Tag = motion(styled.li`
   margin: 5px;
   background-color: var(--primary-color);
   padding: 5px;

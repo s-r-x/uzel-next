@@ -8089,7 +8089,7 @@ export type PageInfoFieldsFragment = (
 
 export type PostsListFieldsFragment = (
   { __typename?: 'Post' }
-  & Pick<Post, 'id' | 'date' | 'title' | 'slug' | 'excerpt' | 'commentCount' | 'likesCount'>
+  & Pick<Post, 'postId' | 'date' | 'title' | 'slug' | 'excerpt' | 'commentCount' | 'likesCount'>
   & { featuredImage?: Maybe<(
     { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
     & { node?: Maybe<(
