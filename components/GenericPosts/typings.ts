@@ -4,11 +4,14 @@ import {
   SearchPostsByTermQuery,
 } from "@/typings/wp";
 
-type PostsLoader = ({
-  pageParam,
-}: any) => Promise<GetPostsQuery | GetPostsByTagQuery | SearchPostsByTermQuery>;
+export type TGenericPostsQuery =
+  | GetPostsQuery
+  | GetPostsByTagQuery
+  | SearchPostsByTermQuery;
+type PostsLoader = ({ pageParam }: any) => Promise<TGenericPostsQuery>;
 export type TGenericPostsProps = {
-  initialData?: any;
+  initialData?: TGenericPostsQuery;
   uniqueKey: string;
   loader: PostsLoader;
 };
+export type TGenericPost = TGenericPostsQuery["posts"]["nodes"][0];

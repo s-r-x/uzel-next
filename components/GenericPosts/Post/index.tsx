@@ -5,9 +5,10 @@ import Link from "next/link";
 import { CommentIcon, HeartIcon, CalendarIcon } from "_c/Icon";
 import Thumb from "../Thumb";
 import { memo } from "react";
+import { TGenericPost } from '../typings';
 
 type TProps = {
-  data: any;
+  data: TGenericPost;
 };
 export default memo(function Post({ data }: TProps) {
   const excerpt = usePostExcerpt(data.excerpt);

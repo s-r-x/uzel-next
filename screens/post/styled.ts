@@ -2,9 +2,6 @@ import { DevicesConfig } from "@/config/devices";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 960px;
-  padding: 15px;
-  margin: 0 auto;
   img {
     max-width: 100%;
     height: auto;

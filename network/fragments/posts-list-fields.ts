@@ -9,6 +9,13 @@ export const POSTS_LIST_FIELDS_FRAG = gql`
     excerpt
     commentCount
     likesCount
+    tags {
+      nodes {
+        name
+        id
+        slug
+      }
+    }
     featuredImage {
       node {
         altText
