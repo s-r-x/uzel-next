@@ -9,9 +9,8 @@ export const Container = motion(styled.div`
   width: 100vw;
   display: flex;
   flex-direction: row-reverse;
-  height: 100vh;
+  height: 100%;
   z-index: 9;
-  overflow: hidden;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     flex-direction: column;
     justify-content: flex-start;

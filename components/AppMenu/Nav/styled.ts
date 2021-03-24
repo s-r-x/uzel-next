@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     width: auto;
+    flex-shrink: 0;
     padding-top: ${AppShellConfig.headerHeight + 10}px;
   }
 `;
@@ -25,6 +26,7 @@ export const NavItemsList = motion(styled.ul`
   flex-direction: column;
   justify-content: center;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    -webkit-overflow-scrolling: touch;
     flex-direction: row;
     max-width: 100%;
     justify-content: flex-start;

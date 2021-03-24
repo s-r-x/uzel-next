@@ -11,14 +11,14 @@ export default function ObservationsLoader(props: TProps) {
   const { ref, inView } = useInView({
     rootMargin: "250px",
   });
-  useEffect(() => {
-    if (inView && props.hasMore) {
-      props.fetchMore();
-    }
-  }, [inView, props.hasMore]);
+  //useEffect(() => {
+  //  if (inView && props.hasMore) {
+  //    props.fetchMore();
+  //  }
+  //}, [inView, props.hasMore]);
   return (
     <S.LoaderContainer ref={ref}>
-      {props.isFetching && <Spin />}
+      <Spin />
     </S.LoaderContainer>
   );
 }

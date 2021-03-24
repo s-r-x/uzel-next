@@ -14,7 +14,6 @@ export default function AppMenu() {
     <AnimatePresence>
       {isOpen && (
         <S.Container
-          data-scroll-lock-scrollable
           animate="animate"
           exit="exit"
           initial="initial"

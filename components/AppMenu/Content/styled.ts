@@ -7,10 +7,10 @@ export const Container = motion(styled.div`
   background: white;
   width: 70vw;
   display: flex;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: ${AppShellConfig.headerHeight + 10}px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    overflow-y: auto;
     width: auto;
     height: 100%;
     padding-top: 0;
