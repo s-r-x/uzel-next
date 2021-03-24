@@ -15,18 +15,16 @@ export const AnimatedSheet = motion(styled.div`
   background: var(--primary-color);
 `);
 export const NavItemsList = motion(styled.ul`
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `);
 
-export const NavItem = motion(styled.li<{
-  isActive: boolean;
-}>`
+export const NavItem = motion(styled.li`
   display: flex;
   align-items: center;
   font-weight: 900;
+  padding-left: 20px;
   margin-bottom: 10px;
   position: relative;
   z-index: 2;
@@ -38,4 +36,15 @@ export const NavItem = motion(styled.li<{
   button {
     margin-right: 5px;
   }
+`);
+export const ActiveIndicator = motion(styled.div`
+  --size: 8px;
+  --half-size: 4px;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  border-radius: 50%;
+  left: 5px;
+  top: calc(50% - var(--half-size));
+  background: white;
 `);

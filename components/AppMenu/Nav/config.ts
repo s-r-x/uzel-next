@@ -20,9 +20,9 @@ export const AppMenuNavConfig = {
       key: "comments",
       title: "Комментарии",
     },
-    {
-      key: "categories",
-      title: "Рубрики",
-    },
+    //{
+    //  key: "categories",
+    //  title: "Рубрики",
+    //},
   ],
 };

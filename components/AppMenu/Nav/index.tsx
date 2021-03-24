@@ -5,6 +5,7 @@ import shallow from "zustand/shallow";
 import { AppMenuNavConfig } from "./config";
 import NavItem from "./Item";
 import { navContainerVariants, navListVariants } from "./motion";
+import { AnimateSharedLayout } from "framer-motion";
 
 export default function AppMenuNav() {
   const [section, changeSection] = useAppMenuStore(
@@ -12,7 +13,7 @@ export default function AppMenuNav() {
     shallow
   );
   return (
-    <>
+    <AnimateSharedLayout>
       <S.Container>
         <S.AnimatedSheet
           transition={innerContainerTransition}
@@ -35,6 +36,6 @@ export default function AppMenuNav() {
           ))}
         </S.NavItemsList>
       </S.Container>
-    </>
+    </AnimateSharedLayout>
   );
 }

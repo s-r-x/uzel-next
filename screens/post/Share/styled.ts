@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 export const Container = styled.div`
   margin-top: 40px;
   position: relative;
+  z-index: 2;
   display: inline-block;
   margin-bottom: 40px;
 `;
