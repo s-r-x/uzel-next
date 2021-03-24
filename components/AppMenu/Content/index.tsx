@@ -6,12 +6,14 @@ import Tags from "../TagsSection";
 import Observations from "../ObservationsSection/loadable";
 import Comments from "../CommentsSection";
 import Search from "../SearchSection";
+import { usePreloadModules } from "@/hooks/usePreloadModules";
 
 type TProps = {
   isMobile: boolean;
 };
 export default function AppMenuContent(props: TProps) {
   const section = useAppMenuStore((state) => state.section);
+  usePreloadModules([Observations], { delay: 1000 });
   return (
     <S.Container
       data-scroll-lock-scrollable
