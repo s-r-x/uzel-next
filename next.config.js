@@ -1,5 +1,12 @@
-module.exports = {
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
+
+module.exports = withPWA({
   images: {
-    domains: ['uzelkovoye-pismo.ru'],
+    domains: ["uzelkovoye-pismo.ru"],
   },
-}
+  pwa: {
+    dest: "public",
+    runtimeCaching,
+  },
+});

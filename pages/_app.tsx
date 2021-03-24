@@ -18,9 +18,22 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           name="viewport"
-          content="initial-scale=1.0, width=device-width"
+          content="width=device-width, initial-scale=1, minimal-ui"
           key="viewport-meta"
         />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="keywords"
+          content="природа, птицы, животные, путешествия, ханты-мансийск"
+        />
+        <meta
+          name="description"
+          content="Фоторассказы о природе и путешествиях"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#5ccaa3" />
+        <meta name="apple-mobile-web-app-title" content="Узелковое письмо" />
       </Head>
       <Hydrate state={pageProps.dehydratedState}>
         <NextNprogress color="var(--primary-color)" height={4} />
