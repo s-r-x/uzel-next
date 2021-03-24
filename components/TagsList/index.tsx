@@ -10,9 +10,11 @@ export default function TagsList(props: TProps) {
   return (
     <S.Container className={props.className}>
       {props.tags.map(({ name, slug, id }) => (
-        <Link prefetch={false} key={id} href={`/tag/${slug}`} passHref>
-          <S.Tag>#{name}</S.Tag>
-        </Link>
+        <li key={id}>
+          <Link prefetch={false} href={`/tag/${slug}`}>
+            <a>#{name}</a>
+          </Link>
+        </li>
       ))}
     </S.Container>
   );
