@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import { CommentIcon } from "_c/Icon";
 import { CircleButton } from "@/components/Button";
 import Seo from "./Seo";
+import { usePostExcerpt } from "@/hooks/usePostExcerpt";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -19,9 +20,10 @@ type TProps = {
 export default function PostScreen({ data: { post } }: TProps) {
   const date = useFormattedDate(post.date);
   const Content = useConvertContentToJsx(post.content);
+  const excerpt = usePostExcerpt(post.excerpt);
   return (
     <>
-      <Seo post={post} />
+      <Seo excerpt={excerpt} post={post} />
       <S.Container>
         <S.Header>
           <Title title={post.title} />
@@ -55,6 +57,7 @@ export default function PostScreen({ data: { post } }: TProps) {
           `}
         >
           <Share
+            excerpt={excerpt}
             picture={post.featuredImage.node.mediaItemUrl}
             title={post.title}
             slug="slug"

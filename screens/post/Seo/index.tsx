@@ -5,8 +5,9 @@ import { NextSeo, ArticleJsonLd } from "next-seo";
 
 type TProps = {
   post: GetPostBySlugQuery["post"];
+  excerpt: string;
 };
-export default function SinglePostSeo({ post }: TProps) {
+export default function SinglePostSeo({ post, excerpt }: TProps) {
   const url = LinkBuilder.build("post", {
     isAbsolute: true,
     slug: post.slug,
@@ -15,11 +16,13 @@ export default function SinglePostSeo({ post }: TProps) {
     <>
       <NextSeo
         title={post.title}
+        description={excerpt}
         openGraph={{
           url,
           locale: SeoConfig.locale,
           type: "article",
           title: post.title,
+          description: excerpt,
           article: {
             tags: post.tags.nodes.map((tag) => tag.name),
             publishedTime: post.date,
@@ -44,8 +47,7 @@ export default function SinglePostSeo({ post }: TProps) {
         authorName={SeoConfig.author}
         publisherName={SeoConfig.author}
         publisherLogo={SeoConfig.siteLogo}
-        // TODO
-        description="desc"
+        description={excerpt}
       />
     </>
   );

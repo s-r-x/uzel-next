@@ -24,7 +24,12 @@ import {
 } from "react-share";
 import { TShareProps } from "./typings";
 import { LinkBuilder } from "@/services/link-builder";
-export const useShareProviders = ({ slug, title, picture }: TShareProps) => {
+export const useShareProviders = ({
+  slug,
+  title,
+  picture,
+  excerpt,
+}: TShareProps) => {
   return useMemo(() => {
     const link = LinkBuilder.build("post", {
       slug,
@@ -38,7 +43,11 @@ export const useShareProviders = ({ slug, title, picture }: TShareProps) => {
       <FacebookShareButton {...commonShareProps}>
         <FacebookIcon size={ShareConfig.btnSize} round />
       </FacebookShareButton>,
-      <OKShareButton image={picture} {...commonShareProps}>
+      <OKShareButton
+        description={excerpt}
+        image={picture}
+        {...commonShareProps}
+      >
         <OKIcon size={ShareConfig.btnSize} round />
       </OKShareButton>,
       <VKShareButton image={picture} {...commonShareProps}>
@@ -47,7 +56,11 @@ export const useShareProviders = ({ slug, title, picture }: TShareProps) => {
       <WhatsappShareButton {...commonShareProps}>
         <WhatsappIcon size={ShareConfig.btnSize} round />
       </WhatsappShareButton>,
-      <PinterestShareButton media={picture} {...commonShareProps}>
+      <PinterestShareButton
+        description={excerpt}
+        media={picture}
+        {...commonShareProps}
+      >
         <PinterestIcon size={ShareConfig.btnSize} round />
       </PinterestShareButton>,
       <TelegramShareButton {...commonShareProps}>
@@ -59,11 +72,15 @@ export const useShareProviders = ({ slug, title, picture }: TShareProps) => {
       <TwitterShareButton {...commonShareProps}>
         <TwitterIcon size={ShareConfig.btnSize} round />
       </TwitterShareButton>,
-      <MailruShareButton imageUrl={picture} {...commonShareProps}>
+      <MailruShareButton
+        description={excerpt}
+        imageUrl={picture}
+        {...commonShareProps}
+      >
         <MailruIcon size={ShareConfig.btnSize} round />
       </MailruShareButton>,
     ];
-  }, [slug, title, picture]);
+  }, [slug, title, picture, excerpt]);
 };
 
 const degToRad = (degrees: number) => degrees * (Math.PI / 180);

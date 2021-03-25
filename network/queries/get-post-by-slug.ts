@@ -6,6 +6,7 @@ export const GET_POST_BY_SLUG_Q = gql`
       postId
       title
       date
+      excerpt
       modified
       slug
       content
