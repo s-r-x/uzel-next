@@ -13,6 +13,14 @@ a {
 * {
   box-sizing: border-box;
 }
+body::-webkit-scrollbar {
+  width: 15px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 42px;
+}
+
 button {
   border: none;
   margin: 0;
