@@ -8165,7 +8165,13 @@ export type GetPostBySlugQuery = (
   & { post?: Maybe<(
     { __typename?: 'Post' }
     & Pick<Post, 'postId' | 'title' | 'date' | 'excerpt' | 'modified' | 'slug' | 'content' | 'likesCount' | 'commentCount'>
-    & { tags?: Maybe<(
+    & { categories?: Maybe<(
+      { __typename?: 'PostToCategoryConnection' }
+      & { nodes?: Maybe<Array<Maybe<(
+        { __typename?: 'Category' }
+        & Pick<Category, 'name'>
+      )>>> }
+    )>, tags?: Maybe<(
       { __typename?: 'PostToTagConnection' }
       & { nodes?: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }

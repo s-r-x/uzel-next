@@ -17,6 +17,15 @@ export const Container = styled.div`
     max-width: 100%;
   }
 `;
+export const Category = styled.div`
+  color: var(--primary-color);
+  &::before {
+    content: "- ";
+  }
+  &::after {
+    content: " -";
+  }
+`;
 export const Header = styled.header`
   margin-top: 65px;
   margin-bottom: 40px;
@@ -27,5 +36,4 @@ export const Header = styled.header`
 `;
 
 export const Date = styled.time`
-  font-weight: 400;
 `;

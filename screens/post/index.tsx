@@ -26,6 +26,7 @@ export default function PostScreen({ data: { post } }: TProps) {
       <Seo excerpt={excerpt} post={post} />
       <S.Container>
         <S.Header>
+          <S.Category>{post.categories?.nodes?.[0]?.name}</S.Category>
           <Title title={post.title} />
           <S.Date dateTime={post.date}>{date}</S.Date>
         </S.Header>

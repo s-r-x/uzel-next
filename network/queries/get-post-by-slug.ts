@@ -12,6 +12,11 @@ export const GET_POST_BY_SLUG_Q = gql`
       content
       likesCount
       commentCount
+      categories(first: 1) {
+        nodes {
+          name
+        }
+      }
       tags {
         nodes {
           name
