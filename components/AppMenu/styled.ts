@@ -7,6 +7,7 @@ export const Container = motion(styled.div`
   left: 0;
   top: 0;
   width: 100vw;
+  outline: none;
   display: flex;
   flex-direction: row-reverse;
   height: 100%;

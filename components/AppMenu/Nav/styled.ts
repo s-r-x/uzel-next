@@ -73,4 +73,13 @@ export const ActiveIndicator = motion(styled.div`
   left: 5px;
   top: calc(50% - var(--half-size));
   background: white;
+  @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
+    --size: 100%;
+    border-radius: 0;
+    left: 0;
+    top: auto;
+    bottom: -2px;
+    height: 3px;
+    background: var(--content-color);
+  }
 `);
