@@ -10,9 +10,9 @@ type TSearchOptions = TCommonOptions & { term: string };
 
 export abstract class LinkBuilder {
   public static build(type: "post", opts: TSinglePostOptions): string;
-  public static build(type: "tag", opts?: TTagOptions): string;
+  public static build(type: "tag", opts: TTagOptions): string;
   public static build(type: "root", opts?: TCommonOptions): string;
-  public static build(type: "search", opts?: TSearchOptions): string;
+  public static build(type: "search", opts: TSearchOptions): string;
   public static build(type: TLinkType, opts?: any) {
     let link: string;
     if (type === "root") {
