@@ -9,7 +9,7 @@ import Share from "./Share";
 import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
 import { motion } from "framer-motion";
-import { CommentIcon } from "_c/Icon";
+import { CommentIcon, HeartIcon } from "_c/Icon";
 import { CircleButton } from "@/components/Button";
 import Seo from "./Seo";
 import { usePostExcerpt } from "@/hooks/usePostExcerpt";
@@ -29,6 +29,16 @@ export default function PostScreen({ data: { post } }: TProps) {
           <S.Category>{post.categories?.nodes?.[0]?.name}</S.Category>
           <Title title={post.title} />
           <time dateTime={post.date}>{date}</time>
+          <S.CountersContainer>
+            <S.Counter>
+              <HeartIcon color="var(--heart-color)" />
+              <span>{post.likesCount}</span>
+            </S.Counter>
+            <S.Counter>
+              <CommentIcon />
+              <span>{post.commentCount || 0}</span>
+            </S.Counter>
+          </S.CountersContainer>
         </S.Header>
         <div
           css={`
@@ -46,17 +56,7 @@ export default function PostScreen({ data: { post } }: TProps) {
         </div>
         {Content}
         <TagsList tags={post.tags.nodes} />
-        <div
-          css={`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            > * {
-              margin: 10px;
-            }
-          `}
-        >
+        <S.ActionsContainer>
           <Share
             excerpt={excerpt}
             picture={post.featuredImage.node.mediaItemUrl}
@@ -78,7 +78,7 @@ export default function PostScreen({ data: { post } }: TProps) {
           >
             <CommentIcon size={32} />
           </CircleButton>
-        </div>
+        </S.ActionsContainer>
         <Comments postId={post.postId} />
       </S.Container>
     </>
