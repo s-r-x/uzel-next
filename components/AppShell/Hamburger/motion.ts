@@ -1,3 +1,4 @@
+import { Easings } from "@/config/easings";
 import { Transition, Variants } from "framer-motion";
 import { HamburgerConfig } from "./config";
 
@@ -65,7 +66,8 @@ export const bottomBrickClosedVariants: Variants = {
   },
 };
 export const brickTransition: Transition = {
-  duration: 0.4,
+  ease: Easings.one,
+  duration: 0.5,
 };
 export const brickGroupTransition: Transition = {
   staggerChildren: 0.15,

@@ -4,7 +4,7 @@ import { Requests } from "@/network/requests";
 import { useAppMenuStore } from "@/stores/app-menu";
 import shallow from "zustand/shallow";
 
-const DELAY = 1000;
+const FETCH_DELAY = 1000;
 export const usePrefetchRequiredData = () => {
   const client = useQueryClient();
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -23,7 +23,7 @@ export const usePrefetchRequiredData = () => {
           Requests.getLatestComments()
         );
       }
-    }, DELAY);
+    }, FETCH_DELAY);
     return () => clearTimeout(timeoutRef.current);
   }, []);
 };
