@@ -45,14 +45,12 @@ export default function PostScreen({ data: { post } }: TProps) {
             text-align: center;
           `}
         >
-          <motion.div layoutId={`post-thumb-${post.postId}`}>
-            <Image
-              width={post.featuredImage.node.mediaDetails.width}
-              height={post.featuredImage.node.mediaDetails.height}
-              src={post.featuredImage.node.mediaItemUrl}
-              altText={post.featuredImage.node.altText}
-            />
-          </motion.div>
+          <Image
+            width={post.featuredImage.node.mediaDetails.width}
+            height={post.featuredImage.node.mediaDetails.height}
+            src={post.featuredImage.node.mediaItemUrl}
+            altText={post.featuredImage.node.altText}
+          />
         </div>
         {Content}
         <TagsList tags={post.tags.nodes} />
