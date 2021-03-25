@@ -23,26 +23,31 @@ import {
   MailruIcon,
 } from "react-share";
 import { TShareProps } from "./typings";
-export const useShareProviders = ({ slug, title }: TShareProps) => {
+import { LinkBuilder } from "@/services/link-builder";
+export const useShareProviders = ({ slug, title, picture }: TShareProps) => {
   return useMemo(() => {
+    const link = LinkBuilder.build("post", {
+      slug,
+      isAbsolute: true,
+    });
     const commonShareProps = {
       title,
-      url: slug,
+      url: link,
     };
     return [
       <FacebookShareButton {...commonShareProps}>
         <FacebookIcon size={ShareConfig.btnSize} round />
       </FacebookShareButton>,
-      <OKShareButton {...commonShareProps}>
+      <OKShareButton image={picture} {...commonShareProps}>
         <OKIcon size={ShareConfig.btnSize} round />
       </OKShareButton>,
-      <VKShareButton {...commonShareProps}>
+      <VKShareButton image={picture} {...commonShareProps}>
         <VKIcon size={ShareConfig.btnSize} round />
       </VKShareButton>,
       <WhatsappShareButton {...commonShareProps}>
         <WhatsappIcon size={ShareConfig.btnSize} round />
       </WhatsappShareButton>,
-      <PinterestShareButton media="123" {...commonShareProps}>
+      <PinterestShareButton media={picture} {...commonShareProps}>
         <PinterestIcon size={ShareConfig.btnSize} round />
       </PinterestShareButton>,
       <TelegramShareButton {...commonShareProps}>
@@ -54,11 +59,11 @@ export const useShareProviders = ({ slug, title }: TShareProps) => {
       <TwitterShareButton {...commonShareProps}>
         <TwitterIcon size={ShareConfig.btnSize} round />
       </TwitterShareButton>,
-      <MailruShareButton {...commonShareProps}>
+      <MailruShareButton imageUrl={picture} {...commonShareProps}>
         <MailruIcon size={ShareConfig.btnSize} round />
       </MailruShareButton>,
     ];
-  }, [slug, title]);
+  }, [slug, title, picture]);
 };
 
 const degToRad = (degrees: number) => degrees * (Math.PI / 180);

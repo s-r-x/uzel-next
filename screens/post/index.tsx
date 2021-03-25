@@ -54,7 +54,11 @@ export default function PostScreen({ data: { post } }: TProps) {
             }
           `}
         >
-          <Share title={post.title} slug="slug" />
+          <Share
+            picture={post.featuredImage.node.mediaItemUrl}
+            title={post.title}
+            slug="slug"
+          />
           <Like />
           <CircleButton
             onClick={() => {

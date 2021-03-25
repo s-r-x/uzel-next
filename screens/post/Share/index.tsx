@@ -1,17 +1,10 @@
 import { ShareIcon } from "@/components/Icon";
 import * as S from "./styled";
 import { CircleButton } from "_c/Button";
-import { motion } from "framer-motion";
-import { ShareConfig } from "./config";
 import { useState } from "react";
 import { TShareProps } from "./typings";
 import { useShareProviders } from "./hooks";
 import ShareProviderButton from "./ShareProviderButton";
-
-const polarToCartesian = (angle: number, hyp: number) => ({
-  x: Math.cos(angle) * hyp,
-  y: Math.sin(angle) * hyp,
-});
 
 export default function PostShare(props: TShareProps) {
   const [opened, setOpened] = useState(false);
