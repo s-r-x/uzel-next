@@ -22,7 +22,13 @@ export default function NavItem(props: TProps) {
           layoutId="nav-active-indicator"
         />
       )}
-      <button onClick={() => props.onChange(props.itemKey)}>
+      <button
+        role="tab"
+        id={`app-menu-${props.itemKey}_tab`}
+        aria-controls={`app-menu-${props.itemKey}_panel`}
+        aria-selected={props.isActive}
+        onClick={() => props.onChange(props.itemKey)}
+      >
         {props.title}
       </button>
       {props.itemKey === "tour" && (

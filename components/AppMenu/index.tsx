@@ -7,27 +7,35 @@ import Content from "./Content";
 import ScrollLock from "../ScrollLock";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { containerMobileVariants, innerContainerTransition } from "./motion";
-import { usePrefetchRequiredData } from "./hooks";
-export default function AppMenu() {
-  const isOpen = useAppMenuStore((state) => state.isOpen);
-  usePrefetchRequiredData(isOpen);
+import { useKeyboardControls, usePrefetchRequiredData } from "./hooks";
+import { useRef } from "react";
+import { useFocusRestore } from "@/hooks/useFocusRestore";
+const AppMenu = () => {
+  const containerRef = useRef<HTMLElement>();
+  usePrefetchRequiredData();
+  useKeyboardControls();
   const isMobile = useIsMobile();
+  useFocusRestore({ refToFocus: containerRef });
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <S.Container
-          animate="animate"
-          exit="exit"
-          initial="initial"
-          transition={innerContainerTransition}
-          variants={isMobile ? containerMobileVariants : null}
-        >
-          <ScrollLock />
-          <Nav isMobile={isMobile} />
-          <Content isMobile={isMobile} />
-        </S.Container>
-      )}
-    </AnimatePresence>,
+    <S.Container
+      ref={containerRef}
+      role="dialog"
+      tabIndex={-1}
+      animate="animate"
+      exit="exit"
+      initial="initial"
+      transition={innerContainerTransition}
+      variants={isMobile ? containerMobileVariants : null}
+    >
+      <ScrollLock />
+      <Nav isMobile={isMobile} />
+      <Content isMobile={isMobile} />
+    </S.Container>,
     document.body
   );
+};
+
+export default function AppMenuContainer() {
+  const isOpen = useAppMenuStore((state) => state.isOpen);
+  return <AnimatePresence>{isOpen && <AppMenu />}</AnimatePresence>;
 }

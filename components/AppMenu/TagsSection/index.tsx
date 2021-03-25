@@ -39,7 +39,9 @@ export default function AppMenuTagsSection() {
           >
             <a>
               <span>{tag.name}</span>
-              <strong>{tag.count}</strong>
+              <strong aria-label={`${tag.count} записей с этой меткой`}>
+                {tag.count}
+              </strong>
             </a>
           </Link>
         </S.Tag>

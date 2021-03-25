@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { DevicesConfig } from "@/config/devices";
 import { AppShellConfig } from "@/config/app-shell";
 
-export const Container = styled.div`
+export const Container = styled.nav`
   width: 30vw;
   position: relative;
   display: flex;

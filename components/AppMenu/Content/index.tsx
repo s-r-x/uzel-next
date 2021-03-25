@@ -22,6 +22,10 @@ export default function AppMenuContent(props: TProps) {
       animate="animate"
       exit="exit"
       initial="initial"
+      role="tabpanel"
+      tabIndex={0}
+      aria-labelledby={`app-menu-${section}_tab`}
+      id={`app-menu-${section}_panel`}
     >
       {section ? (
         <>
