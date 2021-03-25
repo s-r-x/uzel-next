@@ -7,6 +7,7 @@ import { transition, variants } from "./motion";
 import { createPortal } from "react-dom";
 import SoundPlayer from "../SoundPlayer";
 import { DevicesConfig } from "@/config/devices";
+import { LinkBuilder } from "@/services/link-builder";
 
 export default function AppShellHeader() {
   const dir = useScrollDir();
@@ -16,7 +17,7 @@ export default function AppShellHeader() {
       transition={transition}
       variants={variants}
     >
-      <Link passHref href="/">
+      <Link passHref href={LinkBuilder.build("root")}>
         <a
           css={`
             display: flex;

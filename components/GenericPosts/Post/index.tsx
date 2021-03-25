@@ -7,6 +7,7 @@ import Thumb from "../Thumb";
 import { memo } from "react";
 import { TGenericPost } from "../typings";
 import TagsList from "@/components/TagsList";
+import { LinkBuilder } from "@/services/link-builder";
 
 type TProps = {
   data: TGenericPost;
@@ -15,9 +16,13 @@ export default memo(function Post({ data }: TProps) {
   const excerpt = usePostExcerpt(data.excerpt);
   const date = useFormattedDate(data.date);
   const image = data.featuredImage.node;
+  const link = LinkBuilder.build("post", {
+    slug: data.slug,
+  });
+
   return (
     <S.Container>
-      <Link passHref href={`/post/${data.slug}`}>
+      <Link passHref href={link}>
         <a>
           <Thumb
             postId={data.postId}
@@ -45,7 +50,7 @@ export default memo(function Post({ data }: TProps) {
       </S.Meta>
       <S.Excerpt>{excerpt}</S.Excerpt>
       <TagsList tags={data.tags.nodes} />
-      <Link href={`/post/${data.slug}`} passHref>
+      <Link href={link} passHref>
         <S.PostLink>Читать</S.PostLink>
       </Link>
     </S.Container>

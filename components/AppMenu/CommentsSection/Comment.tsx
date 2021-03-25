@@ -4,6 +4,7 @@ import * as S from "./styled";
 import Link from "next/link";
 import { useStripHtml } from "@/hooks/useStripHtml";
 import { commentTransition, commentVariants } from "./motion";
+import { LinkBuilder } from "@/services/link-builder";
 type TProps = {
   comment: GetLatestCommentsQuery["comments"]["nodes"][0];
 };
@@ -46,7 +47,11 @@ export default function Comment({ comment }: TProps) {
         `}
       >
         {comment.commentedOn.node.__typename === "Post" && (
-          <Link href={`/post/${comment.commentedOn.node.slug}`}>
+          <Link
+            href={LinkBuilder.build("post", {
+              slug: comment.commentedOn.node.slug,
+            })}
+          >
             {comment.commentedOn.node.title}
           </Link>
         )}

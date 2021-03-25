@@ -4,7 +4,6 @@ import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
 import Image from "_c/Image";
 import { useConvertContentToJsx } from "./hooks";
-import Head from "next/head";
 import Title from "./Title";
 import Share from "./Share";
 import Like from "./Like/loadable";
@@ -12,6 +11,7 @@ import Comments from "./CommentsSection";
 import { motion } from "framer-motion";
 import { CommentIcon } from "_c/Icon";
 import { CircleButton } from "@/components/Button";
+import Seo from "./Seo";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -21,9 +21,7 @@ export default function PostScreen({ data: { post } }: TProps) {
   const Content = useConvertContentToJsx(post.content);
   return (
     <>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
+      <Seo post={post} />
       <S.Container>
         <S.Header>
           <Title title={post.title} />

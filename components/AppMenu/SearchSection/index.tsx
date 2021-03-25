@@ -3,13 +3,18 @@ import { FormEventHandler, useState } from "react";
 import * as S from "./styled";
 import { SearchIcon } from "_c/Icon";
 import { Easings } from "@/config/easings";
+import { LinkBuilder } from "@/services/link-builder";
 export default function AppMenuSearchSection() {
   const router = useRouter();
   const [isFocused, setIsFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const onSubmit: FormEventHandler = (e) => {
     e.preventDefault();
-    router.push(`/search/${searchTerm}`);
+    router.push(
+      LinkBuilder.build("search", {
+        term: searchTerm,
+      })
+    );
   };
   return (
     <S.Container onSubmit={onSubmit}>

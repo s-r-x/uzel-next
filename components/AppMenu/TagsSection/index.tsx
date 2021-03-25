@@ -4,6 +4,7 @@ import * as S from "./styled";
 import Link from "next/link";
 import { tagsListTransition, tagTransition, tagVariants } from "./motion";
 import Spin from "@/components/Spin";
+import { LinkBuilder } from "@/services/link-builder";
 
 export default function AppMenuTagsSection() {
   const { isLoading, data } = useQuery("tags", () => Requests.getTags(), {
@@ -30,7 +31,12 @@ export default function AppMenuTagsSection() {
     >
       {data.tags.nodes.map((tag) => (
         <S.Tag transition={tagTransition} variants={tagVariants} key={tag.slug}>
-          <Link href={`/tag/${tag.slug}`} prefetch={false}>
+          <Link
+            href={LinkBuilder.build("tag", {
+              slug: tag.slug,
+            })}
+            prefetch={false}
+          >
             <a>
               <span>{tag.name}</span>
               <strong>{tag.count}</strong>
