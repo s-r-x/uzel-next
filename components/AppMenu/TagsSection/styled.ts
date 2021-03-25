@@ -6,6 +6,7 @@ export const TagsList = motion(styled.ul`
   display: flex;
   flex-wrap: wrap;
   max-width: 30vw;
+  align-items: flex-start;
   margin: auto;
   justify-content: center;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {

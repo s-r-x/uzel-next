@@ -7,6 +7,7 @@ export const Container = motion(styled.div`
   background: var(--bg-color);
   width: 70vw;
   display: flex;
+  align-items: flex-start;
   padding-top: ${AppShellConfig.headerHeight + 10}px;
   overflow-x: hidden;
   overflow-y: auto;
