@@ -7,8 +7,10 @@ import Content from "./Content";
 import ScrollLock from "../ScrollLock";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { containerMobileVariants, innerContainerTransition } from "./motion";
+import { usePrefetchRequiredData } from "./hooks";
 export default function AppMenu() {
   const isOpen = useAppMenuStore((state) => state.isOpen);
+  usePrefetchRequiredData(isOpen);
   const isMobile = useIsMobile();
   return createPortal(
     <AnimatePresence>
