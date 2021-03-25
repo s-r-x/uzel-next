@@ -1,6 +1,8 @@
 import { memo } from "react";
 import Post from "../Post";
 import { TGenericPostsQuery } from "../typings";
+import * as S from "../styled";
+
 type TPageProps = {
   page: TGenericPostsQuery;
 };
@@ -20,11 +22,11 @@ type TPostsListProps = {
 
 const PostsList = memo((props: TPostsListProps) => {
   return (
-    <>
+    <S.List>
       {props.pages.map((page, idx) => (
         <Page page={page} key={idx} />
       ))}
-    </>
+    </S.List>
   );
 });
 export default PostsList;

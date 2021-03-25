@@ -32,7 +32,12 @@ export default function Image(props: TProps) {
         src={props.src}
         layout="responsive"
       />
-      <S.Placeholder isLoaded={loaded} draggable={false} src={placeholder} />
+      <S.Placeholder
+        alt={props.altText}
+        isLoaded={loaded}
+        draggable={false}
+        src={placeholder}
+      />
     </S.Container>
   );
 }

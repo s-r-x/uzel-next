@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DevicesConfig } from "@/config/devices";
 import { Button } from "_c/Button";
 
-export const Container = styled.div`
+export const Container = styled.li`
   margin-bottom: 50px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     margin-bottom: 40px;
@@ -34,7 +34,8 @@ export const MetaItem = styled.div`
   align-items: center;
   margin-right: 14px;
   font-weight: 400;
-  > span {
+  > span,
+  time {
     margin-left: 5px;
   }
 `;

@@ -19,6 +19,7 @@ export default function AppShellHeader() {
     >
       <Link passHref href={LinkBuilder.build("root")}>
         <a
+          aria-label="Домашняя страница"
           css={`
             display: flex;
             align-items: center;

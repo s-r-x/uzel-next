@@ -6,7 +6,12 @@ type TProps = {
 export default function HeaderSoundPlayer(props: TProps) {
   const { togglePlay, isPlaying } = useAudioPlayer();
   return (
-    <S.Container role="button" onClick={togglePlay} className={props.className}>
+    <S.Container
+      title={isPlaying ? "Отключить" : "Включить пение птиц"}
+      role="button"
+      onClick={togglePlay}
+      className={props.className}
+    >
       <S.Pivot />
       <S.Pulse isActive={isPlaying} />
       <S.Pulse

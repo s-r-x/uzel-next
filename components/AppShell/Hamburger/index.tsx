@@ -33,7 +33,11 @@ export default function Hamburger(props: TProps) {
     shallow
   );
   return (
-    <S.Container onClick={toggle} className={props.className}>
+    <S.Container
+      title={isOpen ? "Открыть навигацию" : "Закрыть навигацию"}
+      onClick={toggle}
+      className={props.className}
+    >
       <AnimatePresence initial={false} exitBeforeEnter>
         {isOpen ? (
           <BrickGroupContainer key="ham-open">

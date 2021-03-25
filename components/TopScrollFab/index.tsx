@@ -18,7 +18,7 @@ export default function TopScrollFab() {
         opacity: progress,
       }}
     >
-      <CircleButton onClick={onClick}>
+      <CircleButton title="Наверх" onClick={onClick}>
         <AngleTopIcon size={24} />
       </CircleButton>
     </S.Container>

@@ -10,4 +10,8 @@ module.exports = withPWA({
     runtimeCaching,
     disable: process.env.NODE_ENV === "development",
   },
+  i18n: {
+    locales: ['ru'],
+    defaultLocale: 'ru'
+  }
 });
