@@ -16,6 +16,7 @@ export const SeoConfig = {
       isAbsolute: true,
     }) + "icons/icon-512x512.png",
 };
+
 export const DefaultSeoConfig: NextSeoProps = {
   title,
   description,
@@ -36,6 +37,7 @@ export const DefaultSeoConfig: NextSeoProps = {
       content:
         "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover, minimal-ui",
     },
+
     {
       httpEquiv: "x-ua-compatible",
       content: "IE=edge; chrome=1",
@@ -54,6 +56,28 @@ export const DefaultSeoConfig: NextSeoProps = {
     },
   ],
   additionalLinkTags: [
+    {
+      rel: "mask-icon",
+      href: "/safari-pinned-tab.svg",
+      color: "#5bbad5",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      href: "/favicon-16x16.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      href: "/favicon-32x32.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      href: "/apple-touch-icon.png",
+    },
     {
       rel: "manifest",
       href: "/manifest.json",
