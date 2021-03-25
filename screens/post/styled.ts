@@ -34,6 +34,3 @@ export const Header = styled.header`
     margin-top: 15px;
   }
 `;
-
-export const Date = styled.time`
-`;

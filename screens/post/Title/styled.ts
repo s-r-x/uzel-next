@@ -10,7 +10,7 @@ export const Container = motion(styled.h1`
   perspective: 2000;
   margin-bottom: 5px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
-    font-size: 32px;
+    font-size: 27px;
   }
 `);
 export const TitleWord = styled.span`

@@ -28,7 +28,7 @@ export default function PostScreen({ data: { post } }: TProps) {
         <S.Header>
           <S.Category>{post.categories?.nodes?.[0]?.name}</S.Category>
           <Title title={post.title} />
-          <S.Date dateTime={post.date}>{date}</S.Date>
+          <time dateTime={post.date}>{date}</time>
         </S.Header>
         <div
           css={`
