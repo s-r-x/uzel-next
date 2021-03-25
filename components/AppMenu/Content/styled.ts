@@ -4,7 +4,7 @@ import { AppShellConfig } from "@/config/app-shell";
 import { DevicesConfig } from "@/config/devices";
 
 export const Container = motion(styled.div`
-  background: white;
+  background: var(--bg-color);
   width: 70vw;
   display: flex;
   padding-top: ${AppShellConfig.headerHeight + 10}px;

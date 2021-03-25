@@ -5,5 +5,14 @@
   --font-primary: Gilroy, sans-serif;
   --font-secondary: "Playfair Display";
   --content-color: black;
+  --bg-color: white;
+  --input-bg-color: white;
   --layout-width: 768px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --input-bg-color: rgb(56, 56, 56);
+    --content-color: white;
+    --bg-color: rgb(18, 18, 18);
+  }
 }

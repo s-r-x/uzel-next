@@ -14,6 +14,6 @@ export const Container = motion(styled.div`
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     flex-direction: column;
     justify-content: flex-start;
-    background: white;
+    background: var(--bg-color);
   }
 `);

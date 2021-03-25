@@ -20,9 +20,11 @@ export const Tag = motion(styled.li`
   background-color: var(--primary-color);
   padding: 5px;
   border-radius: 3px;
-  color: white;
   a {
     display: block;
+  }
+  * {
+    color: white;
   }
   span {
     padding-right: 5px;

@@ -18,7 +18,9 @@ export const Comment = motion(styled.li`
   background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
-  color: white;
   padding: 15px;
   border-radius: 3px;
+  * {
+    color: white;
+  }
 `);

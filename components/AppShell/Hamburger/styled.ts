@@ -6,7 +6,7 @@ const Brick = styled.span`
   width: 100%;
   height: ${HamburgerConfig.brickHeight}px;
   position: absolute;
-  background-color: black;
+  background-color: var(--content-color);
   left: 0;
 `;
 export const Container = motion(styled.button`

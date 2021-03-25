@@ -45,20 +45,20 @@ export const NavItem = motion(styled.li`
   position: relative;
   z-index: 2;
   font-size: 32px;
-  color: white;
+  button {
+    color: white;
+    margin-right: 5px;
+  }
   :last-child {
     margin-bottom: 0;
   }
-  button {
-    margin-right: 5px;
-  }
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     font-size: 16px;
-    color: inherit;
     margin-bottom: 0;
     padding-left: 0;
     margin-right: 13px;
     button {
+      color: inherit;
       margin-right: 2px;
     }
   }

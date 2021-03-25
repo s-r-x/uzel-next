@@ -1,8 +1,15 @@
 html,
 body {
   font-family: var(--font-primary);
+  background-color: var(--bg-color);
   padding: 0;
   margin: 0;
+}
+body {
+  padding-bottom: 15px;
+}
+body *:not(path, svg) {
+  color: var(--content-color);
 }
 
 a {
@@ -19,6 +26,9 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
   border-radius: 42px;
+}
+input, textarea {
+  background-color: var(--input-bg-color);
 }
 
 button {

@@ -13,10 +13,13 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--primary-color);
       }
       &-date {
-        color: black;
+        color: var(--content-color);
       }
       &-icon {
         box-shadow: none;
+      }
+      a {
+        color: white;
       }
     }
   }

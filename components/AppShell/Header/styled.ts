@@ -10,7 +10,7 @@ export const Container = motion(styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  background-color: white;
+  background-color: inherit;
   padding: 10px 30px;
   z-index: 10;
   height: ${AppShellConfig.headerHeight}px;
