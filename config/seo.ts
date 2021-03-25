@@ -30,6 +30,13 @@ export const DefaultSeoConfig: NextSeoProps = {
     url: SeoConfig.siteUrl,
     description,
     locale,
+    images: [
+      {
+        url: SeoConfig.siteLogo,
+        width: 512,
+        height: 512,
+      },
+    ],
   },
   additionalMetaTags: [
     {

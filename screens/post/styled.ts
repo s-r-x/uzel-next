@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
   figcaption {
     margin-top: 5px;
-    opacity: .75;
+    opacity: 0.75;
   }
 `;
 export const Category = styled.div`
