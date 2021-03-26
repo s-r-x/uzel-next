@@ -13,6 +13,7 @@ type PostsLoader = ({ pageParam }: any) => Promise<TGenericPostsQuery>;
 export type TGenericPostsProps = {
   initialData?: TGenericPostsQuery;
   queryKey: QueryKey;
+  isEnabled?: boolean;
   loader: PostsLoader;
 };
 export type TGenericPost = TGenericPostsQuery["posts"]["nodes"][0];

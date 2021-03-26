@@ -26,6 +26,7 @@ export default function SearchPostsByTermScreen(props: TProps) {
     <>
       <NextSeo title={`Поиск по запросу ${props.term}`}></NextSeo>
       <GenericPosts
+        isEnabled={false}
         initialData={props.data}
         queryKey={queryKey}
         loader={loader}

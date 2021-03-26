@@ -26,6 +26,7 @@ export default function PostsByTagScreen(props: TProps) {
     <>
       <NextSeo title={`Поиск по метке ${props.tag}`}></NextSeo>
       <GenericPosts
+        isEnabled={false}
         initialData={props.data}
         queryKey={queryKey}
         loader={loader}

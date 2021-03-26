@@ -13,7 +13,7 @@ export default function GenericPosts(props: TGenericPostsProps) {
     hasNextPage,
   } = useInfiniteQuery(props.queryKey, props.loader, {
     getNextPageParam: (lastPage) => lastPage?.posts?.pageInfo?.endCursor,
-    enabled: true,
+    enabled: props.isEnabled,
     initialData: { pages: [props.initialData], pageParams: undefined },
     refetchOnWindowFocus: false,
   });
