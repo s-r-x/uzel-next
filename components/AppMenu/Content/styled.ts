@@ -12,6 +12,7 @@ export const Container = motion(styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   height: 100%;
+  outline: none;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     width: auto;
     padding-top: 0;

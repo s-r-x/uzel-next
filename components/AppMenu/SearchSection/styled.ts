@@ -23,6 +23,7 @@ export const Input = styled.input`
   font-weight: 900;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     padding: 5px;
+    padding-left: 0;
     font-size: 24px;
   }
 `;
@@ -36,8 +37,8 @@ export const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--content-color);
-  height: 4px;
+  background-color: transparent;
+  height: 5px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     height: 2px;
   }

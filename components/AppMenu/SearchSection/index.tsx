@@ -26,19 +26,20 @@ export default function AppMenuSearchSection() {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         placeholder="Введите запрос"
+        aria-label="Введите запрос"
       />
-      <S.BottomLine />
       <S.BottomLineFocused
         initial={false}
         style={{
           originX: 0,
+          originY: 1,
         }}
         transition={{
-          ease: Easings.easeOutQuint,
-          duration: 0.6,
+          ease: Easings.one,
+          duration: 1,
         }}
         animate={{
-          scaleX: isFocused ? 1 : 0,
+          scaleY: isFocused ? 1 : 0,
         }}
       />
       <S.SearchButton aria-label="Искать" type="submit">
