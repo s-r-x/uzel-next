@@ -1,3 +1,4 @@
+import PostsListPlaceholder from "@/components/Placeholder/PostsList";
 import { Requests } from "@/network/requests";
 import Screen from "@/screens/posts-by-tag";
 import { GetPostsByTagQuery } from "@/typings/wp";
@@ -11,7 +12,7 @@ type TProps = {
 export default function TagPage(props: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
-    return <div>loading...</div>;
+    return <PostsListPlaceholder uniqueKey="tags-placeholder" />;
   }
   return <Screen tag={props.tag} data={props.data} />;
 }

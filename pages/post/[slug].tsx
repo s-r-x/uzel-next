@@ -12,7 +12,7 @@ type TProps = {
 export default function PostPage({ data, slug }: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
-    return <SinglePostPlaceholder width="100%" height="auto" />;
+    return <SinglePostPlaceholder uniqueKey="single-post-placeholder" />;
   }
   return <PostScreen slug={slug} data={data} />;
 }
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<TProps> = async (props) => {
       data,
       slug,
     },
-    revalidate: 5,
+    revalidate: 60,
   };
 };
 export async function getStaticPaths() {

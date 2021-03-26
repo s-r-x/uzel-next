@@ -4,9 +4,9 @@ import ContentLoader from "react-content-loader";
 const SinglePostPlaceholder = (props: any) => (
   <ContentLoader
     speed={2}
-    width={400}
-    height={460}
+    width="100%"
     viewBox="0 0 400 460"
+    title="Идет загрузка..."
     backgroundColor="var(--content-loader-secondary-color)"
     foregroundColor="var(--content-loader-primary-color)"
     {...props}
