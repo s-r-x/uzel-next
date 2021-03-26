@@ -5,6 +5,8 @@
   --sk-color: var(--primary-color);
   --font-primary: Gilroy, sans-serif;
   --font-secondary: "Playfair Display";
+  --content-loader-primary-color: #ecebeb;
+  --content-loader-secondary-color: #f3f3f3;
   --content-color: black;
   --bg-color: white;
   --input-bg-color: white;

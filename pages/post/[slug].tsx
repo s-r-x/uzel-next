@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import PostScreen from "_s/post";
 import { Requests } from "@/network/requests";
 import { GetPostBySlugQuery } from "@/typings/wp";
+import SinglePostPlaceholder from "@/components/Placeholder/SinglePost";
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -11,7 +12,7 @@ type TProps = {
 export default function PostPage({ data, slug }: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
-    return <div>loading...</div>;
+    return <SinglePostPlaceholder width="100%" height="auto" />;
   }
   return <PostScreen slug={slug} data={data} />;
 }
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps<TProps> = async (props) => {
       data,
       slug,
     },
-    revalidate: 30,
+    revalidate: 5,
   };
 };
 export async function getStaticPaths() {
