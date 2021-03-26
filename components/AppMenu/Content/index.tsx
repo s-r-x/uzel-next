@@ -7,6 +7,7 @@ import Observations from "../ObservationsSection/loadable";
 import Comments from "../CommentsSection";
 import Search from "../SearchSection";
 import { usePreloadModules } from "@/hooks/usePreloadModules";
+import Tours from "../ToursSection";
 
 type TProps = {
   isMobile: boolean;
@@ -33,6 +34,7 @@ export default function AppMenuContent(props: TProps) {
           {section === "tags" && <Tags />}
           {section === "observations" && <Observations />}
           {section === "comments" && <Comments />}
+          {section === "tours" && <Tours />}
         </>
       ) : (
         <Logo

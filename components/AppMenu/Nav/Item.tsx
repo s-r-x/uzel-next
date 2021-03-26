@@ -31,7 +31,7 @@ export default function NavItem(props: TProps) {
       >
         {props.title}
       </button>
-      {props.itemKey === "tour" && (
+      {props.itemKey === "tours" && (
         <HeartIcon size={props.isMobile ? 18 : 24} color="var(--heart-color)" />
       )}
     </S.NavItem>
