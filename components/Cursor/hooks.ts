@@ -30,7 +30,7 @@ export const useCursorState = () => {
     };
     const onOver = (e: MouseEvent) => {
       const tar = e.target as HTMLElement;
-      const link = tar.closest("a");
+      const link = tar.closest("a, button, input, textarea");
       setIsActive(Boolean(link));
     };
     window.addEventListener("mousemove", onMove);
