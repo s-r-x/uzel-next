@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import createStore from "zustand";
 
 type TRespondTarget = {
@@ -15,3 +16,7 @@ export const useCommentFormStore = createStore<TState>((set) => ({
   changeRespondTarget: (respondTarget) => set({ respondTarget }),
   resetRespondTarget: () => set({ respondTarget: null }),
 }));
+export const useResetCommentFormStore = (postId: number) => {
+  const reset = useCommentFormStore((state) => state.resetRespondTarget);
+  useEffect(() => reset, [postId]);
+};

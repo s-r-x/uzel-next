@@ -2,7 +2,7 @@ import { QueryKeysConfig } from "@/config/query-keys";
 import { Requests } from "@/network/requests";
 import { Storage } from "@/services/storage";
 import { GetPostBySlugQuery, GetPostCommentsQuery } from "@/typings/wp";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import set from "lodash/set";
 
@@ -36,6 +36,9 @@ export const useLike = (props: TProps) => {
   });
   const defaultLiked = useDefaultIsLiked(props);
   const [hasLike, setHasLike] = useState(defaultLiked);
+  useEffect(() => {
+    setHasLike(defaultLiked);
+  }, [defaultLiked, props.postId]);
   const addLike = useCallback(async () => {
     setHasLike(true);
     Storage.set(STORAGE_KEY, [

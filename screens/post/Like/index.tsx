@@ -3,12 +3,13 @@ import Particles from "./Particles";
 import { LikeConfig } from "./config";
 import { filledHeartVariants, outlineHeartVariants } from "./motion";
 import { useLike } from "@/hooks/useLike";
+import { memo } from "react";
 
 type TProps = {
   postId: number;
   postSlug: string;
 };
-export default function PostLike(props: TProps) {
+const PostLike = (props: TProps) => {
   const { hasLike, addLike } = useLike(props);
   return (
     <button
@@ -43,4 +44,5 @@ export default function PostLike(props: TProps) {
       <AnimatePresence>{hasLike && <Particles />}</AnimatePresence>
     </button>
   );
-}
+};
+export default memo(PostLike);
