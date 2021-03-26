@@ -16,7 +16,7 @@ const Particle = ({ idx }: TParticleProps) => {
         fill="var(--heart-color)"
         d={LikeConfig.heartPath}
         variants={particleVariants}
-        style={{ x, y: -15 }}
+        style={{ x }}
       />
     </g>
   );
@@ -30,7 +30,7 @@ export default function LikeParticles() {
       exit="exit"
       animate="animate"
       transition={{
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       }}
       style={{
         pointerEvents: "none",

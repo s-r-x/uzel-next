@@ -1,9 +1,13 @@
+import { Easings } from "@/config/easings";
 import { Variants } from "framer-motion";
-import { LikeConfig } from "./config";
+import random from "lodash/random";
 
 export const outlineHeartVariants: Variants = {
+  empty: {
+    scale: 0.85,
+  },
   pressed: {
-    scale: 0.8,
+    scale: 0.7,
   },
 };
 export const filledHeartVariants: Variants = {
@@ -11,7 +15,7 @@ export const filledHeartVariants: Variants = {
     scale: 0,
   },
   liked: {
-    scale: .96,
+    scale: 0.95,
   },
   pressed: {
     scale: 0.15,
@@ -19,16 +23,19 @@ export const filledHeartVariants: Variants = {
 };
 
 export const particleVariants: Variants = {
-  initial: {
+  initial: () => ({
     opacity: 0,
-    scale: 0.15,
-  },
-  animate: {
-    transition: { duration: 1, repeat: Infinity },
+    scale: 0.125,
+    rotate: random(-45, 45),
+    y: random(-20, -10),
+  }),
+  animate: () => ({
+    transition: { duration: 0.75 },
     opacity: [null, 1, 0],
     scale: 0.2,
-    y: LikeConfig.particleMaxY,
-  },
+    rotate: random(-45, 45),
+    y: random(-60, -50),
+  }),
   exit: {
     opacity: 0,
     transition: { duration: 0.5 },
