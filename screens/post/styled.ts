@@ -1,7 +1,17 @@
 import { DevicesConfig } from "@/config/devices";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div``;
+export const Category = styled.div`
+  color: var(--primary-color);
+  &::before {
+    content: "- ";
+  }
+  &::after {
+    content: " -";
+  }
+`;
+export const Article = styled.article`
   img {
     max-width: 100%;
     height: auto;
@@ -19,15 +29,6 @@ export const Container = styled.div`
   figcaption {
     margin-top: 5px;
     opacity: 0.75;
-  }
-`;
-export const Category = styled.div`
-  color: var(--primary-color);
-  &::before {
-    content: "- ";
-  }
-  &::after {
-    content: " -";
   }
 `;
 export const Header = styled.header`

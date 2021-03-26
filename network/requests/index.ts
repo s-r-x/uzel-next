@@ -10,6 +10,8 @@ import {
   GetPostsQueryVariables,
   GetTagsQuery,
   GetTagsQueryVariables,
+  GetPostCommentsQuery,
+  GetPostCommentsQueryVariables,
   GetLatestCommentsQuery,
   SearchPostsByTermQueryVariables,
   SearchPostsByTermQuery,
@@ -21,6 +23,7 @@ import { httpClient } from "../http-client";
 import { CREATE_COMMENT_M } from "../mutations/create-comment";
 import { GET_LATEST_COMMENTS_Q } from "../queries/get-latest-comments";
 import { GET_POST_BY_SLUG_Q } from "../queries/get-post-by-slug";
+import { GET_POST_COMMENTS_Q } from "../queries/get-post-comments";
 import { GET_POSTS_Q } from "../queries/get-posts";
 import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
 import { GET_TAGS_Q } from "../queries/get-tags";
@@ -84,6 +87,11 @@ export const Requests = {
       thumb: r.photos?.[0]?.url,
       id: r.id,
     }));
+  },
+  async getPostComments(
+    data: GetPostCommentsQueryVariables
+  ): Promise<GetPostCommentsQuery> {
+    return gqlClient.request(GET_POST_COMMENTS_Q, data);
   },
   async getLatestComments(): Promise<GetLatestCommentsQuery> {
     return gqlClient.request(GET_LATEST_COMMENTS_Q);

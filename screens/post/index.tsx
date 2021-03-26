@@ -52,7 +52,7 @@ export default function PostScreen({ data: { post } }: TProps) {
             altText={post.featuredImage.node.altText}
           />
         </div>
-        {Content}
+        <S.Article>{Content}</S.Article>
         <TagsList tags={post.tags.nodes} />
         <S.ActionsContainer>
           <Share

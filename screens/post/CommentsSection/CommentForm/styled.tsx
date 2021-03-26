@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.form`
+  margin-top: 15px;
   input,
   label {
     display: block;
@@ -20,4 +21,21 @@ export const Container = styled.form`
 `;
 export const FieldContainer = styled.div`
   margin-bottom: 10px;
+`;
+export const RespondTarget = styled.div`
+  img {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    min-width: var(--avatar-size);
+    min-height: var(--avatar-size);
+    border-radius: 3px;
+  }
+  strong {
+    font-weight: 900;
+  }
+  button {
+    color: var(--negative-color);
+    font-weight: 900;
+    margin-left: 10px;
+  }
 `;

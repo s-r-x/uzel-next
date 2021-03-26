@@ -8114,6 +8114,7 @@ export type CreateCommentMutationVariables = Exact<{
   email: Scalars['String'];
   comment: Scalars['String'];
   postId: Scalars['Int'];
+  parent?: Maybe<Scalars['ID']>;
 }>;
 
 
@@ -8188,6 +8189,36 @@ export type GetPostBySlugQuery = (
         )> }
       )> }
     )> }
+  )> }
+);
+
+export type GetPostCommentsQueryVariables = Exact<{
+  postId: Scalars['ID'];
+}>;
+
+
+export type GetPostCommentsQuery = (
+  { __typename?: 'RootQuery' }
+  & { comments?: Maybe<(
+    { __typename?: 'RootQueryToCommentConnection' }
+    & { nodes?: Maybe<Array<Maybe<(
+      { __typename?: 'Comment' }
+      & Pick<Comment, 'content' | 'parentDatabaseId' | 'databaseId' | 'date'>
+      & { author?: Maybe<(
+        { __typename?: 'CommentToCommenterConnectionEdge' }
+        & { node?: Maybe<(
+          { __typename?: 'User' }
+          & Pick<User, 'id' | 'name'>
+          & { avatar?: Maybe<(
+            { __typename?: 'Avatar' }
+            & Pick<Avatar, 'url' | 'size'>
+          )> }
+        ) | (
+          { __typename?: 'CommentAuthor' }
+          & Pick<CommentAuthor, 'name'>
+        )> }
+      )> }
+    )>>> }
   )> }
 );
 

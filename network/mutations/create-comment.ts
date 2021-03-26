@@ -6,6 +6,7 @@ export const CREATE_COMMENT_M = gql`
     $email: String!
     $comment: String!
     $postId: Int!
+    $parent: ID
   ) {
     createComment(
       input: {
@@ -13,6 +14,7 @@ export const CREATE_COMMENT_M = gql`
         authorEmail: $email
         commentOn: $postId
         content: $comment
+        parent: $parent
       }
     ) {
       clientMutationId

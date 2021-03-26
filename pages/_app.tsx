@@ -5,7 +5,6 @@ import { Hydrate } from "react-query/hydration";
 import { AppProps } from "next/app";
 import NextNprogress from "nextjs-progressbar";
 import "@/styles/index.css";
-import { AnimateSharedLayout } from "framer-motion";
 import DefaultSeo from "@/components/DefaultSeo";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,13 +14,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <DefaultSeo/>
+      <DefaultSeo />
       <Hydrate state={pageProps.dehydratedState}>
         <NextNprogress color="var(--primary-color)" height={4} />
         <AppShell>
-          <AnimateSharedLayout>
-            <Component {...pageProps} />
-          </AnimateSharedLayout>
+          <Component {...pageProps} />
         </AppShell>
       </Hydrate>
     </QueryClientProvider>

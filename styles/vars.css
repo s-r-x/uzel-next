@@ -1,5 +1,6 @@
 :root {
   --primary-color: #5ccaae;
+  --negative-color: #ff1744;
   --heart-color: #ff1493;
   --sk-color: var(--primary-color);
   --font-primary: Gilroy, sans-serif;
