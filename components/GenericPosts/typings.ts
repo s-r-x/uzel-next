@@ -3,6 +3,7 @@ import {
   GetPostsQuery,
   SearchPostsByTermQuery,
 } from "@/typings/wp";
+import { QueryKey } from "react-query";
 
 export type TGenericPostsQuery =
   | GetPostsQuery
@@ -11,7 +12,7 @@ export type TGenericPostsQuery =
 type PostsLoader = ({ pageParam }: any) => Promise<TGenericPostsQuery>;
 export type TGenericPostsProps = {
   initialData?: TGenericPostsQuery;
-  uniqueKey: string;
+  queryKey: QueryKey;
   loader: PostsLoader;
 };
 export type TGenericPost = TGenericPostsQuery["posts"]["nodes"][0];

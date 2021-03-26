@@ -17,7 +17,7 @@ export default function HomeScreen(props: TProps) {
       <GenericPosts
         initialData={props.data}
         loader={loader}
-        uniqueKey={QueryKeysConfig.rootPosts}
+        queryKey={QueryKeysConfig.rootPosts}
       />
     </>
   );

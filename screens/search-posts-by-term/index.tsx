@@ -1,7 +1,7 @@
 import GenericPosts from "@/components/GenericPosts";
 import { SearchPostsByTermQuery } from "@/typings/wp";
 import { Requests } from "@/network/requests";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { NextSeo } from "next-seo";
 import { QueryKeysConfig } from "@/config/query-keys";
 
@@ -10,7 +10,9 @@ type TProps = {
   term: string;
 };
 export default function SearchPostsByTermScreen(props: TProps) {
-  const key = `${QueryKeysConfig.searchPostsByTerm}-${props.term}`;
+  const queryKey = useMemo(() => {
+    return [QueryKeysConfig.searchPostsByTerm, props.term];
+  }, [props.term]);
   const loader = useCallback(
     ({ pageParam }: any) => {
       return Requests.SearchPostsByTerm({
@@ -23,7 +25,11 @@ export default function SearchPostsByTermScreen(props: TProps) {
   return (
     <>
       <NextSeo title={`Поиск по запросу ${props.term}`}></NextSeo>
-      <GenericPosts initialData={props.data} uniqueKey={key} loader={loader} />
+      <GenericPosts
+        initialData={props.data}
+        queryKey={queryKey}
+        loader={loader}
+      />
     </>
   );
 }
