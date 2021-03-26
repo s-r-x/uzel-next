@@ -1,5 +1,6 @@
 import { INaturalistConfig } from "@/config/i-naturalist";
 import { PaginateConfig } from "@/config/paginate";
+import { WpConfig } from "@/config/wp";
 import { TGetLastObservationsRes } from "@/typings/i-nat";
 import {
   GetPostBySlugQuery,
@@ -98,6 +99,11 @@ export const Requests = {
   },
 
   // mutations
+  async addLike({ postId }: { postId: number }) {
+    await httpClient(`${WpConfig.customRestUrl}/likes/${postId}`, {
+      method: "POST",
+    });
+  },
   async createComment(
     data: CreateCommentMutationVariables
   ): Promise<CreateCommentPayload> {
