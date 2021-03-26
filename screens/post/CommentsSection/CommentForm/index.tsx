@@ -37,6 +37,10 @@ export default function CommentForm(props: TProps) {
           emailRef.current.value = "";
           msgRef.current.value = "";
           resetRespondTarget();
+          alert("Спасибо за комментарий!");
+        },
+        onError: () => {
+          alert("Ошибка при отправлении комментария");
         },
       }
     );
@@ -62,8 +66,6 @@ export default function CommentForm(props: TProps) {
         <label htmlFor="comment-form_email">Email</label>
         <input ref={emailRef} id="comment-form_email" type="email" required />
       </S.FieldContainer>
-      {mutation.isError && <div>Ошибка</div>}
-      {mutation.isSuccess && <div>Спасибо за комментарий</div>}
       <Button disabled={mutation.isLoading} type="submit">
         Отправить
       </Button>
