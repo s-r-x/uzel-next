@@ -3,13 +3,14 @@ import { GetPostsByTagQuery } from "@/typings/wp";
 import { Requests } from "@/network/requests";
 import { useCallback } from "react";
 import { NextSeo } from "next-seo";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 type TProps = {
   data: GetPostsByTagQuery;
   tag: string;
 };
 export default function PostsByTagScreen(props: TProps) {
-  const key = `posts-by-tag-${props.tag}`;
+  const key = `${QueryKeysConfig.postsByTag}-${props.tag}`;
   const loader = useCallback(
     ({ pageParam }: any) => {
       return Requests.getPostsByTag({

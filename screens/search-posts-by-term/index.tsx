@@ -3,13 +3,14 @@ import { SearchPostsByTermQuery } from "@/typings/wp";
 import { Requests } from "@/network/requests";
 import { useCallback } from "react";
 import { NextSeo } from "next-seo";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 type TProps = {
   data: SearchPostsByTermQuery;
   term: string;
 };
 export default function SearchPostsByTermScreen(props: TProps) {
-  const key = `search-posts-by-term-${props.term}`;
+  const key = `${QueryKeysConfig.searchPostsByTerm}-${props.term}`;
   const loader = useCallback(
     ({ pageParam }: any) => {
       return Requests.SearchPostsByTerm({

@@ -3,6 +3,7 @@ import { useQueryClient } from "react-query";
 import { Requests } from "@/network/requests";
 import { useAppMenuStore } from "@/stores/app-menu";
 import shallow from "zustand/shallow";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 const FETCH_DELAY = 1000;
 export const usePrefetchRequiredData = () => {
@@ -10,16 +11,18 @@ export const usePrefetchRequiredData = () => {
   const timeoutRef = useRef<NodeJS.Timeout>();
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
-      if (!client.getQueryData("tags")) {
-        client.prefetchQuery("tags", () => Requests.getTags());
+      if (!client.getQueryData(QueryKeysConfig.postTags)) {
+        client.prefetchQuery(QueryKeysConfig.postTags, () =>
+          Requests.getTags()
+        );
       }
-      if (!client.getQueryData("observations")) {
-        client.prefetchInfiniteQuery("observations", () =>
+      if (!client.getQueryData(QueryKeysConfig.observations)) {
+        client.prefetchInfiniteQuery(QueryKeysConfig.observations, () =>
           Requests.getLatestObservations()
         );
       }
-      if (!client.getQueryData("latest-comments")) {
-        client.prefetchQuery("latest-comments", () =>
+      if (!client.getQueryData(QueryKeysConfig.latestComments)) {
+        client.prefetchQuery(QueryKeysConfig.latestComments, () =>
           Requests.getLatestComments()
         );
       }

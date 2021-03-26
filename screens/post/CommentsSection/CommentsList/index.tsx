@@ -4,13 +4,14 @@ import { useQuery } from "react-query";
 import { useCommentsCount, useHierarchicalComments } from "./hooks";
 import * as S from "./styled";
 import Comment from "./Comment";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 type TProps = {
   postId: number;
 };
 export default function CommentsList(props: TProps) {
   const { data, isLoading } = useQuery(
-    ["post-comments", props.postId],
+    [QueryKeysConfig.postComments, props.postId],
     () =>
       Requests.getPostComments({
         postId: String(props.postId),

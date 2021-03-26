@@ -8,25 +8,31 @@ import Title from "./Title";
 import Share from "./Share";
 import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
-import { motion } from "framer-motion";
 import { CommentIcon, HeartIcon } from "_c/Icon";
 import { CircleButton } from "@/components/Button";
 import Seo from "./Seo";
 import { usePostExcerpt } from "@/hooks/usePostExcerpt";
+import { useQuery } from "react-query";
+import { QueryKeysConfig } from "@/config/query-keys";
+import { Requests } from "@/network/requests";
+import Spin from "@/components/Spin";
+import { useExtractPostCategory } from "@/hooks/useExtractPostCategory";
 
 type TProps = {
   data: GetPostBySlugQuery;
+  slug: string;
 };
-export default function PostScreen({ data: { post } }: TProps) {
+const PostScreen = ({ data: { post } }: TProps) => {
   const date = useFormattedDate(post.date);
   const Content = useConvertContentToJsx(post.content);
+  const category = useExtractPostCategory(post);
   const excerpt = usePostExcerpt(post.excerpt);
   return (
     <>
       <Seo excerpt={excerpt} post={post} />
       <S.Container>
         <S.Header>
-          <S.Category>{post.categories?.nodes?.[0]?.name}</S.Category>
+          <S.Category>{category?.name}</S.Category>
           <Title title={post.title} />
           <time dateTime={post.date}>{date}</time>
           <S.CountersContainer>
@@ -59,9 +65,9 @@ export default function PostScreen({ data: { post } }: TProps) {
             excerpt={excerpt}
             picture={post.featuredImage.node.mediaItemUrl}
             title={post.title}
-            slug="slug"
+            slug={post.slug}
           />
-          <Like />
+          <Like postSlug={post.slug} postId={post.postId} />
           <CircleButton
             onClick={() => {
               const $el = document.querySelector(
@@ -81,4 +87,22 @@ export default function PostScreen({ data: { post } }: TProps) {
       </S.Container>
     </>
   );
+};
+
+export default function PostScreenLoadingContainer(props: TProps) {
+  const { data, isLoading } = useQuery(
+    [QueryKeysConfig.postBySlug, props.slug],
+    () =>
+      Requests.getPostBySlug({
+        slug: props.slug,
+      }),
+    {
+      initialData: props.data,
+      refetchOnWindowFocus: false,
+    }
+  );
+  if (isLoading) {
+    return <Spin />;
+  }
+  return <PostScreen data={data} slug={props.slug} />;
 }

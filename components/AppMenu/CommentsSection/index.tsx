@@ -4,10 +4,11 @@ import * as S from "./styled";
 import Comment from "./Comment";
 import Spin from "@/components/Spin";
 import { commentsListTransition } from "./motion";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 export default function AppMenuCommentsSection() {
   const { isLoading, data } = useQuery(
-    "latest-comments",
+    QueryKeysConfig.latestComments,
     () => Requests.getLatestComments(),
     {
       refetchOnWindowFocus: false,

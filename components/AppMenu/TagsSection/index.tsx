@@ -5,12 +5,17 @@ import Link from "next/link";
 import { tagsListTransition, tagTransition, tagVariants } from "./motion";
 import Spin from "@/components/Spin";
 import { LinkBuilder } from "@/services/link-builder";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 export default function AppMenuTagsSection() {
-  const { isLoading, data } = useQuery("tags", () => Requests.getTags(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  const { isLoading, data } = useQuery(
+    QueryKeysConfig.postTags,
+    () => Requests.getTags(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
   if (isLoading) {
     return (
       <Spin

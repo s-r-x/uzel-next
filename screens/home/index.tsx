@@ -1,6 +1,7 @@
 import GenericPosts from "@/components/GenericPosts";
 import { GetPostsQuery } from "@/typings/wp";
 import { Requests } from "@/network/requests";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 const loader = ({ pageParam }: any) =>
   Requests.getPosts({
@@ -16,7 +17,7 @@ export default function HomeScreen(props: TProps) {
       <GenericPosts
         initialData={props.data}
         loader={loader}
-        uniqueKey="posts"
+        uniqueKey={QueryKeysConfig.rootPosts}
       />
     </>
   );

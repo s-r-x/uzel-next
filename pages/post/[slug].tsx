@@ -6,22 +6,25 @@ import { GetPostBySlugQuery } from "@/typings/wp";
 
 type TProps = {
   data: GetPostBySlugQuery;
+  slug: string;
 };
-export default function PostPage({ data }: TProps) {
+export default function PostPage({ data, slug }: TProps) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <div>loading...</div>;
   }
-  return <PostScreen data={data} />;
+  return <PostScreen slug={slug} data={data} />;
 }
 
 export const getStaticProps: GetStaticProps<TProps> = async (props) => {
+  const slug = props.params.slug as string;
   const data = await Requests.getPostBySlug({
-    slug: props.params.slug as string,
+    slug,
   });
   return {
     props: {
       data,
+      slug,
     },
     revalidate: 30,
   };

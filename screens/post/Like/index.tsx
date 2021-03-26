@@ -1,24 +1,32 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import Particles from "./Particles";
 import { LikeConfig } from "./config";
 import { filledHeartVariants, outlineHeartVariants } from "./motion";
+import { useLike } from "@/hooks/useLike";
 
-export default function PostLike() {
-  const [liked, setLiked] = useState(false);
+type TProps = {
+  postId: number;
+  postSlug: string;
+};
+export default function PostLike(props: TProps) {
+  const { hasLike, addLike } = useLike(props);
   return (
     <button
-      title="Поставить лайк"
+      title={"Поставить лайк"}
       css={`
         position: relative;
       `}
-      onClick={() => setLiked((liked) => !liked)}
+      style={{
+        pointerEvents: hasLike ? "none" : "auto",
+      }}
+      disabled={hasLike}
+      onClick={addLike}
     >
       <motion.svg
         viewBox="0 0 100 89"
         width={LikeConfig.heartSize}
         height={LikeConfig.heartSize}
-        animate={liked ? "liked" : "empty"}
+        animate={hasLike ? "liked" : "empty"}
         whileTap="pressed"
       >
         <motion.path
@@ -32,7 +40,7 @@ export default function PostLike() {
           d={LikeConfig.heartPath}
         />
       </motion.svg>
-      <AnimatePresence>{liked && <Particles />}</AnimatePresence>
+      <AnimatePresence>{hasLike && <Particles />}</AnimatePresence>
     </button>
   );
 }

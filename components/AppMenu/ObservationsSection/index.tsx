@@ -8,6 +8,7 @@ import Spin from "@/components/Spin";
 import { useMemo } from "react";
 import flatten from "lodash/flatten";
 import ObservationsLoader from "./Loader";
+import { QueryKeysConfig } from "@/config/query-keys";
 
 const loader = ({ pageParam }: any) =>
   Requests.getLatestObservations({
@@ -21,7 +22,7 @@ export default function AppMenuObservationsSection() {
     isLoading,
     isFetching,
     hasNextPage,
-  } = useInfiniteQuery("observations", loader, {
+  } = useInfiniteQuery(QueryKeysConfig.observations, loader, {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     getNextPageParam: (_last, pages) => pages.length + 1,
