@@ -13,6 +13,7 @@ const PostLike = (props: TProps) => {
   const { hasLike, addLike } = useLike(props);
   return (
     <button
+      id="post-like-btn"
       title={"Поставить лайк"}
       css={`
         position: relative;
