@@ -7,6 +7,7 @@ export enum EScrollDir {
   DOWN,
 }
 const DELAY = 250;
+const DEFAULT_THRESHOLD = 75;
 type TProps = {
   initialDir?: EScrollDir;
   threshold?: number;
@@ -15,7 +16,7 @@ type TProps = {
 };
 export const useScrollDir = ({
   initialDir = EScrollDir.UP,
-  threshold = 0,
+  threshold = DEFAULT_THRESHOLD,
   off,
   delay,
 }: TProps = {}) => {
