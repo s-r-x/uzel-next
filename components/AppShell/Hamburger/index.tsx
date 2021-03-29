@@ -34,7 +34,7 @@ export default function Hamburger(props: TProps) {
   );
   return (
     <S.Container
-      title={isOpen ? "Открыть навигацию" : "Закрыть навигацию"}
+      title={isOpen ? "Закрыть навигацию" : "Открыть навигацию"}
       onClick={toggle}
       className={props.className}
     >
