@@ -28,7 +28,7 @@ export const useLike = (props: TProps) => {
       if (data) {
         set(data, "post.likesCount", data.post.likesCount + 1);
         client.setQueryData<GetPostCommentsQuery>(
-          ["post-by-slug", props.postSlug],
+          [QueryKeysConfig.postBySlug, props.postSlug],
           Object.assign({}, data)
         );
       }

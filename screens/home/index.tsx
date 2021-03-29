@@ -13,12 +13,10 @@ type TProps = {
 };
 export default function HomeScreen(props: TProps) {
   return (
-    <>
-      <GenericPosts
-        initialData={props.data}
-        loader={loader}
-        queryKey={QueryKeysConfig.rootPosts}
-      />
-    </>
+    <GenericPosts
+      initialData={props.data}
+      loader={loader}
+      queryKey={QueryKeysConfig.rootPosts}
+    />
   );
 }
