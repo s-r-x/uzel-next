@@ -46,18 +46,14 @@ const PostScreen = ({ data: { post } }: TProps) => {
             </S.Counter>
           </S.CountersContainer>
         </S.Header>
-        <div
-          css={`
-            text-align: center;
-          `}
-        >
+        <S.Thumb layoutId={`post-thumb-${post.postId}`}>
           <Image
             width={post.featuredImage.node.mediaDetails.width}
             height={post.featuredImage.node.mediaDetails.height}
             src={post.featuredImage.node.mediaItemUrl}
             altText={post.featuredImage.node.altText}
           />
-        </div>
+        </S.Thumb>
         <S.Article>{Content}</S.Article>
         <TagsList tags={post.tags.nodes} />
         <S.ActionsContainer>

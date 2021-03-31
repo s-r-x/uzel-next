@@ -9,9 +9,20 @@ type TProps = {
   postId: number;
 };
 
-export default function PostThumb({ src, width, height, altText }: TProps) {
+export default function PostThumb({
+  src,
+  width,
+  height,
+  altText,
+  postId,
+}: TProps) {
   return (
-    <S.ThumbContainer>
+    <S.ThumbContainer
+      transition={{
+        duration: 0,
+      }}
+      layoutId={`post-thumb-${postId}`}
+    >
       <Image altText={altText} width={width} height={height} src={src} />
     </S.ThumbContainer>
   );

@@ -1,4 +1,5 @@
 import { DevicesConfig } from "@/config/devices";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.div``;
@@ -67,3 +68,6 @@ export const ActionsContainer = styled.div`
     }
   }
 `;
+export const Thumb = motion(styled.div`
+  text-align: center;
+`);
