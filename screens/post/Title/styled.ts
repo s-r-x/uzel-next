@@ -6,7 +6,7 @@ export const Container = motion(styled.h1`
   font-weight: 900;
   font-size: 41px;
   margin: 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   perspective: 2000;
   margin-bottom: 5px;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {

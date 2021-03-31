@@ -12,10 +12,3 @@
   font-weight: 900;
   font-display: fallback;
 }
-@font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/PlayfairDisplay-Black.woff2") format("woff2"),
-    url("/fonts/PlayfairDisplay-Black.woff") format("woff");
-  font-weight: 900;
-  font-display: fallback;
-}
