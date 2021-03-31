@@ -20,6 +20,7 @@ export const Placeholder = styled.img<{
   transition: opacity 0.5s ease;
   opacity: ${({ isLoaded }) => (isLoaded ? 0 : 1)};
   max-width: 100%;
+  pointer-events: none;
   min-width: 100%;
   max-height: 100%;
   min-height: 100%;
