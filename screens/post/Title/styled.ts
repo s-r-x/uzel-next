@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const Container = motion(styled.h1`
   font-weight: 900;
   font-size: 41px;
+  line-height: 0.9;
   margin: 0;
   font-family: var(--font-primary);
   perspective: 2000;
@@ -20,4 +21,3 @@ export const TitleLetter = motion(styled.span`
   transform-style: preserve-3d;
   display: inline-flex;
 `);
-
