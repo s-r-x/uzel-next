@@ -13,8 +13,10 @@ export const Category = styled.div`
   }
 `;
 export const Article = styled.article`
-  img {
+  * {
     max-width: 100%;
+  }
+  img {
     height: auto;
   }
   p {
@@ -23,9 +25,6 @@ export const Article = styled.article`
   figure {
     margin-left: 0;
     margin-right: 0;
-  }
-  iframe {
-    max-width: 100%;
   }
   figcaption {
     margin-top: 5px;
