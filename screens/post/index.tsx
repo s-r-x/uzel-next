@@ -2,9 +2,9 @@ import TagsList from "@/components/TagsList";
 import { GetPostBySlugQuery } from "@/typings/wp";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
-import Image from "_c/Image";
 import { useConvertContentToJsx } from "./hooks";
 import Title from "./Title";
+import Thumb from "./Thumb";
 import Share from "./Share";
 import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
@@ -46,14 +46,7 @@ const PostScreen = ({ data: { post } }: TProps) => {
             </S.Counter>
           </S.CountersContainer>
         </S.Header>
-        <S.Thumb layoutId={`post-thumb-${post.postId}`}>
-          <Image
-            width={post.featuredImage.node.mediaDetails.width}
-            height={post.featuredImage.node.mediaDetails.height}
-            src={post.featuredImage.node.mediaItemUrl}
-            altText={post.featuredImage.node.altText}
-          />
-        </S.Thumb>
+        <Thumb postId={post.postId} media={post.featuredImage.node} />
         <S.Article>{Content}</S.Article>
         <TagsList tags={post.tags.nodes} />
         <S.ActionsContainer>
