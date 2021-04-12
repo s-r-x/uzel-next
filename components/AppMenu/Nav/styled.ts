@@ -64,19 +64,15 @@ export const NavItem = motion(styled.li`
   }
 `);
 export const ActiveIndicator = motion(styled.div`
-  --size: 8px;
-  --half-size: 4px;
+  --size: 5px;
   width: var(--size);
-  height: var(--size);
+  height: 100%;
   position: absolute;
-  border-radius: 50%;
-  left: 5px;
-  top: calc(50% - var(--half-size));
+  left: 0;
+  top: 0;
   background: white;
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     --size: 100%;
-    border-radius: 0;
-    left: 0;
     top: auto;
     bottom: -2px;
     height: 3px;
