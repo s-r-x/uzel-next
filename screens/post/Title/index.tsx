@@ -10,6 +10,7 @@ export default function PostTitle(props: TProps) {
   const title = useSplitText(props.title);
   return (
     <S.Container
+      key={props.title}
       transition={titleTransition}
       animate="animate"
       exit="exit"
