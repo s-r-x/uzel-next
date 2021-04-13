@@ -1,6 +1,5 @@
 import { GetPostBySlugQuery } from "@/typings/wp";
 import Image from "_c/Image";
-import { useIsThumbLayoutActive } from "./hooks";
 import * as S from "./styled";
 
 type TProps = {
@@ -8,9 +7,8 @@ type TProps = {
   postId: number;
 };
 export default function PostThumb({ postId, media }: TProps) {
-  const layoutActive = useIsThumbLayoutActive();
   return (
-    <S.Container layoutId={layoutActive ? `post-thumb-${postId}` : undefined}>
+    <S.Container layoutId={`post-thumb-${postId}`}>
       <Image
         width={media.mediaDetails.width}
         height={media.mediaDetails.height}
