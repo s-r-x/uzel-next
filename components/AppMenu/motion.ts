@@ -28,3 +28,11 @@ export const containerMobileVariants = {
     x: "0%",
   },
 };
+export const innerSectionContainerVariants: Variants = {
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};

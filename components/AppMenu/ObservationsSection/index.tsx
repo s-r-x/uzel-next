@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import flatten from "lodash/flatten";
 import ObservationsLoader from "./Loader";
 import { QueryKeysConfig } from "@/config/query-keys";
+import { innerSectionContainerVariants } from "../motion";
 
 const loader = ({ pageParam }: any) =>
   Requests.getLatestObservations({
@@ -44,7 +45,12 @@ export default function AppMenuObservationsSection() {
     );
   }
   return (
-    <S.Container>
+    <S.Container
+      animate="animate"
+      exit="exit"
+      initial="initial"
+      variants={innerSectionContainerVariants}
+    >
       <S.GlobalStyle />
       <VerticalTimeline>
         {observations.map((observation) => (

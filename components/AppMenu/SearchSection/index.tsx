@@ -4,6 +4,18 @@ import * as S from "./styled";
 import { SearchIcon } from "_c/Icon";
 import { Easings } from "@/config/easings";
 import { LinkBuilder } from "@/services/link-builder";
+import { innerSectionContainerVariants } from "../motion";
+import { Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  ...innerSectionContainerVariants,
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+};
 export default function AppMenuSearchSection() {
   const router = useRouter();
   const [isFocused, setIsFocused] = useState(false);
@@ -17,7 +29,13 @@ export default function AppMenuSearchSection() {
     );
   };
   return (
-    <S.Container onSubmit={onSubmit}>
+    <S.Container
+      animate="animate"
+      exit="exit"
+      initial="initial"
+      variants={containerVariants}
+      onSubmit={onSubmit}
+    >
       <S.Input
         onChange={({ target }) => setSearchTerm(target.value)}
         value={searchTerm}

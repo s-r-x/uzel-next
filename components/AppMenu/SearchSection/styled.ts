@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { DevicesConfig } from "@/config/devices";
 
-export const Container = styled.form`
+export const Container = motion(styled.form`
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -11,7 +11,7 @@ export const Container = styled.form`
   @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
     width: 95%;
   }
-`;
+`);
 export const Input = styled.input`
   background: transparent;
   padding: 10px;

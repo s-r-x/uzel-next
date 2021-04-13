@@ -6,6 +6,7 @@ import { tagsListTransition, tagTransition, tagVariants } from "./motion";
 import Spin from "@/components/Spin";
 import { LinkBuilder } from "@/services/link-builder";
 import { QueryKeysConfig } from "@/config/query-keys";
+import { innerSectionContainerVariants } from "../motion";
 
 export default function AppMenuTagsSection() {
   const { isLoading, data } = useQuery(
@@ -33,6 +34,7 @@ export default function AppMenuTagsSection() {
       animate="animate"
       exit="exit"
       initial="initial"
+      variants={innerSectionContainerVariants}
     >
       {data.tags.nodes.map((tag) => (
         <S.Tag transition={tagTransition} variants={tagVariants} key={tag.slug}>

@@ -8,6 +8,7 @@ import Comments from "../CommentsSection";
 import Search from "../SearchSection";
 import { usePreloadModules } from "@/hooks/usePreloadModules";
 import Tours from "../ToursSection";
+import { AnimatePresence } from "framer-motion";
 
 type TProps = {
   isMobile: boolean;
@@ -29,13 +30,15 @@ export default function AppMenuContent(props: TProps) {
       id={`app-menu-${section}_panel`}
     >
       {section ? (
-        <>
-          {section === "search" && <Search />}
-          {section === "tags" && <Tags />}
-          {section === "observations" && <Observations />}
-          {section === "comments" && <Comments />}
-          {section === "tours" && <Tours />}
-        </>
+        <AnimatePresence exitBeforeEnter>
+          {section === "search" && <Search key="content-search" />}
+          {section === "tags" && <Tags key="content-tags" />}
+          {section === "observations" && (
+            <Observations key="content-observations" />
+          )}
+          {section === "comments" && <Comments key="content-comments" />}
+          {section === "tours" && <Tours key="content-tours" />}
+        </AnimatePresence>
       ) : (
         <Logo
           css={`

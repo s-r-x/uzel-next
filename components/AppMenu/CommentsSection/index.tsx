@@ -5,6 +5,7 @@ import Comment from "./Comment";
 import Spin from "@/components/Spin";
 import { commentsListTransition } from "./motion";
 import { QueryKeysConfig } from "@/config/query-keys";
+import { innerSectionContainerVariants } from "../motion";
 
 export default function AppMenuCommentsSection() {
   const { isLoading, data } = useQuery(
@@ -26,17 +27,16 @@ export default function AppMenuCommentsSection() {
     );
   }
   return (
-    <S.Container>
-      <S.CommentsList
-        transition={commentsListTransition}
-        animate="animate"
-        exit="exit"
-        initial="initial"
-      >
-        {data.comments.nodes.map((comment) => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
-      </S.CommentsList>
-    </S.Container>
+    <S.CommentsList
+      transition={commentsListTransition}
+      animate="animate"
+      exit="exit"
+      initial="initial"
+      variants={innerSectionContainerVariants}
+    >
+      {data.comments.nodes.map((comment) => (
+        <Comment comment={comment} key={comment.id} />
+      ))}
+    </S.CommentsList>
   );
 }
