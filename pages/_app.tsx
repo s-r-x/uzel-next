@@ -9,9 +9,11 @@ import DefaultSeo from "@/components/DefaultSeo";
 import { YMInitializer } from "react-yandex-metrika";
 import { AnalyticsConfig } from "@/config/analytics";
 import { AnimateSharedLayout } from "framer-motion";
+import { useThemeEffect } from "@/hooks/useThemeEffect";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
+  useThemeEffect();
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }

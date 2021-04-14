@@ -6,6 +6,7 @@ import { useScrollDir, EScrollDir } from "@/hooks/useScrollDir";
 import { transition, variants } from "./motion";
 import { createPortal } from "react-dom";
 import SoundPlayer from "../SoundPlayer";
+import ThemeToggler from "../ThemeToggler";
 import { DevicesConfig } from "@/config/devices";
 import { LinkBuilder } from "@/services/link-builder";
 
@@ -42,10 +43,12 @@ export default function AppShellHeader() {
       >
         <SoundPlayer
           css={`
-            margin-right: 25px;
-            @media (max-width: ${DevicesConfig.mobileBreakpoint}px) {
-              margin-right: 15px;
-            }
+            margin-right: 10px;
+          `}
+        />
+        <ThemeToggler
+          css={`
+            margin-right: 15px;
           `}
         />
         <Hamburger />

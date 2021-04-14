@@ -4,11 +4,12 @@ import { AppShellConfig } from "@/config/app-shell";
 import { DevicesConfig } from "@/config/devices";
 
 export const Container = motion(styled.div`
-  background: var(--bg-color);
+  transition: background-color 0.5s ease;
   width: 70vw;
   display: flex;
   align-items: flex-start;
   padding-top: ${AppShellConfig.headerHeight + 10}px;
+  background: var(--bg-color);
   overflow-x: hidden;
   overflow-y: auto;
   height: 100%;

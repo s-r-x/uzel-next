@@ -1,4 +1,4 @@
-:root {
+body {
   --primary-color: #5ccaae;
   --negative-color: #ff1744;
   --heart-color: #ff1493;
@@ -12,10 +12,8 @@
   --input-bg-color: white;
   --layout-width: 768px;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --input-bg-color: rgb(56, 56, 56);
-    --content-color: white;
-    --bg-color: rgb(18, 18, 18);
-  }
+body.dark {
+  --input-bg-color: rgb(56, 56, 56);
+  --content-color: white;
+  --bg-color: rgb(18, 18, 18);
 }
