@@ -29,6 +29,9 @@ export const Article = styled.article`
     margin-top: 5px;
     opacity: 0.75;
   }
+  a {
+    color: var(--primary-color); 
+  }
 `;
 export const Header = styled.header`
   margin-top: 65px;
