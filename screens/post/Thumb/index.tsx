@@ -6,9 +6,9 @@ type TProps = {
   media: GetPostBySlugQuery["post"]["featuredImage"]["node"];
   postId: number;
 };
-export default function PostThumb({ postId, media }: TProps) {
+export default function PostThumb({ media }: TProps) {
   return (
-    <S.Container layoutId={`post-thumb-${postId}`}>
+    <S.Container>
       <Image
         width={media.mediaDetails.width}
         height={media.mediaDetails.height}
