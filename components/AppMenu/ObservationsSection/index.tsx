@@ -17,17 +17,12 @@ const loader = ({ pageParam }: any) =>
   });
 
 export default function AppMenuObservationsSection() {
-  const {
-    data,
-    fetchNextPage,
-    isLoading,
-    isFetching,
-    hasNextPage,
-  } = useInfiniteQuery(QueryKeysConfig.observations, loader, {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    getNextPageParam: (_last, pages) => pages.length + 1,
-  });
+  const { data, fetchNextPage, isLoading, isFetching, hasNextPage } =
+    useInfiniteQuery(QueryKeysConfig.observations, loader, {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      getNextPageParam: (_last, pages) => pages.length + 1,
+    });
   const observations = useMemo(() => {
     if (!data) {
       return [];
@@ -51,7 +46,6 @@ export default function AppMenuObservationsSection() {
       initial="initial"
       variants={innerSectionContainerVariants}
     >
-      <S.GlobalStyle />
       <VerticalTimeline>
         {observations.map((observation) => (
           <Observation observation={observation} key={observation.id} />

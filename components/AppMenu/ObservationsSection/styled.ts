@@ -1,7 +1,10 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const GlobalStyle = createGlobalStyle`
+export const Container = motion(styled.div`
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
   .vertical-timeline {
     ::before {
       background: var(--primary-color) !important;
@@ -24,11 +27,6 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
-`;
-export const Container = motion(styled.div`
-  width: 100%;
-  height: 500px;
-  margin: 0 auto;
 `);
 export const ObservationThumb = styled.img`
   width: 100%;
