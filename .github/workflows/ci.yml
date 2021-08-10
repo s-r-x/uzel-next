@@ -46,5 +46,6 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: /home/strax/uzel/deploy-front.sh
-
+          script: |
+            cd /home/strax/uzel
+            ./deploy-front.sh
