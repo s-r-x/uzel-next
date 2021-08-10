@@ -17,6 +17,11 @@ import { QueryKeysConfig } from "@/config/query-keys";
 import { Requests } from "@/network/requests";
 import Spin from "@/components/Spin";
 import { useExtractPostCategory } from "@/hooks/useExtractPostCategory";
+import dynamic from "next/dynamic";
+
+const Observations = dynamic(() => import("./Observations"), {
+  ssr: false,
+});
 
 type TProps = {
   data: GetPostBySlugQuery;
@@ -72,6 +77,7 @@ const PostScreen = ({ data: { post } }: TProps) => {
             <CommentIcon size={32} />
           </CircleButton>
         </S.ActionsContainer>
+        <Observations observations={post.iNaturalist.observations} />
         <Comments postId={post.postId} />
       </S.Container>
     </>

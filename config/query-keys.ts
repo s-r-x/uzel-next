@@ -4,6 +4,7 @@ export const QueryKeysConfig = {
   rootPosts: "posts",
   postComments: "post-comments",
   postTags: "post-tags",
+  observation: "observation",
   observations: "observations",
   latestComments: "latest-comments",
   searchPostsByTerm: "search-posts-by-term",

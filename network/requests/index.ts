@@ -1,7 +1,10 @@
 import { INaturalistConfig } from "@/config/i-naturalist";
 import { PaginateConfig } from "@/config/paginate";
 import { WpConfig } from "@/config/wp";
-import { TGetLastObservationsRes } from "@/typings/i-nat";
+import {
+  TGetLastObservationsRes,
+  TGetObservationByIdRes,
+} from "@/typings/i-nat";
 import {
   GetPostBySlugQuery,
   GetPostBySlugQueryVariables,
@@ -18,6 +21,7 @@ import {
   SearchPostsByTermQuery,
   CreateCommentPayload,
   CreateCommentMutationVariables,
+  Maybe,
 } from "@/typings/wp";
 import { gqlClient } from "../gql-client";
 import { httpClient } from "../http-client";
@@ -29,6 +33,7 @@ import { GET_POSTS_Q } from "../queries/get-posts";
 import { GET_POSTS_BY_TAG_Q } from "../queries/get-posts-by-tag";
 import { GET_TAGS_Q } from "../queries/get-tags";
 import { SEARCH_POSTS_BY_TERM_Q } from "../queries/search-posts-by-term";
+import isempty from "lodash/isEmpty";
 
 export const Requests = {
   // queries
@@ -65,6 +70,23 @@ export const Requests = {
       ...vars,
     });
   },
+  async getObservationById(id: string): Promise<Maybe<TGetObservationByIdRes>> {
+    const params = new URLSearchParams({
+      locale: "ru",
+    });
+    const url = `${INaturalistConfig.obervationsApiUrl}/${id}?${params}`;
+    const data = await httpClient(url).then((data) => data.json());
+    if (isempty(data.results)) return null;
+    const obs = data.results[0];
+    return {
+      name:
+        obs.taxon?.preferred_common_name ?? obs.species_guess ?? "Неизвестно",
+      date: obs.time_observed_at,
+      //thumb: r.taxon.default_photo.square_url,
+      thumb: obs.photos?.[0]?.url,
+      id: obs.id,
+    };
+  },
   async getLatestObservations({
     page = 1,
   }: {
@@ -82,7 +104,7 @@ export const Requests = {
     );
     const json = await data.json();
     return json.results.map((r: any) => ({
-      name: r.taxon?.preferred_common_name ?? "Неизвестно",
+      name: r.taxon?.preferred_common_name ?? r.species_guess ?? "Неизвестно",
       date: r.time_observed_at,
       //thumb: r.taxon.default_photo.square_url,
       thumb: r.photos?.[0]?.url,

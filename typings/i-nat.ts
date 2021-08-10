@@ -4,3 +4,4 @@ export type TGetLastObservationsRes = {
   thumb: string;
   id: number;
 };
+export type TGetObservationByIdRes = TGetLastObservationsRes;

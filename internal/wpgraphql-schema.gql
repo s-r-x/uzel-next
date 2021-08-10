@@ -12,6 +12,8 @@ type RootQuery {
   categories(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -29,15 +31,26 @@ type RootQuery {
   ): RootQueryToCategoryConnection
 
   """A 0bject"""
-  category(id: ID!, idType: CategoryIdType): Category
+  category(
+    """The globally unique identifier of the object."""
+    id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
+    idType: CategoryIdType
+  ): Category
 
   """Returns a Comment"""
-  comment(id: ID!): Comment
+  comment(
+    """Unique identifier for the comment node."""
+    id: ID!
+  ): Comment
 
   """Connection between the RootQuery type and the Comment type"""
   comments(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -56,6 +69,7 @@ type RootQuery {
 
   """A node used to manage content"""
   contentNode(
+    """Unique identifier for the content node."""
     id: ID!
 
     """
@@ -76,6 +90,8 @@ type RootQuery {
   contentNodes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -94,10 +110,12 @@ type RootQuery {
 
   """Fetch a Content Type node by unique Identifier"""
   contentType(
-    """Unique Identifier for the Content Type node"""
+    """Unique Identifier for the Content Type node."""
     id: ID!
 
-    """The type of Identifier used in the ID field"""
+    """
+    Type of unique identifier to fetch a content type by. Default is Global ID
+    """
     idType: ContentTypeIdTypeEnum
   ): ContentType
 
@@ -105,6 +123,8 @@ type RootQuery {
   contentTypes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -118,15 +138,18 @@ type RootQuery {
     before: String
   ): RootQueryToContentTypeConnection
 
-  """"""
+  """Fields of the &#039;DiscussionSettings&#039; settings group"""
   discussionSettings: DiscussionSettings
 
-  """"""
+  """Fields of the &#039;GeneralSettings&#039; settings group"""
   generalSettings: GeneralSettings
 
   """An object of the mediaItem Type. """
   mediaItem(
+    """The globally unique identifier of the object."""
     id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
     idType: MediaItemIdType
 
     """Whether to return the node as a preview instance"""
@@ -154,6 +177,8 @@ type RootQuery {
   mediaItems(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -171,15 +196,31 @@ type RootQuery {
   ): RootQueryToMediaItemConnection
 
   """A WordPress navigation menu"""
-  menu(id: ID!, idType: MenuNodeIdTypeEnum): Menu
+  menu(
+    """The globally unique identifier of the menu."""
+    id: ID!
+
+    """Type of unique identifier to fetch a menu by. Default is Global ID"""
+    idType: MenuNodeIdTypeEnum
+  ): Menu
 
   """A WordPress navigation menu item"""
-  menuItem(id: ID!, idType: MenuItemNodeIdTypeEnum): MenuItem
+  menuItem(
+    """The globally unique identifier of the menu item."""
+    id: ID!
+
+    """
+    Type of unique identifier to fetch a menu item by. Default is Global ID
+    """
+    idType: MenuItemNodeIdTypeEnum
+  ): MenuItem
 
   """Connection between the RootQuery type and the MenuItem type"""
   menuItems(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -200,6 +241,8 @@ type RootQuery {
   menus(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -222,7 +265,7 @@ type RootQuery {
     id: ID
   ): Node
 
-  """"""
+  """Fetches an object given its Unique Resource Identifier"""
   nodeByUri(
     """
     Unique Resource Identifier in the form of a path or permalink for a node. Ex: "/hello-world"
@@ -232,7 +275,10 @@ type RootQuery {
 
   """An object of the page Type. """
   page(
+    """The globally unique identifier of the object."""
     id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
     idType: PageIdType
 
     """Whether to return the node as a preview instance"""
@@ -255,6 +301,8 @@ type RootQuery {
   pages(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -272,12 +320,17 @@ type RootQuery {
   ): RootQueryToPageConnection
 
   """A WordPress plugin"""
-  plugin(id: ID!): Plugin
+  plugin(
+    """The globally unique identifier of the plugin."""
+    id: ID!
+  ): Plugin
 
   """Connection between the RootQuery type and the Plugin type"""
   plugins(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -293,7 +346,10 @@ type RootQuery {
 
   """An object of the post Type. """
   post(
+    """The globally unique identifier of the object."""
     id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
     idType: PostIdType
 
     """Whether to return the node as a preview instance"""
@@ -316,12 +372,20 @@ type RootQuery {
   ): Post @deprecated(reason: "Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)")
 
   """A 0bject"""
-  postFormat(id: ID!, idType: PostFormatIdType): PostFormat
+  postFormat(
+    """The globally unique identifier of the object."""
+    id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
+    idType: PostFormatIdType
+  ): PostFormat
 
   """Connection between the RootQuery type and the postFormat type"""
   postFormats(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -342,6 +406,8 @@ type RootQuery {
   posts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -358,13 +424,15 @@ type RootQuery {
     where: RootQueryToPostConnectionWhereArgs
   ): RootQueryToPostConnection
 
-  """"""
+  """Fields of the &#039;ReadingSettings&#039; settings group"""
   readingSettings: ReadingSettings
 
   """Connection between the RootQuery type and the EnqueuedScript type"""
   registeredScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -382,6 +450,8 @@ type RootQuery {
   registeredStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -401,6 +471,8 @@ type RootQuery {
   revisions(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -418,12 +490,20 @@ type RootQuery {
   ): RootQueryToContentRevisionUnionConnection
 
   """A 0bject"""
-  tag(id: ID!, idType: TagIdType): Tag
+  tag(
+    """The globally unique identifier of the object."""
+    id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
+    idType: TagIdType
+  ): Tag
 
   """Connection between the RootQuery type and the tag type"""
   tags(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -444,6 +524,8 @@ type RootQuery {
   taxonomies(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -459,15 +541,16 @@ type RootQuery {
 
   """Fetch a Taxonomy node by unique Identifier"""
   taxonomy(
-    """Unique Identifier for the Taxonomy node"""
+    """Unique Identifier for the Taxonomy node."""
     id: ID!
 
-    """The type of Identifier used in the ID field"""
+    """Type of unique identifier to fetch a taxonomy by. Default is Global ID"""
     idType: TaxonomyIdTypeEnum
   ): Taxonomy
 
   """A node in a taxonomy used to group and relate content nodes"""
   termNode(
+    """Unique identifier for the term node."""
     id: ID!
 
     """
@@ -485,6 +568,8 @@ type RootQuery {
   terms(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -502,12 +587,17 @@ type RootQuery {
   ): RootQueryToTermNodeConnection
 
   """A Theme object"""
-  theme(id: ID!): Theme
+  theme(
+    """The globally unique identifier of the theme."""
+    id: ID!
+  ): Theme
 
   """Connection between the RootQuery type and the Theme type"""
   themes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -522,15 +612,26 @@ type RootQuery {
   ): RootQueryToThemeConnection
 
   """Returns a user"""
-  user(id: ID!, idType: UserNodeIdTypeEnum): User
+  user(
+    """The globally unique identifier of the user."""
+    id: ID!
+
+    """Type of unique identifier to fetch a user by. Default is Global ID"""
+    idType: UserNodeIdTypeEnum
+  ): User
 
   """Returns a user role"""
-  userRole(id: ID!): UserRole
+  userRole(
+    """The globally unique identifier of the user object."""
+    id: ID!
+  ): UserRole
 
   """Connection between the RootQuery type and the UserRole type"""
   userRoles(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -548,6 +649,8 @@ type RootQuery {
   users(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -567,59 +670,55 @@ type RootQuery {
   """Returns the current user"""
   viewer: User
 
-  """"""
+  """Fields of the &#039;WritingSettings&#039; settings group"""
   writingSettings: WritingSettings
 }
 
 """All of the registered settings"""
 type Settings {
-  """Разрешить оставлять комментарии к новым записям."""
+  """Settings of the the string Settings Group"""
   discussionSettingsDefaultCommentStatus: String
 
-  """
-  Разрешить ссылки оповещения с других блогов (уведомления и обратные ссылки) на новые статьи.
-  """
+  """Settings of the the string Settings Group"""
   discussionSettingsDefaultPingStatus: String
 
-  """Общий формат даты."""
+  """Settings of the the string Settings Group"""
   generalSettingsDateFormat: String
 
-  """Слоган сайта."""
+  """Settings of the the string Settings Group"""
   generalSettingsDescription: String
 
-  """
-  Этот адрес используется в целях администрирования. Например, для уведомления о новых пользователях.
-  """
+  """Settings of the the string Settings Group"""
   generalSettingsEmail: String
 
-  """Код локали WordPress."""
+  """Settings of the the string Settings Group"""
   generalSettingsLanguage: String
 
-  """Первый день недели."""
+  """Settings of the the integer Settings Group"""
   generalSettingsStartOfWeek: Int
 
-  """Общий формат времени."""
+  """Settings of the the string Settings Group"""
   generalSettingsTimeFormat: String
 
-  """Город в той же временной зоне что и у вас."""
+  """Settings of the the string Settings Group"""
   generalSettingsTimezone: String
 
-  """Название сайта."""
+  """Settings of the the string Settings Group"""
   generalSettingsTitle: String
 
-  """Адрес сайта (URL)"""
+  """Settings of the the string Settings Group"""
   generalSettingsUrl: String
 
-  """Максимум страниц блога для показа."""
+  """Settings of the the integer Settings Group"""
   readingSettingsPostsPerPage: Int
 
-  """Рубрика для записей по умолчанию."""
+  """Settings of the the integer Settings Group"""
   writingSettingsDefaultCategory: Int
 
-  """Формат записей по умолчанию."""
+  """Settings of the the string Settings Group"""
   writingSettingsDefaultPostFormat: String
 
-  """Преобразовывать смайлики наподобие :-) и :-P в картинки при показе."""
+  """Settings of the the boolean Settings Group"""
   writingSettingsUseSmilies: Boolean
 }
 
@@ -679,6 +778,9 @@ input RootQueryToCategoryConnectionWhereArgs {
   """
   objectIds: [ID]
 
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
 
@@ -705,14 +807,36 @@ input RootQueryToCategoryConnectionWhereArgs {
   updateTermMetaCache: Boolean
 }
 
+"""The cardinality of the connection order"""
+enum OrderEnum {
+  """Sort the query result set in an ascending order"""
+  ASC
+
+  """Sort the query result set in a descending order"""
+  DESC
+}
+
 """Options for ordering the connection by"""
 enum TermObjectsConnectionOrderbyEnum {
+  """Order the connection by item count."""
   COUNT
+
+  """Order the connection by description."""
   DESCRIPTION
+
+  """Order the connection by name."""
   NAME
+
+  """Order the connection by slug."""
   SLUG
+
+  """Order the connection by term group."""
   TERM_GROUP
+
+  """Order the connection by term id."""
   TERM_ID
+
+  """Order the connection by term order."""
   TERM_ORDER
 }
 
@@ -738,13 +862,15 @@ type RootQueryToCategoryConnectionEdge {
 }
 
 """The category type"""
-type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable & HierarchicalTermNode & MenuItemLinkable {
+type Category implements Node & TermNode & UniformResourceIdentifiable & DatabaseIdentifier & HierarchicalTermNode & MenuItemLinkable {
   """
   The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
   ancestors(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -765,6 +891,8 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   children(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -785,6 +913,8 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   contentNodes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -804,7 +934,7 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   """The number of objects connected to the object"""
   count: Int
 
-  """Identifies the primary key from the database."""
+  """The unique resource identifier path"""
   databaseId: Int!
 
   """The description of the object"""
@@ -814,6 +944,8 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -831,6 +963,8 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -844,11 +978,17 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
     before: String
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The globally unique ID for the object"""
+  """The unique resource identifier path"""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The link to the term"""
   link: String
@@ -869,6 +1009,8 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   posts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -898,7 +1040,7 @@ type Category implements Node & TermNode & DatabaseIdentifier & UniformResourceI
   termTaxonomyId: Int
 
   """The unique resource identifier path"""
-  uri: String!
+  uri: String
 }
 
 """An object with an ID"""
@@ -910,7 +1052,7 @@ interface Node {
 """
 Terms are nodes within a Taxonomy, used to group and relate other nodes.
 """
-interface TermNode {
+interface TermNode implements Node & UniformResourceIdentifiable {
   """The number of objects connected to the object"""
   count: Int
 
@@ -924,6 +1066,8 @@ interface TermNode {
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -941,6 +1085,8 @@ interface TermNode {
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -954,11 +1100,17 @@ interface TermNode {
     before: String
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """Unique identifier for the term"""
+  """The unique resource identifier path"""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The link to the term"""
   link: String
@@ -976,7 +1128,22 @@ interface TermNode {
   termTaxonomyId: Int
 
   """The unique resource identifier path"""
-  uri: String!
+  uri: String
+}
+
+"""Any node that has a URI"""
+interface UniformResourceIdentifiable {
+  """The unique resource identifier path"""
+  id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
+
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """Connection between the TermNode type and the EnqueuedScript type"""
@@ -1014,7 +1181,7 @@ type EnqueuedScript implements Node & EnqueuedAsset {
   """The handle of the enqueued asset"""
   handle: String
 
-  """The globally unique ID for the object"""
+  """The ID of the enqueued asset"""
   id: ID!
 
   """The source of the asset"""
@@ -1098,7 +1265,7 @@ type EnqueuedStylesheet implements Node & EnqueuedAsset {
   """The handle of the enqueued asset"""
   handle: String
 
-  """The globally unique ID for the object"""
+  """The ID of the enqueued asset"""
   id: ID!
 
   """The source of the asset"""
@@ -1112,15 +1279,6 @@ type EnqueuedStylesheet implements Node & EnqueuedAsset {
 interface DatabaseIdentifier {
   """The unique identifier stored in the database"""
   databaseId: Int!
-}
-
-"""Any node that has a URI"""
-interface UniformResourceIdentifiable {
-  """The unique resource identifier path"""
-  id: ID!
-
-  """The unique resource identifier path"""
-  uri: String
 }
 
 """Term node with hierarchical (parent/child) relationships"""
@@ -1141,7 +1299,7 @@ interface MenuItemLinkable {
   id: ID!
 
   """The unique resource identifier path"""
-  uri: String!
+  uri: String
 }
 
 """Connection between the category type and the category type"""
@@ -1221,6 +1379,9 @@ input CategoryToCategoryConnectionWhereArgs {
   """
   objectIds: [ID]
 
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
 
@@ -1270,6 +1431,9 @@ type CategoryToCategoryConnectionEdge {
 
 """Arguments for filtering the CategoryToContentNodeConnection connection"""
 input CategoryToContentNodeConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypesOfCategoryEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -1315,11 +1479,21 @@ input CategoryToContentNodeConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
   title: String
+}
+
+"""Allowed Content Types of the Category taxonomy."""
+enum ContentTypesOfCategoryEnum {
+  """The Type of Content object"""
+  POST
 }
 
 """Filter the connection based on input"""
@@ -1378,7 +1552,10 @@ input DateInput {
 
 """The column to use when filtering by date"""
 enum PostObjectsConnectionDateColumnEnum {
+  """The date the comment was created in local time."""
   DATE
+
+  """The most recent modification date of the comment."""
   MODIFIED
 }
 
@@ -1386,99 +1563,297 @@ enum PostObjectsConnectionDateColumnEnum {
 The logical relation between each item in the array when there are more than one.
 """
 enum RelationEnum {
+  """
+  The logical AND condition returns true if both operands are true, otherwise, it returns false.
+  """
   AND
+
+  """
+  The logical OR condition returns false if both operands are false, otherwise, it returns true.
+  """
   OR
 }
 
 """The MimeType of the object"""
 enum MimeTypeEnum {
+  """MimeType application/java"""
   APPLICATION_JAVA
+
+  """MimeType application/msword"""
   APPLICATION_MSWORD
+
+  """MimeType application/octet-stream"""
   APPLICATION_OCTET_STREAM
+
+  """MimeType application/onenote"""
   APPLICATION_ONENOTE
+
+  """MimeType application/oxps"""
   APPLICATION_OXPS
+
+  """MimeType application/pdf"""
   APPLICATION_PDF
+
+  """MimeType application/rar"""
   APPLICATION_RAR
+
+  """MimeType application/rtf"""
   APPLICATION_RTF
+
+  """MimeType application/ttaf+xml"""
   APPLICATION_TTAF_XML
+
+  """MimeType application/vnd.apple.keynote"""
   APPLICATION_VND_APPLE_KEYNOTE
+
+  """MimeType application/vnd.apple.numbers"""
   APPLICATION_VND_APPLE_NUMBERS
+
+  """MimeType application/vnd.apple.pages"""
   APPLICATION_VND_APPLE_PAGES
+
+  """MimeType application/vnd.ms-access"""
   APPLICATION_VND_MS_ACCESS
+
+  """MimeType application/vnd.ms-excel"""
   APPLICATION_VND_MS_EXCEL
+
+  """MimeType application/vnd.ms-excel.addin.macroEnabled.12"""
   APPLICATION_VND_MS_EXCEL_ADDIN_MACROENABLED_12
+
+  """MimeType application/vnd.ms-excel.sheet.binary.macroEnabled.12"""
   APPLICATION_VND_MS_EXCEL_SHEET_BINARY_MACROENABLED_12
+
+  """MimeType application/vnd.ms-excel.sheet.macroEnabled.12"""
   APPLICATION_VND_MS_EXCEL_SHEET_MACROENABLED_12
+
+  """MimeType application/vnd.ms-excel.template.macroEnabled.12"""
   APPLICATION_VND_MS_EXCEL_TEMPLATE_MACROENABLED_12
+
+  """MimeType application/vnd.ms-powerpoint"""
   APPLICATION_VND_MS_POWERPOINT
+
+  """MimeType application/vnd.ms-powerpoint.addin.macroEnabled.12"""
   APPLICATION_VND_MS_POWERPOINT_ADDIN_MACROENABLED_12
+
+  """MimeType application/vnd.ms-powerpoint.presentation.macroEnabled.12"""
   APPLICATION_VND_MS_POWERPOINT_PRESENTATION_MACROENABLED_12
+
+  """MimeType application/vnd.ms-powerpoint.slideshow.macroEnabled.12"""
   APPLICATION_VND_MS_POWERPOINT_SLIDESHOW_MACROENABLED_12
+
+  """MimeType application/vnd.ms-powerpoint.slide.macroEnabled.12"""
   APPLICATION_VND_MS_POWERPOINT_SLIDE_MACROENABLED_12
+
+  """MimeType application/vnd.ms-powerpoint.template.macroEnabled.12"""
   APPLICATION_VND_MS_POWERPOINT_TEMPLATE_MACROENABLED_12
+
+  """MimeType application/vnd.ms-project"""
   APPLICATION_VND_MS_PROJECT
+
+  """MimeType application/vnd.ms-word.document.macroEnabled.12"""
   APPLICATION_VND_MS_WORD_DOCUMENT_MACROENABLED_12
+
+  """MimeType application/vnd.ms-word.template.macroEnabled.12"""
   APPLICATION_VND_MS_WORD_TEMPLATE_MACROENABLED_12
+
+  """MimeType application/vnd.ms-write"""
   APPLICATION_VND_MS_WRITE
+
+  """MimeType application/vnd.ms-xpsdocument"""
   APPLICATION_VND_MS_XPSDOCUMENT
+
+  """MimeType application/vnd.oasis.opendocument.chart"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_CHART
+
+  """MimeType application/vnd.oasis.opendocument.database"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_DATABASE
+
+  """MimeType application/vnd.oasis.opendocument.formula"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_FORMULA
+
+  """MimeType application/vnd.oasis.opendocument.graphics"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_GRAPHICS
+
+  """MimeType application/vnd.oasis.opendocument.presentation"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_PRESENTATION
+
+  """MimeType application/vnd.oasis.opendocument.spreadsheet"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_SPREADSHEET
+
+  """MimeType application/vnd.oasis.opendocument.text"""
   APPLICATION_VND_OASIS_OPENDOCUMENT_TEXT
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.presentationml.presentation
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_PRESENTATIONML_PRESENTATION
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.presentationml.slide
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_PRESENTATIONML_SLIDE
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.presentationml.slideshow
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_PRESENTATIONML_SLIDESHOW
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.presentationml.template
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_PRESENTATIONML_TEMPLATE
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_SPREADSHEETML_SHEET
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.spreadsheetml.template
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_SPREADSHEETML_TEMPLATE
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_WORDPROCESSINGML_DOCUMENT
+
+  """
+  MimeType application/vnd.openxmlformats-officedocument.wordprocessingml.template
+  """
   APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_WORDPROCESSINGML_TEMPLATE
+
+  """MimeType application/wordperfect"""
   APPLICATION_WORDPERFECT
+
+  """MimeType application/x-7z-compressed"""
   APPLICATION_X_7Z_COMPRESSED
+
+  """MimeType application/x-gzip"""
   APPLICATION_X_GZIP
+
+  """MimeType application/x-tar"""
   APPLICATION_X_TAR
+
+  """MimeType application/zip"""
   APPLICATION_ZIP
+
+  """MimeType audio/aac"""
   AUDIO_AAC
+
+  """MimeType audio/flac"""
   AUDIO_FLAC
+
+  """MimeType audio/midi"""
   AUDIO_MIDI
+
+  """MimeType audio/mpeg"""
   AUDIO_MPEG
+
+  """MimeType audio/ogg"""
   AUDIO_OGG
+
+  """MimeType audio/wav"""
   AUDIO_WAV
+
+  """MimeType audio/x-matroska"""
   AUDIO_X_MATROSKA
+
+  """MimeType audio/x-ms-wax"""
   AUDIO_X_MS_WAX
+
+  """MimeType audio/x-ms-wma"""
   AUDIO_X_MS_WMA
+
+  """MimeType audio/x-realaudio"""
   AUDIO_X_REALAUDIO
+
+  """MimeType image/bmp"""
   IMAGE_BMP
+
+  """MimeType image/gif"""
   IMAGE_GIF
+
+  """MimeType image/heic"""
   IMAGE_HEIC
+
+  """MimeType image/jpeg"""
   IMAGE_JPEG
+
+  """MimeType image/png"""
   IMAGE_PNG
+
+  """MimeType image/tiff"""
   IMAGE_TIFF
+
+  """MimeType image/x-icon"""
   IMAGE_X_ICON
+
+  """MimeType text/calendar"""
   TEXT_CALENDAR
+
+  """MimeType text/css"""
   TEXT_CSS
+
+  """MimeType text/csv"""
   TEXT_CSV
+
+  """MimeType text/plain"""
   TEXT_PLAIN
+
+  """MimeType text/richtext"""
   TEXT_RICHTEXT
+
+  """MimeType text/tab-separated-values"""
   TEXT_TAB_SEPARATED_VALUES
+
+  """MimeType text/vtt"""
   TEXT_VTT
+
+  """MimeType video/3gpp"""
   VIDEO_3GPP
+
+  """MimeType video/3gpp2"""
   VIDEO_3GPP2
+
+  """MimeType video/avi"""
   VIDEO_AVI
+
+  """MimeType video/divx"""
   VIDEO_DIVX
+
+  """MimeType video/mp4"""
   VIDEO_MP4
+
+  """MimeType video/mpeg"""
   VIDEO_MPEG
+
+  """MimeType video/ogg"""
   VIDEO_OGG
+
+  """MimeType video/quicktime"""
   VIDEO_QUICKTIME
+
+  """MimeType video/webm"""
   VIDEO_WEBM
+
+  """MimeType video/x-flv"""
   VIDEO_X_FLV
+
+  """MimeType video/x-matroska"""
   VIDEO_X_MATROSKA
+
+  """MimeType video/x-ms-asf"""
   VIDEO_X_MS_ASF
+
+  """MimeType video/x-ms-wm"""
   VIDEO_X_MS_WM
+
+  """MimeType video/x-ms-wmv"""
   VIDEO_X_MS_WMV
+
+  """MimeType video/x-ms-wmx"""
   VIDEO_X_MS_WMX
 }
 
@@ -1522,12 +1897,6 @@ enum PostObjectsConnectionOrderbyEnum {
 
   """Order by title"""
   TITLE
-}
-
-"""The cardinality of the connection order"""
-enum OrderEnum {
-  ASC
-  DESC
 }
 
 """The status of the object."""
@@ -1594,7 +1963,7 @@ type CategoryToContentNodeConnectionEdge {
 }
 
 """Nodes used to manage content"""
-interface ContentNode {
+interface ContentNode implements Node & UniformResourceIdentifiable {
   """Connection between the ContentNode type and the ContentType type"""
   contentType: ContentNodeToContentTypeConnectionEdge
 
@@ -1611,7 +1980,7 @@ interface ContentNode {
   desiredSlug: String
 
   """
-  If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn't exist or is greater than 15 seconds
+  If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
   """
   editingLockedBy: ContentNodeToEditLockConnectionEdge
 
@@ -1622,6 +1991,8 @@ interface ContentNode {
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -1641,6 +2012,8 @@ interface ContentNode {
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -1655,18 +2028,24 @@ interface ContentNode {
   ): ContentNodeToEnqueuedStylesheetConnection
 
   """
-  The global unique identifier for this post. This currently matches the value stored in WP_Post->guid and the guid column in the "post_objects" database table.
+  The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
   """
   guid: String
 
-  """The globally unique identifier of the node."""
+  """The unique resource identifier path"""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The user that most recently edited the node"""
   lastEditedBy: ContentNodeToEditLastConnectionEdge
@@ -1691,7 +2070,7 @@ interface ContentNode {
   previewRevisionId: ID
 
   """
-  The uri slug for the post. This is equivalent to the WP_Post->post_name field and the post_name column in the database for the "post_objects" table.
+  The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
   """
   slug: String
 
@@ -1701,13 +2080,13 @@ interface ContentNode {
   """The template assigned to a node of content"""
   template: ContentTemplate
 
-  """URI path for the resource"""
-  uri: String!
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """Connection between the ContentNode type and the ContentType type"""
 type ContentNodeToContentTypeConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: ContentType
 }
 
@@ -1720,6 +2099,8 @@ type ContentType implements Node & UniformResourceIdentifiable {
   connectedTaxonomies(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -1737,6 +2118,8 @@ type ContentType implements Node & UniformResourceIdentifiable {
   contentNodes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -1783,6 +2166,9 @@ type ContentType implements Node & UniformResourceIdentifiable {
   """The globally unique identifier of the post-type object."""
   id: ID!
 
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
   """Whether this page is set to the static front page."""
   isFrontPage: Boolean!
 
@@ -1791,6 +2177,9 @@ type ContentType implements Node & UniformResourceIdentifiable {
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """Display name of the content type."""
   label: String
@@ -1884,6 +2273,8 @@ type Taxonomy implements Node {
   connectedContentTypes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -1994,6 +2385,9 @@ type TaxonomyToContentTypeConnectionEdge {
 Arguments for filtering the ContentTypeToContentNodeConnection connection
 """
 input ContentTypeToContentNodeConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypeEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -2039,11 +2433,27 @@ input ContentTypeToContentNodeConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
   title: String
+}
+
+"""Allowed Content Types"""
+enum ContentTypeEnum {
+  """The Type of Content object"""
+  ATTACHMENT
+
+  """The Type of Content object"""
+  PAGE
+
+  """The Type of Content object"""
+  POST
 }
 
 """Connection between the ContentType type and the ContentNode type"""
@@ -2150,7 +2560,7 @@ type ContentNodeToEditLockConnectionEdge {
   """The timestamp for when the node was last edited"""
   lockTimestamp: String
 
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: User
 }
 
@@ -2169,6 +2579,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
     Whether to always show the default image, never the Gravatar. Default false
     """
     forceDefault: Boolean
+
+    """The rating level of the avatar."""
     rating: AvatarRatingEnum
   ): Avatar
 
@@ -2184,6 +2596,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   comments(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2215,6 +2629,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2232,6 +2648,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2258,8 +2676,14 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   """The globally unique identifier for the user object."""
   id: ID!
 
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """
   Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property.
@@ -2275,6 +2699,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   mediaItems(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2308,6 +2734,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   pages(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2328,6 +2756,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   posts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2353,6 +2783,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   revisions(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2373,6 +2805,8 @@ type User implements Node & UniformResourceIdentifiable & Commenter & DatabaseId
   roles(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2433,9 +2867,16 @@ interface Commenter {
 What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are judged in that order. Default is the value of the 'avatar_rating' option
 """
 enum AvatarRatingEnum {
+  """Indicates a G level avatar rating level."""
   G
+
+  """Indicates a PG level avatar rating level."""
   PG
+
+  """Indicates an R level avatar rating level."""
   R
+
+  """Indicates an X level avatar rating level."""
   X
 }
 
@@ -2581,35 +3022,56 @@ input UserToCommentConnectionWhereArgs {
   userId: ID
 }
 
-"""Allowed Content Types"""
-enum ContentTypeEnum {
-  """The Type of Content object"""
-  ATTACHMENT
-
-  """The Type of Content object"""
-  PAGE
-
-  """The Type of Content object"""
-  POST
-}
-
 """Options for ordering the connection"""
 enum CommentsConnectionOrderbyEnum {
+  """Order by browser user agent of the commenter."""
   COMMENT_AGENT
+
+  """Order by true/false approval of the comment."""
   COMMENT_APPROVED
+
+  """Order by name of the comment author."""
   COMMENT_AUTHOR
+
+  """Order by e-mail of the comment author."""
   COMMENT_AUTHOR_EMAIL
+
+  """Order by IP address of the comment author."""
   COMMENT_AUTHOR_IP
+
+  """Order by URL address of the comment author."""
   COMMENT_AUTHOR_URL
+
+  """Order by the comment contents."""
   COMMENT_CONTENT
+
+  """Order by date/time timestamp of the comment."""
   COMMENT_DATE
+
+  """Order by GMT timezone date/time timestamp of the comment."""
   COMMENT_DATE_GMT
+
+  """Order by the globally unique identifier for the comment object"""
   COMMENT_ID
+
+  """Order by the array list of comment IDs listed in the where clause."""
   COMMENT_IN
+
+  """Order by the comment karma score."""
   COMMENT_KARMA
+
+  """Order by the comment parent ID."""
   COMMENT_PARENT
+
+  """Order by the post object ID."""
   COMMENT_POST_ID
+
+  """
+  Order by the the type of comment, such as 'comment', 'pingback', or 'trackback'.
+  """
   COMMENT_TYPE
+
+  """Order by the user ID."""
   USER_ID
 }
 
@@ -2710,6 +3172,8 @@ type Comment implements Node & DatabaseIdentifier {
   replies(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -2734,13 +3198,13 @@ type Comment implements Node & DatabaseIdentifier {
 
 """Connection between the Comment type and the Commenter type"""
 type CommentToCommenterConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Commenter
 }
 
 """Connection between the Comment type and the ContentNode type"""
 type CommentToContentNodeConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: ContentNode
 }
 
@@ -2855,7 +3319,7 @@ input CommentToParentCommentConnectionWhereArgs {
 
 """Connection between the Comment type and the Comment type"""
 type CommentToParentCommentConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Comment
 }
 
@@ -3083,7 +3547,11 @@ input UserToMediaItemConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -3112,7 +3580,7 @@ type UserToMediaItemConnectionEdge {
 }
 
 """The mediaItem type"""
-type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithAuthor & NodeWithComments & HierarchicalContentNode {
+type MediaItem implements Node & ContentNode & UniformResourceIdentifiable & DatabaseIdentifier & NodeWithTemplate & NodeWithTitle & NodeWithAuthor & NodeWithComments & HierarchicalContentNode {
   """Alternative text to display when resource is not displayed"""
   altText: String
 
@@ -3122,6 +3590,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   ancestors(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3159,6 +3629,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   children(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3187,6 +3659,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   comments(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3206,7 +3680,7 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   """Connection between the ContentNode type and the ContentType type"""
   contentType: ContentNodeToContentTypeConnectionEdge
 
-  """The ID of the node in the database."""
+  """The unique identifier stored in the database"""
   databaseId: Int!
 
   """Post publishing date."""
@@ -3236,6 +3710,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3255,6 +3731,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3282,11 +3760,17 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   """The globally unique identifier of the attachment object."""
   id: ID!
 
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The user that most recently edited the node"""
   lastEditedBy: ContentNodeToEditLastConnectionEdge
@@ -3362,7 +3846,7 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
   """The current status of the object"""
   status: String
 
-  """The template assigned to a node of content"""
+  """The template assigned to the node"""
   template: ContentTemplate
 
   """
@@ -3373,8 +3857,8 @@ type MediaItem implements Node & ContentNode & DatabaseIdentifier & NodeWithTemp
     format: PostObjectFieldFormatEnum
   ): String
 
-  """URI path for the resource"""
-  uri: String!
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """A node that can have a template associated with it"""
@@ -3414,7 +3898,7 @@ interface NodeWithAuthor {
 
 """Connection between the NodeWithAuthor type and the User type"""
 type NodeWithAuthorToUserConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: User
 }
 
@@ -3437,6 +3921,8 @@ interface HierarchicalContentNode {
   ancestors(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3459,6 +3945,8 @@ interface HierarchicalContentNode {
   children(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -3489,6 +3977,9 @@ interface HierarchicalContentNode {
 Arguments for filtering the HierarchicalContentNodeToContentNodeAncestorsConnection connection
 """
 input HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypeEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -3534,7 +4025,11 @@ input HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -3570,6 +4065,9 @@ type HierarchicalContentNodeToContentNodeAncestorsConnectionEdge {
 Arguments for filtering the HierarchicalContentNodeToContentNodeChildrenConnection connection
 """
 input HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypeEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -3615,7 +4113,11 @@ input HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -3651,7 +4153,7 @@ type HierarchicalContentNodeToContentNodeChildrenConnectionEdge {
 Connection between the HierarchicalContentNode type and the ContentNode type
 """
 type HierarchicalContentNodeToParentContentNodeConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: ContentNode
 }
 
@@ -3847,19 +4349,19 @@ enum MediaItemSizeEnum {
 
 """Connection between the ContentNode type and the User type"""
 type ContentNodeToEditLastConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: User
 }
 
 """File details for a Media Item"""
 type MediaDetails {
-  """The height of the mediaItem"""
+  """The filename of the mediaItem"""
   file: String
 
   """The height of the mediaItem"""
   height: Int
 
-  """"""
+  """Meta information associated with the mediaItem"""
   meta: MediaItemMeta
 
   """The available sizes of the mediaItem"""
@@ -3871,64 +4373,66 @@ type MediaDetails {
 
 """Meta connected to a MediaItem"""
 type MediaItemMeta {
-  """"""
+  """Aperture measurement of the media item."""
   aperture: Float
 
-  """"""
+  """Information about the camera used to create the media item."""
   camera: String
 
-  """"""
+  """The text string description associated with the media item."""
   caption: String
 
-  """"""
+  """Copyright information associated with the media item."""
   copyright: String
 
-  """"""
+  """The date/time when the media was created."""
   createdTimestamp: Int
 
-  """"""
+  """The original creator of the media item."""
   credit: String
 
-  """"""
+  """The focal length value of the media item."""
   focalLength: Float
 
-  """"""
+  """
+  The ISO (International Organization for Standardization) value of the media item.
+  """
   iso: Int
 
-  """"""
+  """List of keywords used to describe or identfy the media item."""
   keywords: [String]
 
-  """"""
+  """The vertical or horizontal aspect of the media item."""
   orientation: String
 
-  """"""
+  """The shutter speed information of the media item."""
   shutterSpeed: Float
 
-  """"""
+  """A useful title for the media item."""
   title: String
 }
 
 """Details of an available size for a media item"""
 type MediaSize {
-  """The file of the for the referenced size"""
+  """The filename of the referenced size"""
   file: String
 
   """The filesize of the resource"""
   fileSize: Int
 
-  """The height of the for the referenced size"""
+  """The height of the referenced size"""
   height: String
 
-  """The mime type of the resource"""
+  """The mime type of the referenced size"""
   mimeType: String
 
   """The referenced size name"""
   name: String
 
-  """The url of the for the referenced size"""
+  """The url of the referenced size"""
   sourceUrl: String
 
-  """The width of the for the referenced size"""
+  """The width of the referenced size"""
   width: String
 }
 
@@ -3995,7 +4499,11 @@ input UserToPageConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -4024,13 +4532,15 @@ type UserToPageConnectionEdge {
 }
 
 """The page type"""
-type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithRevisions & NodeWithPageAttributes & HierarchicalContentNode & MenuItemLinkable {
+type Page implements Node & ContentNode & UniformResourceIdentifiable & DatabaseIdentifier & NodeWithTemplate & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithRevisions & NodeWithPageAttributes & HierarchicalContentNode & MenuItemLinkable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
   ancestors(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4062,6 +4572,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   children(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4090,6 +4602,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   comments(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4115,7 +4629,7 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """Connection between the ContentNode type and the ContentType type"""
   contentType: ContentNodeToContentTypeConnectionEdge
 
-  """The ID of the node in the database."""
+  """The unique resource identifier path"""
   databaseId: Int!
 
   """Post publishing date."""
@@ -4139,6 +4653,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4158,6 +4674,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4192,6 +4710,9 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """The globally unique identifier of the page object."""
   id: ID!
 
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
   """Whether this page is set to the static front page."""
   isFrontPage: Boolean!
 
@@ -4201,11 +4722,17 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
 
+  """Whether this page is set to the privacy page."""
+  isPrivacyPage: Boolean!
+
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
 
   """True if the node is a revision of another node"""
   isRevision: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The user that most recently edited the node"""
   lastEditedBy: ContentNodeToEditLastConnectionEdge
@@ -4258,6 +4785,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   revisions(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4293,8 +4822,8 @@ type Page implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
     format: PostObjectFieldFormatEnum
   ): String
 
-  """URI path for the resource"""
-  uri: String!
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """A node that supports the content editor"""
@@ -4307,7 +4836,70 @@ interface NodeWithContentEditor {
 }
 
 """A node that can have a featured image set"""
-interface NodeWithFeaturedImage {
+interface NodeWithFeaturedImage implements Node & ContentNode & UniformResourceIdentifiable & DatabaseIdentifier {
+  """Connection between the ContentNode type and the ContentType type"""
+  contentType: ContentNodeToContentTypeConnectionEdge
+
+  """The unique identifier stored in the database"""
+  databaseId: Int!
+
+  """Post publishing date."""
+  date: String
+
+  """The publishing date set in GMT."""
+  dateGmt: String
+
+  """The desired slug of the post"""
+  desiredSlug: String
+
+  """
+  If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
+  """
+  editingLockedBy: ContentNodeToEditLockConnectionEdge
+
+  """The RSS enclosure for the object"""
+  enclosure: String
+
+  """Connection between the ContentNode type and the EnqueuedScript type"""
+  enqueuedScripts(
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+  ): ContentNodeToEnqueuedScriptConnection
+
+  """
+  Connection between the ContentNode type and the EnqueuedStylesheet type
+  """
+  enqueuedStylesheets(
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+  ): ContentNodeToEnqueuedStylesheetConnection
+
   """
   Connection between the NodeWithFeaturedImage type and the MediaItem type
   """
@@ -4320,13 +4912,69 @@ interface NodeWithFeaturedImage {
 
   """Globally unique ID of the featured image assigned to the node"""
   featuredImageId: ID
+
+  """
+  The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
+  """
+  guid: String
+
+  """The unique resource identifier path"""
+  id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
+  """Whether the object is a node in the preview state"""
+  isPreview: Boolean
+
+  """Whether the object is restricted from the current viewer"""
+  isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
+
+  """The user that most recently edited the node"""
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+
+  """The permalink of the post"""
+  link: String
+
+  """
+  The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+  """
+  modified: String
+
+  """
+  The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
+  """
+  modifiedGmt: String
+
+  """The database id of the preview node"""
+  previewRevisionDatabaseId: Int
+
+  """Whether the object is a node in the preview state"""
+  previewRevisionId: ID
+
+  """
+  The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+  """
+  slug: String
+
+  """The current status of the object"""
+  status: String
+
+  """The template assigned to a node of content"""
+  template: ContentTemplate
+
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """
 Connection between the NodeWithFeaturedImage type and the MediaItem type
 """
 type NodeWithFeaturedImageToMediaItemConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: MediaItem
 }
 
@@ -4343,7 +4991,7 @@ interface NodeWithRevisions {
 
 """Connection between the NodeWithRevisions type and the ContentNode type"""
 type NodeWithRevisionsToContentNodeConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: ContentNode
 }
 
@@ -4476,7 +5124,7 @@ type PageToCommentConnectionEdge {
 
 """Connection between the page type and the page type"""
 type PageToPreviewConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Page
 }
 
@@ -4543,7 +5191,11 @@ input PageToRevisionConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -4650,7 +5302,11 @@ input UserToPostConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -4697,7 +5353,7 @@ type UserToPostConnectionEdge {
 }
 
 """The post type"""
-type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate & UniformResourceIdentifiable & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithExcerpt & NodeWithComments & NodeWithTrackbacks & NodeWithRevisions & MenuItemLinkable {
+type Post implements Node & ContentNode & UniformResourceIdentifiable & DatabaseIdentifier & NodeWithTemplate & NodeWithTitle & NodeWithContentEditor & NodeWithAuthor & NodeWithFeaturedImage & NodeWithExcerpt & NodeWithComments & NodeWithTrackbacks & NodeWithRevisions & MenuItemLinkable {
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -4711,6 +5367,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   categories(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4739,6 +5397,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   comments(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4764,7 +5424,7 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """Connection between the ContentNode type and the ContentType type"""
   contentType: ContentNodeToContentTypeConnectionEdge
 
-  """The ID of the node in the database."""
+  """The unique resource identifier path"""
   databaseId: Int!
 
   """Post publishing date."""
@@ -4788,6 +5448,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4807,6 +5469,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4844,8 +5508,14 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """
   guid: String
 
+  """"""
+  iNaturalist: Post_Inaturalist
+
   """The globally unique identifier of the post object."""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -4858,6 +5528,9 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
 
   """Whether this page is sticky"""
   isSticky: Boolean!
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The user that most recently edited the node"""
   lastEditedBy: ContentNodeToEditLastConnectionEdge
@@ -4888,6 +5561,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   postFormats(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4925,6 +5600,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   revisions(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4953,6 +5630,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   tags(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -4976,6 +5655,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   terms(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5003,8 +5684,8 @@ type Post implements Node & ContentNode & DatabaseIdentifier & NodeWithTemplate 
   """URLs queued to be pinged."""
   toPing: [String]
 
-  """URI path for the resource"""
-  uri: String!
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """A node that can have an excerpt"""
@@ -5083,6 +5764,9 @@ input PostToCategoryConnectionWhereArgs {
   Array of object IDs. Results will be limited to terms associated with these objects.
   """
   objectIds: [ID]
+
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
 
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
@@ -5250,6 +5934,17 @@ type PostToCommentConnectionEdge {
   node: Comment
 }
 
+"""Field Group"""
+type Post_Inaturalist {
+  """"""
+  fieldGroupName: String
+
+  """
+  https://www.inaturalist.org/observations/88941995 - пример ссылки на страницу наблюдения. ID наблюдения это цифры в конце
+  """
+  observations: String
+}
+
 """Arguments for filtering the PostToPostFormatConnection connection"""
 input PostToPostFormatConnectionWhereArgs {
   """
@@ -5306,6 +6001,9 @@ input PostToPostFormatConnectionWhereArgs {
   """
   objectIds: [ID]
 
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
 
@@ -5354,11 +6052,13 @@ type PostToPostFormatConnectionEdge {
 }
 
 """The postFormat type"""
-type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable {
+type PostFormat implements Node & TermNode & UniformResourceIdentifiable & DatabaseIdentifier {
   """Connection between the postFormat type and the ContentNode type"""
   contentNodes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5378,7 +6078,7 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
   """The number of objects connected to the object"""
   count: Int
 
-  """Identifies the primary key from the database."""
+  """The unique identifier stored in the database"""
   databaseId: Int!
 
   """The description of the object"""
@@ -5388,6 +6088,8 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5405,6 +6107,8 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5418,11 +6122,17 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
     before: String
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The globally unique ID for the object"""
+  """The unique resource identifier path"""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The link to the term"""
   link: String
@@ -5437,6 +6147,8 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
   posts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5466,13 +6178,16 @@ type PostFormat implements Node & TermNode & DatabaseIdentifier & UniformResourc
   termTaxonomyId: Int
 
   """The unique resource identifier path"""
-  uri: String!
+  uri: String
 }
 
 """
 Arguments for filtering the PostFormatToContentNodeConnection connection
 """
 input PostFormatToContentNodeConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypesOfPostFormatEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -5518,11 +6233,21 @@ input PostFormatToContentNodeConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
   title: String
+}
+
+"""Allowed Content Types of the PostFormat taxonomy."""
+enum ContentTypesOfPostFormatEnum {
+  """The Type of Content object"""
+  POST
 }
 
 """Connection between the postFormat type and the ContentNode type"""
@@ -5625,7 +6350,11 @@ input PostFormatToPostConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -5673,13 +6402,13 @@ type PostFormatToPostConnectionEdge {
 
 """Connection between the postFormat type and the Taxonomy type"""
 type PostFormatToTaxonomyConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Taxonomy
 }
 
 """Connection between the post type and the post type"""
 type PostToPreviewConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Post
 }
 
@@ -5762,7 +6491,11 @@ input PostToRevisionConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -5864,6 +6597,9 @@ input PostToTagConnectionWhereArgs {
   """
   objectIds: [ID]
 
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
 
@@ -5912,11 +6648,13 @@ type PostToTagConnectionEdge {
 }
 
 """The tag type"""
-type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdentifiable & MenuItemLinkable {
+type Tag implements Node & TermNode & UniformResourceIdentifiable & DatabaseIdentifier & MenuItemLinkable {
   """Connection between the tag type and the ContentNode type"""
   contentNodes(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5936,7 +6674,7 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
   """The number of objects connected to the object"""
   count: Int
 
-  """Identifies the primary key from the database."""
+  """The unique resource identifier path"""
   databaseId: Int!
 
   """The description of the object"""
@@ -5946,6 +6684,8 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
   enqueuedScripts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5963,6 +6703,8 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
   enqueuedStylesheets(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -5976,11 +6718,17 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
     before: String
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The globally unique ID for the object"""
+  """The unique resource identifier path"""
   id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """The link to the term"""
   link: String
@@ -5992,6 +6740,8 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
   posts(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -6024,11 +6774,14 @@ type Tag implements Node & TermNode & DatabaseIdentifier & UniformResourceIdenti
   termTaxonomyId: Int
 
   """The unique resource identifier path"""
-  uri: String!
+  uri: String
 }
 
 """Arguments for filtering the TagToContentNodeConnection connection"""
 input TagToContentNodeConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypesOfTagEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -6074,11 +6827,21 @@ input TagToContentNodeConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
   title: String
+}
+
+"""Allowed Content Types of the Tag taxonomy."""
+enum ContentTypesOfTagEnum {
+  """The Type of Content object"""
+  POST
 }
 
 """Connection between the tag type and the ContentNode type"""
@@ -6181,7 +6944,11 @@ input TagToPostConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -6229,7 +6996,7 @@ type TagToPostConnectionEdge {
 
 """Connection between the tag type and the Taxonomy type"""
 type TagToTaxonomyConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Taxonomy
 }
 
@@ -6289,6 +7056,9 @@ input PostToTermNodeConnectionWhereArgs {
   """
   objectIds: [ID]
 
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
 
@@ -6320,8 +7090,13 @@ input PostToTermNodeConnectionWhereArgs {
 
 """Allowed taxonomies"""
 enum TaxonomyEnum {
+  """Taxonomy enum category"""
   CATEGORY
+
+  """Taxonomy enum post_format"""
   POSTFORMAT
+
+  """Taxonomy enum post_tag"""
   TAG
 }
 
@@ -6350,6 +7125,9 @@ type PostToTermNodeConnectionEdge {
 Arguments for filtering the UserToContentRevisionUnionConnection connection
 """
 input UserToContentRevisionUnionConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypeEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -6395,7 +7173,11 @@ input UserToContentRevisionUnionConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -6423,6 +7205,7 @@ type UserToContentRevisionUnionConnectionEdge {
   node: ContentRevisionUnion
 }
 
+"""A union of Content Node Types that support revisions"""
 union ContentRevisionUnion = Post | Page
 
 """Connection between the User type and the UserRole type"""
@@ -6466,7 +7249,7 @@ type UserRole implements Node {
 
 """Connection between the category type and the category type"""
 type CategoryToParentCategoryConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Category
 }
 
@@ -6549,7 +7332,11 @@ input CategoryToPostConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -6597,7 +7384,7 @@ type CategoryToPostConnectionEdge {
 
 """Connection between the category type and the Taxonomy type"""
 type CategoryToTaxonomyConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Taxonomy
 }
 
@@ -6802,7 +7589,11 @@ input RootQueryToContentNodeConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -6913,9 +7704,6 @@ enum MediaItemIdType {
   """Identify a resource by the (hashed) Global ID."""
   ID
 
-  """Identify a resource by the URI."""
-  URI
-
   """
   Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier.
   """
@@ -6923,6 +7711,9 @@ enum MediaItemIdType {
 
   """Identify a media item by its source url"""
   SOURCE_URL
+
+  """Identify a resource by the URI."""
+  URI
 }
 
 """Arguments for filtering the RootQueryToMediaItemConnection connection"""
@@ -6988,7 +7779,11 @@ input RootQueryToMediaItemConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -7046,7 +7841,7 @@ type Menu implements Node & DatabaseIdentifier {
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
 
-  """"""
+  """The locations a menu is assigned to"""
   locations: [MenuLocationEnum]
 
   """WP ID of the nav menu."""
@@ -7056,6 +7851,8 @@ type Menu implements Node & DatabaseIdentifier {
   menuItems(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -7081,6 +7878,7 @@ type Menu implements Node & DatabaseIdentifier {
 
 """Registered menu locations"""
 enum MenuLocationEnum {
+  """Put the menu in the primary location"""
   PRIMARY
 }
 
@@ -7128,6 +7926,8 @@ type MenuItem implements Node & DatabaseIdentifier {
   childItems(
     """The number of items to return after the referenced "after" cursor"""
     first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
     last: Int
 
     """
@@ -7171,7 +7971,7 @@ type MenuItem implements Node & DatabaseIdentifier {
   """Link relationship (XFN) of the menu item."""
   linkRelationship: String
 
-  """"""
+  """The locations the menu item&#039;s Menu is assigned to"""
   locations: [MenuLocationEnum]
 
   """The Menu a MenuItem is part of"""
@@ -7192,7 +7992,7 @@ type MenuItem implements Node & DatabaseIdentifier {
   """
   Path for the resource. Relative path for internal resources. Absolute path for external resources.
   """
-  path: String!
+  path: String
 
   """Target attribute for the menu item link."""
   target: String
@@ -7242,7 +8042,7 @@ type MenuItemToMenuItemConnectionEdge {
 
 """Connection between the MenuItem type and the MenuItemLinkable type"""
 type MenuItemToMenuItemLinkableConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: MenuItemLinkable
 }
 
@@ -7251,7 +8051,7 @@ union MenuItemObjectUnion = Post | Page | Category | Tag
 
 """Connection between the MenuItem type and the Menu type"""
 type MenuItemToMenuConnectionEdge {
-  """The nodes of the connection, without the edges"""
+  """The node of the connection, without the edges"""
   node: Menu
 }
 
@@ -7410,7 +8210,11 @@ input RootQueryToPageConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -7499,13 +8303,13 @@ enum PostIdType {
   """Identify a resource by the (hashed) Global ID."""
   ID
 
-  """Identify a resource by the URI."""
-  URI
-
   """
   Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier.
   """
   SLUG
+
+  """Identify a resource by the URI."""
+  URI
 }
 
 """The Type of Identifier used to fetch a single resource. Default is ID."""
@@ -7581,6 +8385,9 @@ input RootQueryToPostFormatConnectionWhereArgs {
   Array of object IDs. Results will be limited to terms associated with these objects.
   """
   objectIds: [ID]
+
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
 
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
@@ -7708,7 +8515,11 @@ input RootQueryToPostConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Tag Slug"""
@@ -7806,6 +8617,9 @@ type RootQueryToEnqueuedStylesheetConnectionEdge {
 Arguments for filtering the RootQueryToContentRevisionUnionConnection connection
 """
 input RootQueryToContentRevisionUnionConnectionWhereArgs {
+  """The Types of content to filter"""
+  contentTypes: [ContentTypeEnum]
+
   """Filter the connection based on dates"""
   dateQuery: DateQueryInput
 
@@ -7851,7 +8665,11 @@ input RootQueryToContentRevisionUnionConnectionWhereArgs {
 
   """Show Posts based on a keyword search"""
   search: String
+
+  """Retrieve posts where post status is in an array."""
   stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
   status: PostStatusEnum
 
   """Title of the object"""
@@ -7954,6 +8772,9 @@ input RootQueryToTagConnectionWhereArgs {
   Array of object IDs. Results will be limited to terms associated with these objects.
   """
   objectIds: [ID]
+
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
 
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
@@ -8109,6 +8930,9 @@ input RootQueryToTermNodeConnectionWhereArgs {
   Array of object IDs. Results will be limited to terms associated with these objects.
   """
   objectIds: [ID]
+
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
 
   """Field(s) to order terms by. Defaults to 'name'."""
   orderby: TermObjectsConnectionOrderbyEnum
@@ -8349,7 +9173,10 @@ input RootQueryToUserConnectionWhereArgs {
 
 """Options for ordering the connection"""
 input UsersConnectionOrderbyInput {
+  """The field name used to sort the results."""
   field: UsersConnectionOrderbyEnum!
+
+  """The cardinality of the order of the connection"""
   order: OrderEnum
 }
 
@@ -8382,20 +9209,38 @@ enum UsersConnectionOrderbyEnum {
 
 """Names of available user roles"""
 enum UserRoleEnum {
+  """User role with specific capabilities"""
   ADMINISTRATOR
+
+  """User role with specific capabilities"""
   AUTHOR
+
+  """User role with specific capabilities"""
   CONTRIBUTOR
+
+  """User role with specific capabilities"""
   EDITOR
+
+  """User role with specific capabilities"""
   SUBSCRIBER
 }
 
-"""Names of available user roles"""
+"""Column used for searching for users."""
 enum UsersConnectionSearchColumnEnum {
-  ADMINISTRATOR
-  AUTHOR
-  CONTRIBUTOR
-  EDITOR
-  SUBSCRIBER
+  """The user's email address."""
+  EMAIL
+
+  """The globally unique ID."""
+  ID
+
+  """The username the User uses to login with."""
+  LOGIN
+
+  """A URL-friendly name for the user. The default is the user's username."""
+  NICENAME
+
+  """The URL of the user\s website."""
+  URL
 }
 
 """Connection between the RootQuery type and the User type"""
@@ -8433,24 +9278,6 @@ type WritingSettings {
 
 """The root mutation"""
 type RootMutation {
-  """The payload for the UpdateCategory mutation"""
-  updateCategory(
-    """Input for the UpdateCategory mutation"""
-    input: UpdateCategoryInput!
-  ): UpdateCategoryPayload
-
-  """The payload for the UpdatePostFormat mutation"""
-  updatePostFormat(
-    """Input for the UpdatePostFormat mutation"""
-    input: UpdatePostFormatInput!
-  ): UpdatePostFormatPayload
-
-  """The payload for the UpdateTag mutation"""
-  updateTag(
-    """Input for the UpdateTag mutation"""
-    input: UpdateTagInput!
-  ): UpdateTagPayload
-
   """The payload for the createCategory mutation"""
   createCategory(
     """Input for the createCategory mutation"""
@@ -8547,7 +9374,7 @@ type RootMutation {
     input: DeleteUserInput!
   ): DeleteUserPayload
 
-  """"""
+  """Increase the count."""
   increaseCount(
     """The count to increase"""
     count: Int
@@ -8577,6 +9404,12 @@ type RootMutation {
     input: SendPasswordResetEmailInput!
   ): SendPasswordResetEmailPayload
 
+  """The payload for the UpdateCategory mutation"""
+  updateCategory(
+    """Input for the UpdateCategory mutation"""
+    input: UpdateCategoryInput!
+  ): UpdateCategoryPayload
+
   """The payload for the updateComment mutation"""
   updateComment(
     """Input for the updateComment mutation"""
@@ -8601,11 +9434,23 @@ type RootMutation {
     input: UpdatePostInput!
   ): UpdatePostPayload
 
+  """The payload for the UpdatePostFormat mutation"""
+  updatePostFormat(
+    """Input for the UpdatePostFormat mutation"""
+    input: UpdatePostFormatInput!
+  ): UpdatePostFormatPayload
+
   """The payload for the updateSettings mutation"""
   updateSettings(
     """Input for the updateSettings mutation"""
     input: UpdateSettingsInput!
   ): UpdateSettingsPayload
+
+  """The payload for the UpdateTag mutation"""
+  updateTag(
+    """Input for the UpdateTag mutation"""
+    input: UpdateTagInput!
+  ): UpdateTagPayload
 
   """The payload for the updateUser mutation"""
   updateUser(
@@ -8614,103 +9459,14 @@ type RootMutation {
   ): UpdateUserPayload
 }
 
-"""Input for the UpdateCategory mutation"""
-input UpdateCategoryInput {
-  """The slug that the category will be an alias of"""
-  aliasOf: String
-  clientMutationId: String
-
-  """The description of the category object"""
-  description: String
-
-  """The ID of the category object to update"""
-  id: ID!
-
-  """The name of the category object to mutate"""
-  name: String
-
-  """The ID of the category that should be set as the parent"""
-  parentId: ID
-
-  """
-  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
-  """
-  slug: String
-}
-
-"""The payload for the UpdateCategory mutation"""
-type UpdateCategoryPayload {
-  """The created category"""
-  category: Category
-
-  """"""
-  clientMutationId: String
-}
-
-"""Input for the UpdatePostFormat mutation"""
-input UpdatePostFormatInput {
-  """The slug that the post_format will be an alias of"""
-  aliasOf: String
-  clientMutationId: String
-
-  """The description of the post_format object"""
-  description: String
-
-  """The ID of the postFormat object to update"""
-  id: ID!
-
-  """The name of the post_format object to mutate"""
-  name: String
-
-  """
-  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
-  """
-  slug: String
-}
-
-"""The payload for the UpdatePostFormat mutation"""
-type UpdatePostFormatPayload {
-  """"""
-  clientMutationId: String
-
-  """The created post_format"""
-  postFormat: PostFormat
-}
-
-"""Input for the UpdateTag mutation"""
-input UpdateTagInput {
-  """The slug that the post_tag will be an alias of"""
-  aliasOf: String
-  clientMutationId: String
-
-  """The description of the post_tag object"""
-  description: String
-
-  """The ID of the tag object to update"""
-  id: ID!
-
-  """The name of the post_tag object to mutate"""
-  name: String
-
-  """
-  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
-  """
-  slug: String
-}
-
-"""The payload for the UpdateTag mutation"""
-type UpdateTagPayload {
-  """"""
-  clientMutationId: String
-
-  """The created post_tag"""
-  tag: Tag
-}
-
 """Input for the createCategory mutation"""
 input CreateCategoryInput {
   """The slug that the category will be an alias of"""
   aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The description of the category object"""
@@ -8733,7 +9489,9 @@ type CreateCategoryPayload {
   """The created category"""
   category: Category
 
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 }
 
@@ -8750,6 +9508,10 @@ input CreateCommentInput {
 
   """The url of the comment's author."""
   authorUrl: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the post object the comment belongs to."""
@@ -8772,7 +9534,9 @@ input CreateCommentInput {
 
 """The payload for the createComment mutation"""
 type CreateCommentPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment that was created"""
@@ -8794,6 +9558,10 @@ input CreateMediaItemInput {
 
   """The caption for the mediaItem"""
   caption: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the mediaItem"""
@@ -8847,10 +9615,12 @@ enum MediaItemStatusEnum {
 
 """The payload for the createMediaItem mutation"""
 type CreateMediaItemPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The MediaItem object mutation type."""
   mediaItem: MediaItem
 }
 
@@ -8858,6 +9628,10 @@ type CreateMediaItemPayload {
 input CreatePageInput {
   """The userId to assign as the author of the object"""
   authorId: ID
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the object"""
@@ -8894,10 +9668,12 @@ input CreatePageInput {
 
 """The payload for the createPage mutation"""
 type CreatePagePayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The Post object mutation type."""
   page: Page
 }
 
@@ -8908,6 +9684,10 @@ input CreatePostInput {
 
   """Set connections between the post and categories"""
   categories: PostCategoriesInput
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the object"""
@@ -8963,6 +9743,8 @@ input PostCategoriesInput {
   If true, this will append the category to existing related categories. If false, this will replace existing relationships. Default true.
   """
   append: Boolean
+
+  """The input list of items to set."""
   nodes: [PostCategoriesNodeInput]
 }
 
@@ -8997,6 +9779,8 @@ input PostPostFormatsInput {
   If true, this will append the postFormat to existing related postFormats. If false, this will replace existing relationships. Default true.
   """
   append: Boolean
+
+  """The input list of items to set."""
   nodes: [PostPostFormatsNodeInput]
 }
 
@@ -9031,6 +9815,8 @@ input PostTagsInput {
   If true, this will append the tag to existing related tags. If false, this will replace existing relationships. Default true.
   """
   append: Boolean
+
+  """The input list of items to set."""
   nodes: [PostTagsNodeInput]
 }
 
@@ -9061,10 +9847,12 @@ input PostTagsNodeInput {
 
 """The payload for the createPost mutation"""
 type CreatePostPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The Post object mutation type."""
   post: Post
 }
 
@@ -9072,6 +9860,10 @@ type CreatePostPayload {
 input CreatePostFormatInput {
   """The slug that the post_format will be an alias of"""
   aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The description of the post_format object"""
@@ -9088,7 +9880,9 @@ input CreatePostFormatInput {
 
 """The payload for the createPostFormat mutation"""
 type CreatePostFormatPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The created post_format"""
@@ -9099,6 +9893,10 @@ type CreatePostFormatPayload {
 input CreateTagInput {
   """The slug that the post_tag will be an alias of"""
   aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The description of the post_tag object"""
@@ -9115,7 +9913,9 @@ input CreateTagInput {
 
 """The payload for the createTag mutation"""
 type CreateTagPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The created post_tag"""
@@ -9126,6 +9926,10 @@ type CreateTagPayload {
 input CreateUserInput {
   """User's AOL IM account."""
   aim: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """A string containing content about the user."""
@@ -9185,15 +9989,20 @@ input CreateUserInput {
 
 """The payload for the createUser mutation"""
 type CreateUserPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The User object mutation type."""
   user: User
 }
 
 """Input for the deleteCategory mutation"""
 input DeleteCategoryInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the category to delete"""
@@ -9205,7 +10014,9 @@ type DeleteCategoryPayload {
   """The deteted term object"""
   category: Category
 
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted object"""
@@ -9214,6 +10025,9 @@ type DeleteCategoryPayload {
 
 """Input for the deleteComment mutation"""
 input DeleteCommentInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """
@@ -9227,7 +10041,9 @@ input DeleteCommentInput {
 
 """The payload for the deleteComment mutation"""
 type DeleteCommentPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The deleted comment object"""
@@ -9239,6 +10055,9 @@ type DeleteCommentPayload {
 
 """Input for the deleteMediaItem mutation"""
 input DeleteMediaItemInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """
@@ -9252,7 +10071,9 @@ input DeleteMediaItemInput {
 
 """The payload for the deleteMediaItem mutation"""
 type DeleteMediaItemPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted mediaItem"""
@@ -9264,6 +10085,9 @@ type DeleteMediaItemPayload {
 
 """Input for the deletePage mutation"""
 input DeletePageInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """
@@ -9277,7 +10101,9 @@ input DeletePageInput {
 
 """The payload for the deletePage mutation"""
 type DeletePagePayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted object"""
@@ -9289,6 +10115,9 @@ type DeletePagePayload {
 
 """Input for the deletePost mutation"""
 input DeletePostInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """
@@ -9302,7 +10131,9 @@ input DeletePostInput {
 
 """The payload for the deletePost mutation"""
 type DeletePostPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted object"""
@@ -9314,6 +10145,9 @@ type DeletePostPayload {
 
 """Input for the deletePostFormat mutation"""
 input DeletePostFormatInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the postFormat to delete"""
@@ -9322,7 +10156,9 @@ input DeletePostFormatInput {
 
 """The payload for the deletePostFormat mutation"""
 type DeletePostFormatPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted object"""
@@ -9334,6 +10170,9 @@ type DeletePostFormatPayload {
 
 """Input for the deleteTag mutation"""
 input DeleteTagInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the tag to delete"""
@@ -9342,7 +10181,9 @@ input DeleteTagInput {
 
 """The payload for the deleteTag mutation"""
 type DeleteTagPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the deleted object"""
@@ -9354,6 +10195,9 @@ type DeleteTagPayload {
 
 """Input for the deleteUser mutation"""
 input DeleteUserInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the user you want to delete"""
@@ -9365,7 +10209,9 @@ input DeleteUserInput {
 
 """The payload for the deleteUser mutation"""
 type DeleteUserPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the user that you just deleted"""
@@ -9379,6 +10225,10 @@ type DeleteUserPayload {
 input RegisterUserInput {
   """User's AOL IM account."""
   aim: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """A string containing content about the user."""
@@ -9435,15 +10285,20 @@ input RegisterUserInput {
 
 """The payload for the registerUser mutation"""
 type RegisterUserPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The User object mutation type."""
   user: User
 }
 
 """Input for the resetUserPassword mutation"""
 input ResetUserPasswordInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """Password reset key"""
@@ -9458,15 +10313,20 @@ input ResetUserPasswordInput {
 
 """The payload for the resetUserPassword mutation"""
 type ResetUserPasswordPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The User object mutation type."""
   user: User
 }
 
 """Input for the restoreComment mutation"""
 input RestoreCommentInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the comment to be restored"""
@@ -9475,7 +10335,9 @@ input RestoreCommentInput {
 
 """The payload for the restoreComment mutation"""
 type RestoreCommentPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The restored comment object"""
@@ -9487,6 +10349,9 @@ type RestoreCommentPayload {
 
 """Input for the sendPasswordResetEmail mutation"""
 input SendPasswordResetEmailInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """A string that contains the user's username or email address."""
@@ -9495,11 +10360,52 @@ input SendPasswordResetEmailInput {
 
 """The payload for the sendPasswordResetEmail mutation"""
 type SendPasswordResetEmailPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The user that the password reset email was sent to"""
   user: User
+}
+
+"""Input for the UpdateCategory mutation"""
+input UpdateCategoryInput {
+  """The slug that the category will be an alias of"""
+  aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The description of the category object"""
+  description: String
+
+  """The ID of the category object to update"""
+  id: ID!
+
+  """The name of the category object to mutate"""
+  name: String
+
+  """The ID of the category that should be set as the parent"""
+  parentId: ID
+
+  """
+  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
+  """
+  slug: String
+}
+
+"""The payload for the UpdateCategory mutation"""
+type UpdateCategoryPayload {
+  """The created category"""
+  category: Category
+
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
 }
 
 """Input for the updateComment mutation"""
@@ -9515,6 +10421,10 @@ input UpdateCommentInput {
 
   """The url of the comment's author."""
   authorUrl: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The ID of the post object the comment belongs to."""
@@ -9540,7 +10450,9 @@ input UpdateCommentInput {
 
 """The payload for the updateComment mutation"""
 type UpdateCommentPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment that was created"""
@@ -9562,6 +10474,10 @@ input UpdateMediaItemInput {
 
   """The caption for the mediaItem"""
   caption: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the mediaItem"""
@@ -9603,10 +10519,12 @@ input UpdateMediaItemInput {
 
 """The payload for the updateMediaItem mutation"""
 type UpdateMediaItemPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The MediaItem object mutation type."""
   mediaItem: MediaItem
 }
 
@@ -9614,6 +10532,10 @@ type UpdateMediaItemPayload {
 input UpdatePageInput {
   """The userId to assign as the author of the object"""
   authorId: ID
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the object"""
@@ -9653,10 +10575,12 @@ input UpdatePageInput {
 
 """The payload for the updatePage mutation"""
 type UpdatePagePayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The Post object mutation type."""
   page: Page
 }
 
@@ -9667,6 +10591,10 @@ input UpdatePostInput {
 
   """Set connections between the post and categories"""
   categories: PostCategoriesInput
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """The comment status for the object"""
@@ -9721,15 +10649,56 @@ input UpdatePostInput {
 
 """The payload for the updatePost mutation"""
 type UpdatePostPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The Post object mutation type."""
   post: Post
+}
+
+"""Input for the UpdatePostFormat mutation"""
+input UpdatePostFormatInput {
+  """The slug that the post_format will be an alias of"""
+  aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The description of the post_format object"""
+  description: String
+
+  """The ID of the postFormat object to update"""
+  id: ID!
+
+  """The name of the post_format object to mutate"""
+  name: String
+
+  """
+  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
+  """
+  slug: String
+}
+
+"""The payload for the UpdatePostFormat mutation"""
+type UpdatePostFormatPayload {
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The created post_format"""
+  postFormat: PostFormat
 }
 
 """Input for the updateSettings mutation"""
 input UpdateSettingsInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """Разрешить оставлять комментарии к новым записям."""
@@ -9784,29 +10753,71 @@ input UpdateSettingsInput {
 
 """The payload for the updateSettings mutation"""
 type UpdateSettingsPayload {
-  """"""
+  """Update all settings."""
   allSettings: Settings
 
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """Update the discussion setting."""
   discussionSettings: DiscussionSettings
 
-  """"""
+  """Update the general setting."""
   generalSettings: GeneralSettings
 
-  """"""
+  """Update the reading setting."""
   readingSettings: ReadingSettings
 
-  """"""
+  """Update the writing setting."""
   writingSettings: WritingSettings
+}
+
+"""Input for the UpdateTag mutation"""
+input UpdateTagInput {
+  """The slug that the post_tag will be an alias of"""
+  aliasOf: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The description of the post_tag object"""
+  description: String
+
+  """The ID of the tag object to update"""
+  id: ID!
+
+  """The name of the post_tag object to mutate"""
+  name: String
+
+  """
+  If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
+  """
+  slug: String
+}
+
+"""The payload for the UpdateTag mutation"""
+type UpdateTagPayload {
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The created post_tag"""
+  tag: Tag
 }
 
 """Input for the updateUser mutation"""
 input UpdateUserInput {
   """User's AOL IM account."""
   aim: String
+
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
   """A string containing content about the user."""
@@ -9866,10 +10877,12 @@ input UpdateUserInput {
 
 """The payload for the updateUser mutation"""
 type UpdateUserPayload {
-  """"""
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
   clientMutationId: String
 
-  """"""
+  """The User object mutation type."""
   user: User
 }
 
@@ -9894,1386 +10907,8 @@ type CommentAuthor implements Node & Commenter {
   url: String
 }
 
-"""Available timezones"""
-enum TimezoneEnum {
-  """Абиджан"""
-  AFRICA_ABIDJAN
-
-  """Аккра"""
-  AFRICA_ACCRA
-
-  """Аддис-Абеба"""
-  AFRICA_ADDIS_ABABA
-
-  """Алжир"""
-  AFRICA_ALGIERS
-
-  """Асмэра"""
-  AFRICA_ASMARA
-
-  """Бамако"""
-  AFRICA_BAMAKO
-
-  """Банги"""
-  AFRICA_BANGUI
-
-  """Банжул"""
-  AFRICA_BANJUL
-
-  """Бисау"""
-  AFRICA_BISSAU
-
-  """Блантайр"""
-  AFRICA_BLANTYRE
-
-  """Браззавиль"""
-  AFRICA_BRAZZAVILLE
-
-  """Бужумбура"""
-  AFRICA_BUJUMBURA
-
-  """Каир"""
-  AFRICA_CAIRO
-
-  """Касабланка"""
-  AFRICA_CASABLANCA
-
-  """Сеута"""
-  AFRICA_CEUTA
-
-  """Конакри"""
-  AFRICA_CONAKRY
-
-  """Дакар"""
-  AFRICA_DAKAR
-
-  """Дар-эс-Салам"""
-  AFRICA_DAR_ES_SALAAM
-
-  """Джибути"""
-  AFRICA_DJIBOUTI
-
-  """Дуала"""
-  AFRICA_DOUALA
-
-  """Эль-Аюн"""
-  AFRICA_EL_AAIUN
-
-  """Фритаун"""
-  AFRICA_FREETOWN
-
-  """Габороне"""
-  AFRICA_GABORONE
-
-  """Хараре"""
-  AFRICA_HARARE
-
-  """Йоханнесбург"""
-  AFRICA_JOHANNESBURG
-
-  """Джуба"""
-  AFRICA_JUBA
-
-  """Кампала"""
-  AFRICA_KAMPALA
-
-  """Хартум"""
-  AFRICA_KHARTOUM
-
-  """Кигали"""
-  AFRICA_KIGALI
-
-  """Киншаса"""
-  AFRICA_KINSHASA
-
-  """Лагос"""
-  AFRICA_LAGOS
-
-  """Либревиль"""
-  AFRICA_LIBREVILLE
-
-  """Ломе"""
-  AFRICA_LOME
-
-  """Луанда"""
-  AFRICA_LUANDA
-
-  """Лубумбаши"""
-  AFRICA_LUBUMBASHI
-
-  """Лусака"""
-  AFRICA_LUSAKA
-
-  """Малабо"""
-  AFRICA_MALABO
-
-  """Мапуту"""
-  AFRICA_MAPUTO
-
-  """Масеру"""
-  AFRICA_MASERU
-
-  """Мбабане"""
-  AFRICA_MBABANE
-
-  """Могадишо"""
-  AFRICA_MOGADISHU
-
-  """Монровия"""
-  AFRICA_MONROVIA
-
-  """Найроби"""
-  AFRICA_NAIROBI
-
-  """Нджамена"""
-  AFRICA_NDJAMENA
-
-  """Ниамей"""
-  AFRICA_NIAMEY
-
-  """Нуакшот"""
-  AFRICA_NOUAKCHOTT
-
-  """Уагадугу"""
-  AFRICA_OUAGADOUGOU
-
-  """Порто-Ново"""
-  AFRICA_PORTO_NOVO
-
-  """Сан-Томе"""
-  AFRICA_SAO_TOME
-
-  """Триполи"""
-  AFRICA_TRIPOLI
-
-  """Тунис"""
-  AFRICA_TUNIS
-
-  """Виндхук"""
-  AFRICA_WINDHOEK
-
-  """Адак"""
-  AMERICA_ADAK
-
-  """Анкоридж"""
-  AMERICA_ANCHORAGE
-
-  """Ангилья"""
-  AMERICA_ANGUILLA
-
-  """Антигуа"""
-  AMERICA_ANTIGUA
-
-  """Арагуаина"""
-  AMERICA_ARAGUAINA
-
-  """Аргентина - Буэнос-Айрес"""
-  AMERICA_ARGENTINA_BUENOS_AIRES
-
-  """Аргентина - Катамарка"""
-  AMERICA_ARGENTINA_CATAMARCA
-
-  """Аргентина - Кордова"""
-  AMERICA_ARGENTINA_CORDOBA
-
-  """Аргентина - Жужуй"""
-  AMERICA_ARGENTINA_JUJUY
-
-  """Аргентина - Ла-Риоха"""
-  AMERICA_ARGENTINA_LA_RIOJA
-
-  """Аргентина - Мендоса"""
-  AMERICA_ARGENTINA_MENDOZA
-
-  """Аргентина - Рио-Гальегос"""
-  AMERICA_ARGENTINA_RIO_GALLEGOS
-
-  """Аргентина - Сальта"""
-  AMERICA_ARGENTINA_SALTA
-
-  """Аргентина - Сан-Хуан"""
-  AMERICA_ARGENTINA_SAN_JUAN
-
-  """Аргентина - Сан-Луис"""
-  AMERICA_ARGENTINA_SAN_LUIS
-
-  """Аргентина - Тукуман"""
-  AMERICA_ARGENTINA_TUCUMAN
-
-  """Аргентина - Ушуайя"""
-  AMERICA_ARGENTINA_USHUAIA
-
-  """Аруба"""
-  AMERICA_ARUBA
-
-  """Асунсьон"""
-  AMERICA_ASUNCION
-
-  """Атикокан"""
-  AMERICA_ATIKOKAN
-
-  """Баия"""
-  AMERICA_BAHIA
-
-  """Баия-де-Бандерас"""
-  AMERICA_BAHIA_BANDERAS
-
-  """Барбадос"""
-  AMERICA_BARBADOS
-
-  """Белем"""
-  AMERICA_BELEM
-
-  """Белиз"""
-  AMERICA_BELIZE
-
-  """Бланк-Саблон"""
-  AMERICA_BLANC_SABLON
-
-  """Боа-Виста"""
-  AMERICA_BOA_VISTA
-
-  """Богота"""
-  AMERICA_BOGOTA
-
-  """Бойсе"""
-  AMERICA_BOISE
-
-  """Кеймбридж-Бей"""
-  AMERICA_CAMBRIDGE_BAY
-
-  """Кампу-Гранди"""
-  AMERICA_CAMPO_GRANDE
-
-  """Канкун"""
-  AMERICA_CANCUN
-
-  """Каракас"""
-  AMERICA_CARACAS
-
-  """Кайенна"""
-  AMERICA_CAYENNE
-
-  """Кайман"""
-  AMERICA_CAYMAN
-
-  """Чикаго"""
-  AMERICA_CHICAGO
-
-  """Чиуауа"""
-  AMERICA_CHIHUAHUA
-
-  """Коста-Рика"""
-  AMERICA_COSTA_RICA
-
-  """Крестон"""
-  AMERICA_CRESTON
-
-  """Куяба"""
-  AMERICA_CUIABA
-
-  """Кюрасао"""
-  AMERICA_CURACAO
-
-  """Данмарксхавн"""
-  AMERICA_DANMARKSHAVN
-
-  """Доусон"""
-  AMERICA_DAWSON
-
-  """Досон-Крик"""
-  AMERICA_DAWSON_CREEK
-
-  """Денвер"""
-  AMERICA_DENVER
-
-  """Детройт"""
-  AMERICA_DETROIT
-
-  """Доминика"""
-  AMERICA_DOMINICA
-
-  """Эдмонтон"""
-  AMERICA_EDMONTON
-
-  """Эйрунепе"""
-  AMERICA_EIRUNEPE
-
-  """Сальвадор"""
-  AMERICA_EL_SALVADOR
-
-  """Форталеза"""
-  AMERICA_FORTALEZA
-
-  """Форт-Нельсон"""
-  AMERICA_FORT_NELSON
-
-  """Глейс-Бей"""
-  AMERICA_GLACE_BAY
-
-  """Готхоб"""
-  AMERICA_GODTHAB
-
-  """Гус-Бей"""
-  AMERICA_GOOSE_BAY
-
-  """Гранд-Терк"""
-  AMERICA_GRAND_TURK
-
-  """Гренада"""
-  AMERICA_GRENADA
-
-  """Гваделупа"""
-  AMERICA_GUADELOUPE
-
-  """Гватемала"""
-  AMERICA_GUATEMALA
-
-  """Гуаякиль"""
-  AMERICA_GUAYAQUIL
-
-  """Гайана"""
-  AMERICA_GUYANA
-
-  """Галифакс"""
-  AMERICA_HALIFAX
-
-  """Гавана"""
-  AMERICA_HAVANA
-
-  """Эрмосильо"""
-  AMERICA_HERMOSILLO
-
-  """Индиана - Индианаполис"""
-  AMERICA_INDIANA_INDIANAPOLIS
-
-  """Индиана - Нокс"""
-  AMERICA_INDIANA_KNOX
-
-  """Индиана - Маренго"""
-  AMERICA_INDIANA_MARENGO
-
-  """Индиана - Петербург"""
-  AMERICA_INDIANA_PETERSBURG
-
-  """Индиана - Телл-Сити"""
-  AMERICA_INDIANA_TELL_CITY
-
-  """Индиана - Вевей"""
-  AMERICA_INDIANA_VEVAY
-
-  """Индиана - Венсен"""
-  AMERICA_INDIANA_VINCENNES
-
-  """Индиана - Винамак"""
-  AMERICA_INDIANA_WINAMAC
-
-  """Инувик"""
-  AMERICA_INUVIK
-
-  """Икалуит"""
-  AMERICA_IQALUIT
-
-  """Ямайка"""
-  AMERICA_JAMAICA
-
-  """Джуно"""
-  AMERICA_JUNEAU
-
-  """Кентукки - Луисвилл"""
-  AMERICA_KENTUCKY_LOUISVILLE
-
-  """Кентукки - Монтичелло"""
-  AMERICA_KENTUCKY_MONTICELLO
-
-  """Кралендейк"""
-  AMERICA_KRALENDIJK
-
-  """Ла-Пас"""
-  AMERICA_LA_PAZ
-
-  """Лима"""
-  AMERICA_LIMA
-
-  """Лос-Анджелес"""
-  AMERICA_LOS_ANGELES
-
-  """Лоуэр-Принсес"""
-  AMERICA_LOWER_PRINCES
-
-  """Масейо"""
-  AMERICA_MACEIO
-
-  """Манагуа"""
-  AMERICA_MANAGUA
-
-  """Манаус"""
-  AMERICA_MANAUS
-
-  """Мариго"""
-  AMERICA_MARIGOT
-
-  """Мартиника"""
-  AMERICA_MARTINIQUE
-
-  """Матаморос"""
-  AMERICA_MATAMOROS
-
-  """Масатлан"""
-  AMERICA_MAZATLAN
-
-  """Меномини"""
-  AMERICA_MENOMINEE
-
-  """Мерида"""
-  AMERICA_MERIDA
-
-  """Метлакатла"""
-  AMERICA_METLAKATLA
-
-  """Мехико"""
-  AMERICA_MEXICO_CITY
-
-  """Микелон"""
-  AMERICA_MIQUELON
-
-  """Монктон"""
-  AMERICA_MONCTON
-
-  """Монтеррей"""
-  AMERICA_MONTERREY
-
-  """Монтевидео"""
-  AMERICA_MONTEVIDEO
-
-  """Монсеррат"""
-  AMERICA_MONTSERRAT
-
-  """Нассау"""
-  AMERICA_NASSAU
-
-  """Нью-Йорк"""
-  AMERICA_NEW_YORK
-
-  """Нипигон"""
-  AMERICA_NIPIGON
-
-  """Ном"""
-  AMERICA_NOME
-
-  """Норонья"""
-  AMERICA_NORONHA
-
-  """Северная Дакота - Бьюла"""
-  AMERICA_NORTH_DAKOTA_BEULAH
-
-  """Северная Дакота - Центр"""
-  AMERICA_NORTH_DAKOTA_CENTER
-
-  """Северная Дакота - Нью-Салем"""
-  AMERICA_NORTH_DAKOTA_NEW_SALEM
-
-  """Охинага"""
-  AMERICA_OJINAGA
-
-  """Панама"""
-  AMERICA_PANAMA
-
-  """Пангниртунг"""
-  AMERICA_PANGNIRTUNG
-
-  """Парамарибо"""
-  AMERICA_PARAMARIBO
-
-  """Феникс"""
-  AMERICA_PHOENIX
-
-  """Порту-Велью"""
-  AMERICA_PORTO_VELHO
-
-  """Порт-о-Пренс"""
-  AMERICA_PORT_AU_PRINCE
-
-  """Порт-оф-Спейн"""
-  AMERICA_PORT_OF_SPAIN
-
-  """Пуэрто-Рико"""
-  AMERICA_PUERTO_RICO
-
-  """Пунта-Аренас"""
-  AMERICA_PUNTA_ARENAS
-
-  """Рейни-Ривер"""
-  AMERICA_RAINY_RIVER
-
-  """Ранкин-Инлет"""
-  AMERICA_RANKIN_INLET
-
-  """Ресифи"""
-  AMERICA_RECIFE
-
-  """Реджайна"""
-  AMERICA_REGINA
-
-  """Резольют"""
-  AMERICA_RESOLUTE
-
-  """Рио-Бранко"""
-  AMERICA_RIO_BRANCO
-
-  """Сантарен"""
-  AMERICA_SANTAREM
-
-  """Сантьяго"""
-  AMERICA_SANTIAGO
-
-  """Санто-Доминго"""
-  AMERICA_SANTO_DOMINGO
-
-  """Сан-Паулу"""
-  AMERICA_SAO_PAULO
-
-  """Скорсби"""
-  AMERICA_SCORESBYSUND
-
-  """Ситка"""
-  AMERICA_SITKA
-
-  """Сент-Бартелеми"""
-  AMERICA_ST_BARTHELEMY
-
-  """Сент-Джонс"""
-  AMERICA_ST_JOHNS
-
-  """Сент-Китс"""
-  AMERICA_ST_KITTS
-
-  """Сент-Люсия"""
-  AMERICA_ST_LUCIA
-
-  """Сент-Томас"""
-  AMERICA_ST_THOMAS
-
-  """Сент-Винсент"""
-  AMERICA_ST_VINCENT
-
-  """Свифт-Каррент"""
-  AMERICA_SWIFT_CURRENT
-
-  """Тегусигальпа"""
-  AMERICA_TEGUCIGALPA
-
-  """Туле"""
-  AMERICA_THULE
-
-  """Тандер-Бей"""
-  AMERICA_THUNDER_BAY
-
-  """Тихуана"""
-  AMERICA_TIJUANA
-
-  """Торонто"""
-  AMERICA_TORONTO
-
-  """Тортола"""
-  AMERICA_TORTOLA
-
-  """Ванкувер"""
-  AMERICA_VANCOUVER
-
-  """Уайтхорс"""
-  AMERICA_WHITEHORSE
-
-  """Виннипег"""
-  AMERICA_WINNIPEG
-
-  """Якутат"""
-  AMERICA_YAKUTAT
-
-  """Йеллоунайф"""
-  AMERICA_YELLOWKNIFE
-
-  """Кейси"""
-  ANTARCTICA_CASEY
-
-  """Дэвис"""
-  ANTARCTICA_DAVIS
-
-  """Дюмон-Дюрвиль"""
-  ANTARCTICA_DUMONTDURVILLE
-
-  """Маккуори"""
-  ANTARCTICA_MACQUARIE
-
-  """Моусон"""
-  ANTARCTICA_MAWSON
-
-  """Мак-Мердо"""
-  ANTARCTICA_MCMURDO
-
-  """Палмер"""
-  ANTARCTICA_PALMER
-
-  """Ротера"""
-  ANTARCTICA_ROTHERA
-
-  """Сиова"""
-  ANTARCTICA_SYOWA
-
-  """Тролль"""
-  ANTARCTICA_TROLL
-
-  """Восток"""
-  ANTARCTICA_VOSTOK
-
-  """Лонгйир"""
-  ARCTIC_LONGYEARBYEN
-
-  """Аден"""
-  ASIA_ADEN
-
-  """Алматы"""
-  ASIA_ALMATY
-
-  """Амман"""
-  ASIA_AMMAN
-
-  """Анадырь"""
-  ASIA_ANADYR
-
-  """Актау"""
-  ASIA_AQTAU
-
-  """Актобе"""
-  ASIA_AQTOBE
-
-  """Ашхабад"""
-  ASIA_ASHGABAT
-
-  """Атырау"""
-  ASIA_ATYRAU
-
-  """Багдад"""
-  ASIA_BAGHDAD
-
-  """Бахрейн"""
-  ASIA_BAHRAIN
-
-  """Баку"""
-  ASIA_BAKU
-
-  """Бангкок"""
-  ASIA_BANGKOK
-
-  """Барнаул"""
-  ASIA_BARNAUL
-
-  """Бейрут"""
-  ASIA_BEIRUT
-
-  """Бишкек"""
-  ASIA_BISHKEK
-
-  """Бруней"""
-  ASIA_BRUNEI
-
-  """Чита"""
-  ASIA_CHITA
-
-  """Чойбалсан"""
-  ASIA_CHOIBALSAN
-
-  """Коломбо"""
-  ASIA_COLOMBO
-
-  """Дамаск"""
-  ASIA_DAMASCUS
-
-  """Дакка"""
-  ASIA_DHAKA
-
-  """Дили"""
-  ASIA_DILI
-
-  """Дубай"""
-  ASIA_DUBAI
-
-  """Душанбе"""
-  ASIA_DUSHANBE
-
-  """Фамагуста"""
-  ASIA_FAMAGUSTA
-
-  """Газа"""
-  ASIA_GAZA
-
-  """Хеврон"""
-  ASIA_HEBRON
-
-  """Гонконг"""
-  ASIA_HONG_KONG
-
-  """Ховд"""
-  ASIA_HOVD
-
-  """Хошимин"""
-  ASIA_HO_CHI_MINH
-
-  """Иркутск"""
-  ASIA_IRKUTSK
-
-  """Джакарта"""
-  ASIA_JAKARTA
-
-  """Джаяпура"""
-  ASIA_JAYAPURA
-
-  """Иерусалим"""
-  ASIA_JERUSALEM
-
-  """Кабул"""
-  ASIA_KABUL
-
-  """Камчатка"""
-  ASIA_KAMCHATKA
-
-  """Карачи"""
-  ASIA_KARACHI
-
-  """Катманду"""
-  ASIA_KATHMANDU
-
-  """Хандыга"""
-  ASIA_KHANDYGA
-
-  """Калькутта"""
-  ASIA_KOLKATA
-
-  """Красноярск"""
-  ASIA_KRASNOYARSK
-
-  """Куала-Лумпур"""
-  ASIA_KUALA_LUMPUR
-
-  """Кучинг"""
-  ASIA_KUCHING
-
-  """Кувейт"""
-  ASIA_KUWAIT
-
-  """Макао"""
-  ASIA_MACAU
-
-  """Магадан"""
-  ASIA_MAGADAN
-
-  """Макассар"""
-  ASIA_MAKASSAR
-
-  """Манила"""
-  ASIA_MANILA
-
-  """Маскат"""
-  ASIA_MUSCAT
-
-  """Никосия"""
-  ASIA_NICOSIA
-
-  """Новокузнецк"""
-  ASIA_NOVOKUZNETSK
-
-  """Новосибирск"""
-  ASIA_NOVOSIBIRSK
-
-  """Омск"""
-  ASIA_OMSK
-
-  """Орал"""
-  ASIA_ORAL
-
-  """Пномпень"""
-  ASIA_PHNOM_PENH
-
-  """Понтианаке"""
-  ASIA_PONTIANAK
-
-  """Пхеньян"""
-  ASIA_PYONGYANG
-
-  """Катар"""
-  ASIA_QATAR
-
-  """Qostanay"""
-  ASIA_QOSTANAY
-
-  """Кызылорда"""
-  ASIA_QYZYLORDA
-
-  """Эр-Рияд"""
-  ASIA_RIYADH
-
-  """Сахалин"""
-  ASIA_SAKHALIN
-
-  """Самарканд"""
-  ASIA_SAMARKAND
-
-  """Сеул"""
-  ASIA_SEOUL
-
-  """Шанхай"""
-  ASIA_SHANGHAI
-
-  """Сингапур"""
-  ASIA_SINGAPORE
-
-  """Среднеколымск"""
-  ASIA_SREDNEKOLYMSK
-
-  """Тайбэй"""
-  ASIA_TAIPEI
-
-  """Ташкент"""
-  ASIA_TASHKENT
-
-  """Тбилиси"""
-  ASIA_TBILISI
-
-  """Тегеран"""
-  ASIA_TEHRAN
-
-  """Тхимпху"""
-  ASIA_THIMPHU
-
-  """Токио"""
-  ASIA_TOKYO
-
-  """Томск"""
-  ASIA_TOMSK
-
-  """Улан-Батор"""
-  ASIA_ULAANBAATAR
-
-  """Урумчи"""
-  ASIA_URUMQI
-
-  """Усть-Нера"""
-  ASIA_UST_NERA
-
-  """Вьентьян"""
-  ASIA_VIENTIANE
-
-  """Владивосток"""
-  ASIA_VLADIVOSTOK
-
-  """Якутск"""
-  ASIA_YAKUTSK
-
-  """Янгон"""
-  ASIA_YANGON
-
-  """Екатеринбург"""
-  ASIA_YEKATERINBURG
-
-  """Ереван"""
-  ASIA_YEREVAN
-
-  """Азорские острова"""
-  ATLANTIC_AZORES
-
-  """Бермудские острова"""
-  ATLANTIC_BERMUDA
-
-  """Канары"""
-  ATLANTIC_CANARY
-
-  """Кабо-Верде"""
-  ATLANTIC_CAPE_VERDE
-
-  """Фарер"""
-  ATLANTIC_FAROE
-
-  """Мадейра"""
-  ATLANTIC_MADEIRA
-
-  """Рейкьявик"""
-  ATLANTIC_REYKJAVIK
-
-  """Южная Георгия"""
-  ATLANTIC_SOUTH_GEORGIA
-
-  """Стэнли"""
-  ATLANTIC_STANLEY
-
-  """Остров св. Елены"""
-  ATLANTIC_ST_HELENA
-
-  """Аделаида"""
-  AUSTRALIA_ADELAIDE
-
-  """Брисбен"""
-  AUSTRALIA_BRISBANE
-
-  """Броукен-Хил"""
-  AUSTRALIA_BROKEN_HILL
-
-  """Карри"""
-  AUSTRALIA_CURRIE
-
-  """Дарвин"""
-  AUSTRALIA_DARWIN
-
-  """Эукла"""
-  AUSTRALIA_EUCLA
-
-  """Хобарт"""
-  AUSTRALIA_HOBART
-
-  """Линдеман"""
-  AUSTRALIA_LINDEMAN
-
-  """Лорд-Хау"""
-  AUSTRALIA_LORD_HOWE
-
-  """Мельбурн"""
-  AUSTRALIA_MELBOURNE
-
-  """Перт"""
-  AUSTRALIA_PERTH
-
-  """Сидней"""
-  AUSTRALIA_SYDNEY
-
-  """Амстердам"""
-  EUROPE_AMSTERDAM
-
-  """Андорра"""
-  EUROPE_ANDORRA
-
-  """Астрахань"""
-  EUROPE_ASTRAKHAN
-
-  """Афины"""
-  EUROPE_ATHENS
-
-  """Белград"""
-  EUROPE_BELGRADE
-
-  """Берлин"""
-  EUROPE_BERLIN
-
-  """Братислава"""
-  EUROPE_BRATISLAVA
-
-  """Брюссель"""
-  EUROPE_BRUSSELS
-
-  """Бухарест"""
-  EUROPE_BUCHAREST
-
-  """Будапешт"""
-  EUROPE_BUDAPEST
-
-  """Бюзинген"""
-  EUROPE_BUSINGEN
-
-  """Кишинёв"""
-  EUROPE_CHISINAU
-
-  """Копенгаген"""
-  EUROPE_COPENHAGEN
-
-  """Дублин"""
-  EUROPE_DUBLIN
-
-  """Гибралтар"""
-  EUROPE_GIBRALTAR
-
-  """Гернси"""
-  EUROPE_GUERNSEY
-
-  """Хельсинки"""
-  EUROPE_HELSINKI
-
-  """Остров Мэн"""
-  EUROPE_ISLE_OF_MAN
-
-  """Стамбул"""
-  EUROPE_ISTANBUL
-
-  """Джерси"""
-  EUROPE_JERSEY
-
-  """Калининград"""
-  EUROPE_KALININGRAD
-
-  """Киев"""
-  EUROPE_KIEV
-
-  """Киров"""
-  EUROPE_KIROV
-
-  """Лиссабон"""
-  EUROPE_LISBON
-
-  """Любляна"""
-  EUROPE_LJUBLJANA
-
-  """Лондон"""
-  EUROPE_LONDON
-
-  """Люксембург"""
-  EUROPE_LUXEMBOURG
-
-  """Мадрид"""
-  EUROPE_MADRID
-
-  """Мальта"""
-  EUROPE_MALTA
-
-  """Мариехамн"""
-  EUROPE_MARIEHAMN
-
-  """Минск"""
-  EUROPE_MINSK
-
-  """Монако"""
-  EUROPE_MONACO
-
-  """Москва"""
-  EUROPE_MOSCOW
-
-  """Осло"""
-  EUROPE_OSLO
-
-  """Париж"""
-  EUROPE_PARIS
-
-  """Подгорица"""
-  EUROPE_PODGORICA
-
-  """Прага"""
-  EUROPE_PRAGUE
-
-  """Рига"""
-  EUROPE_RIGA
-
-  """Рим"""
-  EUROPE_ROME
-
-  """Самара"""
-  EUROPE_SAMARA
-
-  """Сан-Марино"""
-  EUROPE_SAN_MARINO
-
-  """Сараево"""
-  EUROPE_SARAJEVO
-
-  """Саратов"""
-  EUROPE_SARATOV
-
-  """Симферополь"""
-  EUROPE_SIMFEROPOL
-
-  """Скопье"""
-  EUROPE_SKOPJE
-
-  """София"""
-  EUROPE_SOFIA
-
-  """Стокгольм"""
-  EUROPE_STOCKHOLM
-
-  """Таллин"""
-  EUROPE_TALLINN
-
-  """Тирана"""
-  EUROPE_TIRANE
-
-  """Ульяновск"""
-  EUROPE_ULYANOVSK
-
-  """Ужгород"""
-  EUROPE_UZHGOROD
-
-  """Вадуц"""
-  EUROPE_VADUZ
-
-  """Ватикан"""
-  EUROPE_VATICAN
-
-  """Вена"""
-  EUROPE_VIENNA
-
-  """Вильнюс"""
-  EUROPE_VILNIUS
-
-  """Волгоград"""
-  EUROPE_VOLGOGRAD
-
-  """Варшава"""
-  EUROPE_WARSAW
-
-  """Загреб"""
-  EUROPE_ZAGREB
-
-  """Запорожье"""
-  EUROPE_ZAPOROZHYE
-
-  """Цюрих"""
-  EUROPE_ZURICH
-
-  """Антананариву"""
-  INDIAN_ANTANANARIVO
-
-  """Чагос"""
-  INDIAN_CHAGOS
-
-  """Остров Рождества"""
-  INDIAN_CHRISTMAS
-
-  """Кокосовые острова"""
-  INDIAN_COCOS
-
-  """Коморские острова"""
-  INDIAN_COMORO
-
-  """Кергелен"""
-  INDIAN_KERGUELEN
-
-  """Маэ"""
-  INDIAN_MAHE
-
-  """Мальдивы"""
-  INDIAN_MALDIVES
-
-  """Маврикий"""
-  INDIAN_MAURITIUS
-
-  """Майотта"""
-  INDIAN_MAYOTTE
-
-  """Реюньон"""
-  INDIAN_REUNION
-
-  """Апия"""
-  PACIFIC_APIA
-
-  """Окленд"""
-  PACIFIC_AUCKLAND
-
-  """Бугенвиль"""
-  PACIFIC_BOUGAINVILLE
-
-  """Чатэм"""
-  PACIFIC_CHATHAM
-
-  """Трук"""
-  PACIFIC_CHUUK
-
-  """Остров Пасхи"""
-  PACIFIC_EASTER
-
-  """Эфате"""
-  PACIFIC_EFATE
-
-  """Эндербери"""
-  PACIFIC_ENDERBURY
-
-  """Факаофо"""
-  PACIFIC_FAKAOFO
-
-  """Фиджи"""
-  PACIFIC_FIJI
-
-  """Фунафути"""
-  PACIFIC_FUNAFUTI
-
-  """Галапагос"""
-  PACIFIC_GALAPAGOS
-
-  """Гамбье"""
-  PACIFIC_GAMBIER
-
-  """Гуадалканал"""
-  PACIFIC_GUADALCANAL
-
-  """Гуам"""
-  PACIFIC_GUAM
-
-  """Гонолулу"""
-  PACIFIC_HONOLULU
-
-  """Киритимати"""
-  PACIFIC_KIRITIMATI
-
-  """Кусаие"""
-  PACIFIC_KOSRAE
-
-  """Кваджалейн"""
-  PACIFIC_KWAJALEIN
-
-  """Маджуро"""
-  PACIFIC_MAJURO
-
-  """Маркизы"""
-  PACIFIC_MARQUESAS
-
-  """Мидуэй"""
-  PACIFIC_MIDWAY
-
-  """Науру"""
-  PACIFIC_NAURU
-
-  """Ниуэ"""
-  PACIFIC_NIUE
-
-  """Норфолк"""
-  PACIFIC_NORFOLK
-
-  """Нумеа"""
-  PACIFIC_NOUMEA
-
-  """Паго-Паго"""
-  PACIFIC_PAGO_PAGO
-
-  """Палау"""
-  PACIFIC_PALAU
-
-  """Питкэрн"""
-  PACIFIC_PITCAIRN
-
-  """Понпеи"""
-  PACIFIC_POHNPEI
-
-  """Порт-Морсби"""
-  PACIFIC_PORT_MORESBY
-
-  """Раротонга"""
-  PACIFIC_RAROTONGA
-
-  """Сайпан"""
-  PACIFIC_SAIPAN
-
-  """Таити"""
-  PACIFIC_TAHITI
-
-  """Тарава"""
-  PACIFIC_TARAWA
-
-  """Тонгатапу"""
-  PACIFIC_TONGATAPU
-
-  """Уэйк"""
-  PACIFIC_WAKE
-
-  """Уоллис"""
-  PACIFIC_WALLIS
-
-  """UTC offset: UTC+0"""
-  UTC_0
-
-  """UTC offset: UTC+0:30"""
-  UTC_0_30
-
-  """UTC offset: UTC+1"""
-  UTC_1
-
-  """UTC offset: UTC+10"""
-  UTC_10
-
-  """UTC offset: UTC+10:30"""
-  UTC_10_30
-
-  """UTC offset: UTC+11"""
-  UTC_11
-
-  """UTC offset: UTC+11:30"""
-  UTC_11_30
-
-  """UTC offset: UTC+12"""
-  UTC_12
-
-  """UTC offset: UTC+12:45"""
-  UTC_12_45
-
-  """UTC offset: UTC+13"""
-  UTC_13
-
-  """UTC offset: UTC+13:45"""
-  UTC_13_45
-
-  """UTC offset: UTC+14"""
-  UTC_14
-
-  """UTC offset: UTC+1:30"""
-  UTC_1_30
-
-  """UTC offset: UTC+2"""
-  UTC_2
-
-  """UTC offset: UTC+2:30"""
-  UTC_2_30
-
-  """UTC offset: UTC+3"""
-  UTC_3
-
-  """UTC offset: UTC+3:30"""
-  UTC_3_30
-
-  """UTC offset: UTC+4"""
-  UTC_4
-
-  """UTC offset: UTC+4:30"""
-  UTC_4_30
-
-  """UTC offset: UTC+5"""
-  UTC_5
-
-  """UTC offset: UTC+5:30"""
-  UTC_5_30
-
-  """UTC offset: UTC+5:45"""
-  UTC_5_45
-
-  """UTC offset: UTC+6"""
-  UTC_6
-
-  """UTC offset: UTC+6:30"""
-  UTC_6_30
-
-  """UTC offset: UTC+7"""
-  UTC_7
-
-  """UTC offset: UTC+7:30"""
-  UTC_7_30
-
-  """UTC offset: UTC+8"""
-  UTC_8
-
-  """UTC offset: UTC+8:30"""
-  UTC_8_30
-
-  """UTC offset: UTC+8:45"""
-  UTC_8_45
-
-  """UTC offset: UTC+9"""
-  UTC_9
-
-  """UTC offset: UTC+9:30"""
-  UTC_9_30
+"""The template assigned to the node"""
+type DefaultTemplate implements ContentTemplate {
+  """The name of the template"""
+  templateName: String
 }
-
-"""Options for filtering the connection"""
-input MenuItemsWhereArgs {
-  """The ID of the object"""
-  id: Int
-
-  """The menu location for the menu being queried"""
-  location: MenuLocationEnum
-}
-
-union PostObjectUnion = Post | Page | MediaItem
-
-union TermObjectUnion = Category | Tag | PostFormat
