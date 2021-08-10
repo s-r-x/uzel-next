@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  publish:
+  ci:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,15 +36,15 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
-          file: Dockerfile.prod
           push: true
+          file: Dockerfile.prod
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-  deploy:
-    uses: appleboy/ssh-action@master
-    needs: publish
-    with:
-      host: ${{ secrets.DEPLOY_HOST }}
-      username: ${{ secrets.DEPLOY_USER }}
-      key: ${{ secrets.SSH_PRIVATE_KEY }}
-      script: ./${{ secrets.DEPLOY_SCRIPT }}
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: ./home/strax/deploy-front.sh
+
