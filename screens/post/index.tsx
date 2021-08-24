@@ -45,10 +45,12 @@ const PostScreen = ({ data: { post } }: TProps) => {
               <HeartIcon color="var(--heart-color)" />
               <span>{post.likesCount}</span>
             </S.Counter>
-            <S.Counter>
-              <CommentIcon />
-              <span>{post.commentCount || 0}</span>
-            </S.Counter>
+            {post.commentCount > 0 && (
+              <S.Counter>
+                <CommentIcon />
+                <span>{post.commentCount}</span>
+              </S.Counter>
+            )}
           </S.CountersContainer>
         </S.Header>
         <Thumb postId={post.postId} media={post.featuredImage.node} />

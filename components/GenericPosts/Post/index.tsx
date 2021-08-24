@@ -19,8 +19,6 @@ export default memo(function Post({ data }: TProps) {
   const link = LinkBuilder.build("post", {
     slug: data.slug,
   });
-  const commentsCount = data.commentCount || 0;
-
   return (
     <S.Container>
       <Link passHref href={link}>
@@ -40,10 +38,12 @@ export default memo(function Post({ data }: TProps) {
           <HeartIcon color="var(--heart-color)" />
           <span>{data.likesCount}</span>
         </S.MetaItem>
-        <S.MetaItem aria-label={`${commentsCount} комментариев`}>
+        {data.commentCount > 0 && (
+        <S.MetaItem aria-label={`${data.commentCount} комментариев`}>
           <CommentIcon />
-          <span>{commentsCount}</span>
+          <span>{data.commentCount}</span>
         </S.MetaItem>
+        )}
         <S.MetaItem>
           <CalendarIcon />
           <time dateTime={date}>{date}</time>
