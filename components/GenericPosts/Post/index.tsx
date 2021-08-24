@@ -2,12 +2,13 @@ import { usePostExcerpt } from "@/hooks/usePostExcerpt";
 import { useFormattedDate } from "@/hooks/useFormattedDate";
 import * as S from "./styled";
 import Link from "next/link";
-import { CommentIcon, HeartIcon, CalendarIcon } from "_c/Icon";
+import { CommentIcon, HeartIcon, CalendarIcon, ObservationIcon } from "_c/Icon";
 import Thumb from "../Thumb";
 import { memo } from "react";
 import { TGenericPost } from "../typings";
 import TagsList from "@/components/TagsList";
 import { LinkBuilder } from "@/services/link-builder";
+import { useExtractObservationsCount } from "@/hooks/useExtractObservationsCount";
 
 type TProps = {
   data: TGenericPost;
@@ -19,6 +20,9 @@ export default memo(function Post({ data }: TProps) {
   const link = LinkBuilder.build("post", {
     slug: data.slug,
   });
+  const observationsCount = useExtractObservationsCount(
+    data.iNaturalist?.observations
+  );
   return (
     <S.Container>
       <Link passHref href={link}>
@@ -38,11 +42,17 @@ export default memo(function Post({ data }: TProps) {
           <HeartIcon color="var(--heart-color)" />
           <span>{data.likesCount}</span>
         </S.MetaItem>
+        {observationsCount > 0 && (
+          <S.MetaItem aria-label={`${observationsCount} наблюдений`}>
+            <ObservationIcon />
+            <span>{observationsCount}</span>
+          </S.MetaItem>
+        )}
         {data.commentCount > 0 && (
-        <S.MetaItem aria-label={`${data.commentCount} комментариев`}>
-          <CommentIcon />
-          <span>{data.commentCount}</span>
-        </S.MetaItem>
+          <S.MetaItem aria-label={`${data.commentCount} комментариев`}>
+            <CommentIcon />
+            <span>{data.commentCount}</span>
+          </S.MetaItem>
         )}
         <S.MetaItem>
           <CalendarIcon />

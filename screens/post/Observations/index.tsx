@@ -2,7 +2,7 @@ import { GetPostBySlugQuery } from "@/typings/wp";
 import * as S from "./styled";
 import { QueryKeysConfig } from "@/config/query-keys";
 import { Requests } from "@/network/requests";
-import { useExtractObservationsIds } from "./hooks";
+import { useExtractObservationsIds } from "@/hooks/useExtractObservationsIds";
 import isempty from "lodash/isEmpty";
 import { useQueries, UseQueryOptions, UseQueryResult } from "react-query";
 import Observation from "./Observation";
@@ -34,7 +34,6 @@ function useQueriesTyped<TQueries extends readonly UseQueryOptions[]>(
 type TProps = {
   observations: GetPostBySlugQuery["post"]["iNaturalist"]["observations"];
 };
-type TFn = typeof Requests.getObservationById;
 export default function Observations({ observations: obsStr }: TProps) {
   const ids = useExtractObservationsIds(obsStr);
   const obsQueries = useQueriesTyped(

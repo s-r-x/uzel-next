@@ -8,7 +8,7 @@ import Thumb from "./Thumb";
 import Share from "./Share";
 import Like from "./Like/loadable";
 import Comments from "./CommentsSection";
-import { CommentIcon, HeartIcon } from "_c/Icon";
+import { CommentIcon, HeartIcon, ObservationIcon } from "_c/Icon";
 import { CircleButton } from "@/components/Button";
 import Seo from "./Seo";
 import { usePostExcerpt } from "@/hooks/usePostExcerpt";
@@ -18,6 +18,7 @@ import { Requests } from "@/network/requests";
 import Spin from "@/components/Spin";
 import { useExtractPostCategory } from "@/hooks/useExtractPostCategory";
 import dynamic from "next/dynamic";
+import { useExtractObservationsCount } from "@/hooks/useExtractObservationsCount";
 
 const Observations = dynamic(() => import("./Observations"), {
   ssr: false,
@@ -32,6 +33,9 @@ const PostScreen = ({ data: { post } }: TProps) => {
   const Content = useConvertContentToJsx(post.content);
   const category = useExtractPostCategory(post);
   const excerpt = usePostExcerpt(post.excerpt);
+  const observationsCount = useExtractObservationsCount(
+    post.iNaturalist?.observations
+  );
   return (
     <>
       <Seo excerpt={excerpt} post={post} />
@@ -45,6 +49,12 @@ const PostScreen = ({ data: { post } }: TProps) => {
               <HeartIcon color="var(--heart-color)" />
               <span>{post.likesCount}</span>
             </S.Counter>
+            {observationsCount > 0 && (
+              <S.Counter>
+                <ObservationIcon />
+                <span>{observationsCount}</span>
+              </S.Counter>
+            )}
             {post.commentCount > 0 && (
               <S.Counter>
                 <CommentIcon />

@@ -7625,6 +7625,9 @@ export type PostsListFieldsFragment = (
       { __typename?: 'Tag' }
       & Pick<Tag, 'name' | 'id' | 'slug'>
     )>>> }
+  )>, iNaturalist?: Maybe<(
+    { __typename?: 'Post_Inaturalist' }
+    & Pick<Post_Inaturalist, 'observations'>
   )>, featuredImage?: Maybe<(
     { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' }
     & { node?: Maybe<(

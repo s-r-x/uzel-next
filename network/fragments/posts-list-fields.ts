@@ -16,6 +16,9 @@ export const POSTS_LIST_FIELDS_FRAG = gql`
         slug
       }
     }
+    iNaturalist {
+      observations
+    }
     featuredImage {
       node {
         altText

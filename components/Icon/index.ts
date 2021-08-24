@@ -5,3 +5,4 @@ export { MdHourglassFull as HourGlassIcon } from "react-icons/md";
 export { MdSearch as SearchIcon } from "react-icons/md";
 export { MdShare as ShareIcon } from "react-icons/md";
 export { MdKeyboardArrowUp as AngleTopIcon } from "react-icons/md";
+export { MdPhotoCamera as ObservationIcon } from "react-icons/md";
